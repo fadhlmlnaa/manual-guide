@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Guide - Trend To Sunset</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+
+    <!-- Container Utama -->
+    <div class="w-full md:w-5xl mx-auto px-24 py-10">
+
+        <!-- Header -->
+        <header class="mb-12 text-center">
+            <h1 class="text-4xl font-bold text-gray-900 tracking-tight">Report Produk Tren Menuju Dead Stock</h1>
+        </header>
+
+        <!-- Section: Version History -->
+        <section class="mb-20 bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+            <div class="flex items-center mb-6">
+                <div class="p-2 bg-blue-50 text-blue-600 rounded-lg mr-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+                <h2 class="text-2xl font-semibold text-gray-900">Version History</h2>
+            </div>
+
+            <!-- Tabel Responsif -->
+            <div class="overflow-x-auto rounded-xl border border-gray-200">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-gray-50 border-b border-gray-200">
+                            <th class="p-4 font-semibold text-sm text-gray-700">Version</th>
+                            <th class="p-4 font-semibold text-sm text-gray-700">Implemented By</th>
+                            <th class="p-4 font-semibold text-sm text-gray-700">Revision Date</th>
+                            <th class="p-4 font-semibold text-sm text-gray-700">Summary</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200 text-sm">
+                        <tr class="hover:bg-gray-50 transition-colors">
+                            <td class="p-4 font-medium text-blue-600">v1.0</td>
+                            <td class="p-4 text-gray-600">Fadhil Maulana</td>
+                            <td class="p-4 text-gray-600">7 Mei 2026</td>
+                            <td class="p-4 text-gray-500">Initial Draft</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition-colors">
+                            <td class="p-4 font-medium text-blue-600">v1.1</td>
+                            <td class="p-4 text-gray-600">Fadhil Maulana</td>
+                            <td class="p-4 text-gray-600">18 Mei 2026</td>
+                            <td class="p-4 text-gray-500">Fitur Moodah Report Trend Menuju Dead Stock</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <hr class="border-gray-200 mb-10">
+
+        <section class="relative">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900">Fitur Report Trend Menuju Dead Stock</h2>
+                <p class="text-gray-500 mt-2">Panduan penggunaan fitur report untuk memonitor produk dengan tren menuju
+                    dead
+                    stock</p>
+            </div>
+
+            <div class="space-y-16 md:space-y-24">
+
+                <!-- Langkah 1: Teks Kiri, Gambar Kanan -->
+                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16">
+                    <!-- Konten Teks -->
+                    <div class="w-full md:w-1/2 space-y-4">
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blue-600 text-white font-bold text-xl shadow-md">
+                                1
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900">Buka Fitur Report</h3>
+                        </div>
+                        <div class="space-y-3 pt-2">
+                            <div
+                                class="flex items-start gap-3 p-3 bg-white border border-slate-100 rounded-xl shadow-sm">
+                                <span
+                                    class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-50 text-xs font-bold text-blue-600">1</span>
+                                <p class="text-slate-600 text-sm font-medium pt-0.5">Klik <span
+                                        class="text-slate-900 font-semibold">Modul Inventory</span> pada sidebar utama.
+                                </p>
+                            </div>
+                            <div
+                                class="flex items-start gap-3 p-3 bg-white border border-slate-100 rounded-xl shadow-sm">
+                                <span
+                                    class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-50 text-xs font-bold text-blue-600">2</span>
+                                <p class="text-slate-600 text-sm font-medium pt-0.5">Pilih Menu <span
+                                        class="text-slate-900 font-semibold">Pemerataan Stock</span>.</p>
+                            </div>
+                            <div
+                                class="flex items-start gap-3 p-3 bg-white border border-slate-100 rounded-xl shadow-sm">
+                                <span
+                                    class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-50 text-xs font-bold text-blue-600">3</span>
+                                <p class="text-slate-600 text-sm font-medium pt-0.5">Klik Submenu <span
+                                        class="text-blue-600 font-semibold">Moodah Stock Report - Config</span>.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Gambar -->
+                    <div class="w-full md:w-1/2">
+                        <div
+                            class="p-2 bg-white rounded-2xl border border-slate-200 shadow-md hover:shadow-xl transition-all duration-300 relative z-10 group">
+                            <img src="https://ik.imagekit.io/6gvdoky5n/Moodah%20Stock/step%201.png" alt="Step 1"
+                                class="w-full h-auto rounded-xl border border-slate-100 transition-transform duration-200 group-hover:scale-[1.01]"
+                                onclick="openOverlay(this.src)">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Langkah 2: Teks Kanan, Gambar Kiri (Gunakan md:flex-row-reverse) -->
+                <div class="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-16">
+                    <!-- Konten Teks -->
+                    <div class="w-full md:w-1/2 space-y-4">
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blue-600 text-white font-bold text-xl shadow-md">
+                                2
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900">List Report</h3>
+                        </div>
+                        <div class="p-4 bg-white border border-slate-100 rounded-xl shadow-sm space-y-2">
+                            <div class="flex items-center gap-2">
+                                <span class="inline-block w-2 h-2 rounded-full bg-emerald-500"></span>
+                                <h4 class="text-sm font-bold text-slate-800">Membuat Dokumen Baru</h4>
+                            </div>
+                            <p class="text-slate-600 text-sm leading-relaxed pl-4">
+                                Jika ingin men-create report baru, silakan klik tombol
+                                <span
+                                    class="inline-flex items-center bg-emerald-50 text-emerald-700 text-xs font-bold px-2.5 py-1 rounded-md border border-emerald-200 ml-1 uppercase tracking-wider">New</span>.
+                            </p>
+                        </div>
+                        <div class="p-4 bg-white border border-slate-100 rounded-xl shadow-sm space-y-2">
+                            <div class="flex items-center gap-2">
+                                <span class="inline-block w-2 h-2 rounded-full bg-blue-500"></span>
+                                <h4 class="text-sm font-bold text-slate-800">Melihat Data Lama</h4>
+                            </div>
+                            <p class="text-slate-600 text-sm leading-relaxed pl-4">
+                                Jika ingin melihat detail atau riwayat report sebelumnya, Anda bisa langsung mengklik
+                                pada baris <span class="text-slate-900 font-semibold">record</span> yang tersedia di
+                                dalam tabel list.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Gambar -->
+                    <div class="w-full md:w-1/2">
+                        <div
+                            class="p-2 bg-white rounded-2xl border border-slate-200 shadow-md hover:shadow-xl transition-all duration-300 relative z-10 group">
+                            <img src="https://ik.imagekit.io/6gvdoky5n/Moodah%20Stock/step2.png" alt="Step 2"
+                                class="w-full h-auto rounded-xl border border-slate-100 transition-transform duration-200 group-hover:scale-[1.01]"
+                                onclick="openOverlay(this.src)">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Langkah 3: Teks Kiri, Gambar Kanan -->
+                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16">
+                    <!-- Konten Teks -->
+                    <div class="w-full md:w-1/2 space-y-4">
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blue-600 text-white font-bold text-xl shadow-md">
+                                3
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900">Form Report</h3>
+                        </div>
+                        <div class="p-3 bg-white border border-slate-100 rounded-xl shadow-sm flex items-start gap-3">
+                            <span
+                                class="inline-flex items-center bg-red-50 text-red-700 text-[11px] font-bold px-2 py-0.5 rounded border border-red-200 uppercase shrink-0 mt-0.5">Reset</span>
+                            <p class="text-slate-600 text-xs md:text-sm">Klik reset jika
+                                ingin ubah konfigurasi dan ingin generate ulang report.</p>
+                        </div>
+
+                        <div class="p-3 bg-white border border-slate-100 rounded-xl shadow-sm flex items-start gap-3">
+                            <span
+                                class="inline-flex items-center bg-green-50 text-green-700 text-[11px] font-bold px-2 py-0.5 rounded border border-green-200 uppercase shrink-0 mt-0.5">View
+                                Report</span>
+                            <p class="text-slate-600 text-xs md:text-sm"> Klik <b>View Report</b> yang ada di form untuk
+                                melihat dashboard total produk untuk kategori <b class="text-red-700">Dead Stock</b>
+                                hingga <b class="text-green-700">Fast Moving</b></p>
+                        </div>
+
+                        <div class="p-3 bg-white border border-slate-100 rounded-xl shadow-sm flex items-start gap-3">
+                            <span
+                                class="inline-flex items-center bg-orange-50 text-orange-700 text-[11px] font-bold px-2 py-0.5 rounded border border-orange-200 uppercase shrink-0 mt-0.5">Update
+                                Dead Stock</span>
+                            <p class="text-slate-600 text-xs md:text-sm"> Klik <b>Update Dead Stock</b> yang ada di
+                                form untuk update report.</p>
+                        </div>
+
+                        <div class="p-3 bg-white border border-slate-100 rounded-xl shadow-sm flex items-start gap-3">
+                            <span
+                                class="inline-flex items-center bg-green-50 text-green-700 text-[11px] font-bold px-2 py-0.5 rounded border border-green-200 uppercase shrink-0 mt-0.5">View
+                                Sunset Products</span>
+                            <p class="text-slate-600 text-xs md:text-sm"> Klik <b>View Sunset Products</b> yang ada di
+                                form untuk melihat produk apa saja yang masuk kategori sunset product atau produk menuju
+                                dead stock.</p>
+                        </div>
+
+
+                    </div>
+                    <!-- Gambar -->
+                    <div class="w-full md:w-1/2">
+                        <div
+                            class="p-2 bg-white rounded-2xl border border-slate-200 shadow-md hover:shadow-xl transition-all duration-300 relative z-10 group">
+                            <img src="https://ik.imagekit.io/6gvdoky5n/Moodah%20Stock/step3.png" alt="Step 3"
+                                class="w-full h-auto rounded-xl border border-slate-100 transition-transform duration-200 group-hover:scale-[1.01]"
+                                onclick="openOverlay(this.src)">
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16">
+                    <div class="w-full md:w-1/2">
+                        <div
+                            class="p-2 bg-white rounded-2xl border border-slate-200 shadow-md hover:shadow-xl transition-all duration-300 relative z-10 group">
+                            <img src="https://ik.imagekit.io/6gvdoky5n/Moodah%20Stock/view%20report.png" alt="Step 4"
+                                class="w-full h-auto rounded-xl border border-slate-100 transition-transform duration-200 group-hover:scale-[1.01]"
+                                onclick="openOverlay(this.src)">
+                        </div>
+                        <p class="text-center mt-3 text-gray-500 text-md italic">Halaman Ketika Klik View Report</p>
+                    </div>
+                    <div class="w-full md:w-1/2">
+                        <div
+                            class="p-2 bg-white rounded-2xl border border-slate-200 shadow-md hover:shadow-xl transition-all duration-300 relative z-10 group">
+                            <img src="https://ik.imagekit.io/6gvdoky5n/Moodah%20Stock/sunset%20product.png" alt="Step 5"
+                                class="w-full h-auto rounded-xl border border-slate-100 transition-transform duration-200 group-hover:scale-[1.01]"
+                                onclick="openOverlay(this.src)">
+                        </div>
+                        <p class="text-center mt-3 text-gray-500 text-md italic">Halaman Ketika Klik View Sunset
+                            Products</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ================= PREMIUM OVERLAY LAYER (Absolute Top/Z-index Perfect) ================= -->
+    <div id="premiumOverlay"
+        class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-[999] flex items-center justify-center p-4 md:p-10 opacity-0 pointer-events-none transition-all duration-300 ease-out"
+        onclick="closeOverlay()">
+
+        <!-- Tombol Close Silang -->
+        <button
+            class="absolute top-4 right-4 md:top-6 md:right-6 text-white bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all duration-200 transform hover:rotate-90"
+            onclick="closeOverlay()">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+
+        <!-- Bingkai Gambar Berskala Smooth -->
+        <div class="max-w-5xl w-full max-h-[85vh] flex items-center justify-center transform scale-95 transition-transform duration-300 ease-out"
+            id="overlayCard" onclick="event.stopPropagation()">
+            <img id="overlayImg" src="" alt="Zoomed Preview"
+                class="max-w-full max-h-[85vh] object-contain rounded-xl shadow-2xl border border-white/10">
+        </div>
+    </div>
+
+
+
+
+    <!-- ================= INTERACTIVE OVERLAY JAVASCRIPT ================= -->
+    <script>
+        function openOverlay(src) {
+            const overlay = document.getElementById('premiumOverlay');
+            const card = document.getElementById('overlayCard');
+            const img = document.getElementById('overlayImg');
+
+            // Set sumber gambar overlay
+            img.src = src;
+
+            // Aktifkan visual overlay (Fade in & Scale up)
+            overlay.classList.remove('opacity-0', 'pointer-events-none');
+            overlay.classList.add('opacity-100', 'pointer-events-auto');
+
+            setTimeout(() => {
+                card.classList.remove('scale-95');
+                card.classList.add('scale-100');
+            }, 10); // delay mikro agar transisi CSS berjalan sempurna
+
+            // Kunci scroll body utama
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeOverlay() {
+            const overlay = document.getElementById('premiumOverlay');
+            const card = document.getElementById('overlayCard');
+
+            // Matikan visual overlay (Fade out & Scale down)
+            card.classList.remove('scale-100');
+            card.classList.add('scale-95');
+
+            overlay.classList.remove('opacity-100', 'pointer-events-auto');
+            overlay.classList.add('opacity-0', 'pointer-events-none');
+
+            // Kembalikan scroll body utama
+            document.body.style.overflow = '';
+        }
+
+        // Shortcut keyboard ESC untuk menutup overlay
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeOverlay();
+            }
+        });
+    </script>
+
+</body>
+
+</html>
