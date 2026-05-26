@@ -7,33 +7,12 @@
     <title>Manual Guide - Trend To Sunset</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        (function () {
-            const allowed = 'app.mybintang.co.id';
-
-            function deny() {
-                document.body.innerHTML =
-                    '<div style="display:flex;justify-content:center;align-items:center;height:100vh;font-size:2rem;color:red;">Access Denied</div>';
-            }
-
-            const ref = document.referrer;
-
-            if (!ref) {
-                deny();
-                return;
-            }
-
-            try {
-                const hostname = new URL(ref).hostname;
-
-                if (hostname !== allowed) {
-                    deny();
-                }
-            } catch (e) {
-                deny();
-            }
-        })();
-    </script>
+    <style>
+        html {
+            visibility: hidden;
+        }
+    </style>
+    <script src="../guard/guard.js"></script>
 </head>
 
 <body class="bg-gray-50 text-gray-800 font-sans antialiased">
