@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Guide - Proses Cancel & Refund via CS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;850&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: { extend: { fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] } } }
+        }
+    </script>
+    <script>
+            (function () {
+                const allowed = 'app.mybintang.co.id';
+
+                function deny() {
+                    document.body.innerHTML =
+                        '<div style="display:flex;justify-content:center;align-items:center;height:100vh;font-size:2rem;color:red;">Access Denied</div>';
+                }
+
+                const ref = document.referrer;
+
+                if (!ref) {
+                    deny();
+                    return;
+                }
+
+                try {
+                    const hostname = new URL(ref).hostname;
+
+                    if (hostname !== allowed) {
+                        deny();
+                    }
+                } catch (e) {
+                    deny();
+                }
+            })();
+    </script>
+</head>
+
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+    <!-- NAVBAR / HEADER -->
+    <header class="bg-slate-900 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-2">
+            <div>
+                <h1 class="text-xl md:text-2xl font-bold tracking-tight">MANUAL GUIDE OPERASIONAL</h1>
+                <p class="text-xs text-slate-400">Standard Operating Procedure (SOP) Pembatalan & Pengembalian</p>
+            </div>
+            <div class="bg-blue-600 text-white text-xs px-3 py-1.5 rounded-full font-semibold uppercase tracking-wider">
+                Divisi Customer Service & Kasir
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="max-w-6xl mx-auto px-4 py-8 space-y-12">
+
+        <!-- HERO SECTION -->
+        <section class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80">
+            <h2 class="text-2xl font-extrabold text-slate-950 mb-2">Proses Pembatalan (Retur) via CS</h2>
+            <p class="text-slate-600 leading-relaxed">
+                Panduan ini digunakan oleh tim <span class="font-semibold text-slate-900">Customer Service</span> dan
+                <span class="font-semibold text-slate-900">Kasir</span> untuk menangani klaim pembatalan transaksi,
+                penukaran barang rusak/berbeda, dan pengembalian dana dari pelanggan.
+            </p>
+        </section>
+
+        <!-- SECTION 1: HARI SAMA -->
+        <section id="case-hari-sama" class="space-y-6">
+            <div class="border-b border-slate-300 pb-2">
+                <h2 class="text-xl md:text-2xl font-bold text-slate-900 flex items-center gap-2">
+                    <span
+                        class="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 text-white text-sm font-bold">1</span>
+                    Case: Hari Sama (Same-Day Transactions)
+                </h2>
+                <p class="text-sm text-slate-500 mt-1 pl-10">Diterapkan jika transaksi pembelian dan klaim dilakukan di
+                    tanggal yang sama.</p>
+            </div>
+
+            <!-- PROSES A: Replace Same Product -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 space-y-4">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                    <h3 class="text-lg font-bold text-blue-600">A. Replace Same Product (Tukar Barang Sama)
+                    </h3>
+                    <span
+                        class="bg-slate-100 text-slate-700 text-xs font-mono px-2.5 py-1 rounded-md border border-slate-200">Hari
+                        Sama + Produk Sama</span>
+                </div>
+                <!-- SLIDER BERGESER LANGSUNG DI SINI -->
+                <div data-flow="case1a"></div>
+            </div>
+
+            <!-- PROSES B: Replace Different Product -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 space-y-4">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                    <h3 class="text-lg font-bold text-blue-600">B. Replace Different Product (Tukar Barang Beda)[cite:
+                        1]</h3>
+                    <span
+                        class="bg-slate-100 text-slate-700 text-xs font-mono px-2.5 py-1 rounded-md border border-slate-200">Hari
+                        Sama + Produk Beda</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                    <div class="p-3 bg-amber-50/60 border-l-4 border-amber-500 rounded-r-xl">
+                        <h4 class="text-xs font-bold text-amber-800 uppercase tracking-wide mb-0.5">Tanggung Jawab CS:
+                        </h4>
+                        <p class="text-slate-700">Customer ke CS &rarr; CS cek kondisi &rarr; Isi formulir &rarr;
+                            Kasir.</p>
+                    </div>
+                    <div class="p-3 bg-emerald-50/60 border-l-4 border-emerald-500 rounded-r-xl">
+                        <h4 class="text-xs font-bold text-emerald-800 uppercase tracking-wide mb-0.5">Tanggung Jawab
+                            Kasir:</h4>
+                        <p class="text-slate-700">Cancel transaksi lama &rarr; Buat transaksi baru produk beda.
+                        </p>
+                    </div>
+                </div>
+                <!-- SLIDER BERGESER LANGSUNG DI SINI -->
+                <div data-flow="case1b"></div>
+            </div>
+
+            <!-- PROSES C: Claim Refund -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 space-y-4">
+                <h3 class="text-lg font-bold text-blue-600">C. Claim Refund (Pengembalian Dana Tunai)</h3>
+                <!-- SLIDER BERGESER LANGSUNG DI SINI -->
+                <div data-flow="case1c"></div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: BEDA HARI -->
+        <section id="case-beda-hari" class="space-y-6">
+            <div class="border-b border-slate-300 pb-2">
+                <h2 class="text-xl md:text-2xl font-bold text-slate-900 flex items-center gap-2">
+                    <span
+                        class="flex h-8 w-8 items-center justify-center rounded-lg bg-orange-600 text-white text-sm font-bold">2</span>
+                    Case: Beda Hari (Different-Day Transactions)
+                </h2>
+                <p class="text-sm text-slate-500 mt-1 pl-10">Diterapkan apabila penukaran melewati tanggal nota
+                    pembelian.</p>
+            </div>
+
+            <!-- PROSES A -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 space-y-4">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                    <h3 class="text-lg font-bold text-orange-600">A. Replace Same Product (Tukar Barang Sama)
+                    </h3>
+                    <span
+                        class="bg-slate-100 text-slate-700 text-xs font-mono px-2.5 py-1 rounded-md border border-slate-200">Beda
+                        Hari + Produk Sama</span>
+                </div>
+                <div data-flow="case2a"></div>
+            </div>
+
+            <!-- PROSES B -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 space-y-4">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                    <h3 class="text-lg font-bold text-orange-600">B. Replace Different Product (Tukar Barang Beda)[cite:
+                        1]</h3>
+                    <span
+                        class="bg-slate-100 text-slate-700 text-xs font-mono px-2.5 py-1 rounded-md border border-slate-200">Beda
+                        Hari + Produk Beda</span>
+                </div>
+                <div data-flow="case2b"></div>
+            </div>
+
+            <!-- PROSES C -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 space-y-4">
+                <h3 class="text-lg font-bold text-orange-600">C. Claim Refund (Klaim Pengembalian Beda Hari)
+                </h3>
+                <div data-flow="case2c"></div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: SCRAP -->
+        <section id="kebijakan-scrap" class="bg-red-50/50 border border-red-200 p-6 rounded-2xl space-y-4">
+            <div class="flex items-center gap-2 text-red-800">
+                <svg class="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+                <h2 class="text-lg md:text-xl font-bold tracking-tight">3. Kebijakan Khusus: Kondisi Barang Rusak (Is
+                    Broken = True)</h2>
+            </div>
+            <div data-flow="case3"></div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 text-center py-6 text-xs border-t border-slate-800 mt-12">
+        &copy; 2026 Operasional Retail & Customer Service System. All Rights Reserved.
+    </footer>
+
+    <!-- SKRIP UTAMA -->
+    <script src="script/flow-data.js"></script>
+    <script src="script/slider-logic.js"></script>
+</body>
+
+</html>
