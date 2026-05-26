@@ -11,8 +11,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;850&display=swap"
         rel="stylesheet">
     <style>
-        html {
-            display: none;
+        body {
+            visibility: hidden;
         }
     </style>
     <script>
@@ -25,7 +25,6 @@
                 const allowed = 'app.mybintang.co.id';
 
                 function deny() {
-                    // Hapus semua isi halaman
                     document.open();
 
                     document.write(`
@@ -34,13 +33,8 @@
             <head>
                 <title>Access Denied</title>
                 <style>
-                    * {
-                        margin: 0;
-                        padding: 0;
-                        box-sizing: border-box;
-                    }
-
                     html, body {
+                        margin: 0;
                         width: 100%;
                         height: 100%;
                         overflow: hidden;
@@ -67,8 +61,15 @@
                 const isIframe = window.self !== window.top;
                 const ref = document.referrer;
 
+                // debug sementara
+                console.log({
+                    iframe: isIframe,
+                    referrer: ref
+                });
+
                 if (!isIframe || !ref) {
                     deny();
+                    return;
                 }
 
                 try {
@@ -76,9 +77,11 @@
 
                     if (hostname !== allowed) {
                         deny();
-                    } else {
-                        document.documentElement.style.display = 'block';
+                        return;
                     }
+
+                    document.body.style.visibility = 'visible';
+
                 } catch (e) {
                     deny();
                 }
