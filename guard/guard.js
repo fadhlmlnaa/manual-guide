@@ -1,10 +1,17 @@
-
 (function () {
     const allowed = 'https://app.mybintang.co.id';
 
+    // ENV detection (clean way)
+    const ENV = location.hostname.includes('localhost') || location.hostname === '127.0.0.1'
+        ? 'dev'
+        : 'prod';
+
+    function allow() {
+        document.documentElement.style.visibility = 'visible';
+    }
+
     function deny() {
         document.open();
-
         document.write(`
             <!DOCTYPE html>
             <html>
@@ -30,12 +37,17 @@
             </body>
             </html>
         `);
-
         document.close();
-
         throw new Error("Unauthorized");
     }
 
+    // ✅ DEV MODE: skip semua restriction
+    if (ENV === 'dev') {
+        allow();
+        return;
+    }
+
+    // PROD MODE CHECK
     const isIframe = window.self !== window.top;
     const ref = document.referrer;
 
@@ -52,7 +64,7 @@
             return;
         }
 
-        document.documentElement.style.visibility = 'visible';
+        allow();
 
     } catch (e) {
         deny();
