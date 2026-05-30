@@ -27,6 +27,33 @@ const flowData = {
             }
         ]
     },
+    caseCs1: {
+        title: "Tukar Barang Sama (Hari Sama)",
+        subtitle: "Flow Pengisian Form",
+        colorClass: "blue",
+        steps: [
+            {
+                title: "Step 1: CS Mengisi Form Retur Barang Di Sistem",
+                description: "Customer mendatangi meja CS dengan membawa produk serta nota pembelian asli untuk mengajukan klaim penggantian produk.",
+                image: "./assets/step_one_cs.png"
+            },
+            {
+                title: "Step 2: CS Melakukan Pemeriksaan Fisik Produk",
+                description: "CS memeriksa kelayakan barang dan memastikan kondisi fisik produk memenuhi syarat penukaran (misal: cacat pabrik, bukan kelalaian pemakaian).",
+                image: "./assets/step_two_cs.png"
+            },
+            {
+                title: "Step 3: CS Mengkonfirmasi Transaksi Retur Barang",
+                description: "CS mengisi formulir refund/pembatalan di dalam sistem operasional POS/ERP untuk mencatatkan riwayat retur barang secara resmi.",
+                image: "./assets/step_three_cs.png"
+            },
+            {
+                title: "Step 4: CS Menyerahkan Produk Baru Kepada Customer",
+                description: "Setelah dokumen divalidasi sistem, CS mengambil produk baru yang sama dari stok toko dan langsung menyerahkannya kepada customer.",
+                image: "./assets/step_four_cs.png"
+            }
+        ]
+    },
     case1b: {
         title: "Tukar Barang Beda (Hari Sama)",
         subtitle: "Case: Hari Sama & Produk Beda",
