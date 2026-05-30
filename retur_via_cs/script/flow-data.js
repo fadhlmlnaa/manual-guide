@@ -103,7 +103,7 @@ const flowData = {
             },
             {
                 title: "Step 4: Serah Terima Uang (Selesai)",
-                description: "Kasir memproses pembatalan transaksi asal pada POS dan langsung mengembalikan uang tunai penuh kepada customer.",
+                description: "Kasir memproses pembatalan transaksi asal pada POS dan langsung mengembalikan uang tunai kepada customer.",
                 image: "./assets/cashier_pos.png"
             }
         ]
