@@ -1,215 +1,493 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Manual Guide - Proses Cancel & Refund via CS</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;850&display=swap"
-        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;850&display=swap"
+      rel="stylesheet"
+    />
     <script>
-        tailwind.config = {
-            theme: { extend: { fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] } } }
-        }
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ['"Plus Jakarta Sans"', "sans-serif"] },
+          },
+        },
+      };
     </script>
     <style>
-        html {
-            visibility: hidden;
-        }
+      html {
+        visibility: hidden;
+      }
     </style>
     <script src="../guard/guard.js"></script>
-</head>
+  </head>
 
-<body class="bg-slate-50 text-slate-800 font-sans antialiased">
-
+  <body class="bg-slate-50 text-slate-800 font-sans antialiased">
     <!-- NAVBAR / HEADER -->
     <header class="bg-slate-900 text-white shadow-md sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-2">
-            <div>
-                <h1 class="text-xl md:text-2xl font-bold tracking-tight">MANUAL GUIDE OPERASIONAL</h1>
-                <p class="text-xs text-slate-400">Standard Operating Procedure (SOP) Pembatalan & Pengembalian</p>
-            </div>
-            <div class="bg-blue-600 text-white text-xs px-3 py-1.5 rounded-full font-semibold uppercase tracking-wider">
-                Divisi Customer Service & Kasir
-            </div>
+      <div
+        class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-2"
+      >
+        <div>
+          <h1 class="text-xl md:text-2xl font-bold tracking-tight">
+            MANUAL GUIDE OPERASIONAL
+          </h1>
+          <p class="text-xs text-slate-400">
+            Standard Operating Procedure (SOP) Pembatalan & Pengembalian
+          </p>
         </div>
+        <div
+          class="bg-blue-600 text-white text-xs px-3 py-1.5 rounded-full font-semibold uppercase tracking-wider"
+        >
+          Divisi Customer Service & Kasir
+        </div>
+      </div>
     </header>
 
     <!-- MAIN CONTAINER -->
     <main class="max-w-6xl mx-auto px-4 py-8 space-y-12">
+      <!-- Section Bagian History Version -->
+      <section class="space-y-6">
+        <h2
+          class="text-xl md:text-2xl font-bold text-slate-900 flex items-center gap-2"
+        >
+          History Version
+        </h2>
+        <table
+          class="border border-slate-200 rounded-xl w-full bg-white shadow-sm overflow-hidden"
+        >
+          <thead>
+            <tr class="bg-slate-100">
+              <th class="p-3 text-left font-bold">Version</th>
+              <th class="p-3 text-left font-bold">Implemented by</th>
+              <th class="p-3 text-left font-bold">Revision Date</th>
+              <th class="p-3 text-left font-bold">Version Summary</th>
+            </tr>
+          </thead>
 
-        <!-- HERO SECTION -->
-        <section class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80">
-            <h2 class="text-2xl font-extrabold text-slate-950 mb-2">Proses Pembatalan (Retur) via CS</h2>
-            <p class="text-slate-600 leading-relaxed">
-                Panduan ini digunakan oleh tim <span class="font-semibold text-slate-900">Customer Service</span> dan
-                <span class="font-semibold text-slate-900">Kasir</span> untuk menangani klaim pembatalan transaksi,
-                penukaran barang rusak/berbeda, dan pengembalian dana dari pelanggan.
-            </p>
-        </section>
+          <tbody id="versionTableBody"></tbody>
+        </table>
+        <script>
+          const versions = [
+            {
+              version: "1.0",
+              implementedBy: "Fadhil Maulana",
+              revisionDate: "29 May 2026",
+              summary: "Initial Creation",
+            },
+            {
+              version: "1.1",
+              implementedBy: "Fadhil Maulana",
+              revisionDate: "15 June 2026",
+              summary: "Update Flow Cancel or Retur via CS",
+            },
+          ];
 
-        <!-- SECTION 1: HARI SAMA -->
-        <section id="case-hari-sama" class="space-y-6">
-            <div class="border-b border-slate-300 pb-2">
-                <h2 class="text-xl md:text-2xl font-bold text-slate-900 flex items-center gap-2">
-                    <span
-                        class="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 text-white text-sm font-bold">1</span>
-                    Case: Replace Same Product (Tukar Barang yang Sama)
-                </h2>
-            </div>
+          const tableBody = document.getElementById("versionTableBody");
 
-            <!-- PROSES A: Replace Same Product -->
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 space-y-4">
-                <div class="flex flex-wrap items-center justify-between gap-2">
-                    <h3 class="text-lg font-bold text-blue-600">Replace Same Product (Tukar Barang Sama)
-                    </h3>
-                    <span
-                        class="bg-slate-100 text-slate-700 text-xs font-mono px-2.5 py-1 rounded-md border border-slate-200">Hari
-                        Sama + Produk Sama</span>
-                </div>
-                <!-- SLIDER BERGESER LANGSUNG DI SINI -->
-                <div data-flow="case1a"></div>
-                <div class="flex flex-wrap items-center justify-between gap-2">
-                    <h3 class="text-lg font-bold text-orange-600">Replace Same Product (Tukar Barang Sama)
-                    </h3>
-                    <span
-                        class="bg-slate-100 text-slate-700 text-xs font-mono px-2.5 py-1 rounded-md border border-slate-200">Beda
-                        Hari + Produk Sama</span>
-                </div>
-                <div data-flow="case2a"></div>
+          versions.forEach((item) => {
+            tableBody.innerHTML += `
+                <tr class="border-t border-slate-200 hover:bg-slate-50">
+                    <td class="p-3">${item.version}</td>
+                    <td class="p-3">${item.implementedBy}</td>
+                    <td class="p-3">${item.revisionDate}</td>
+                    <td class="p-3">${item.summary}</td>
+                </tr>
+            `;
+          });
+        </script>
+      </section>
 
-                <!-- VIDEO PANDUAN OPERASIONAL -->
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 space-y-4">
-                    <h3 class="text-lg font-bold text-blue-600 text-center">Video Panduan CS Mengisi Form Retur/Claim
-                        Replace Same
-                        Product</h3>
+      <!-- HERO SECTION -->
+      <section
+        class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80"
+      >
+        <h2 class="text-2xl font-extrabold text-slate-950 mb-2">
+          Proses Pembatalan (Retur) via CS
+        </h2>
+        <p class="text-slate-600 leading-relaxed">
+          Panduan ini digunakan oleh tim
+          <span class="font-semibold text-slate-900">Customer Service</span> dan
+          <span class="font-semibold text-slate-900">Kasir</span> untuk
+          menangani klaim pembatalan transaksi, penukaran barang rusak/berbeda,
+          dan pengembalian dana dari pelanggan.
+        </p>
+      </section>
 
-                    <div class="w-full aspect-video rounded-xl overflow-hidden shadow-md border border-slate-200">
-                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/rmBNYKFy8TI"
-                            title="Video Panduan CS Mengisi Form Retur/Claim" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-                        </iframe>
+      <section class="space-y-6">
+        <h2
+          class="text-xl md:text-2xl font-bold text-slate-900 flex items-center gap-2"
+        >
+          Pertanyaan Umum
+        </h2>
+
+        <div id="accordionContainer" class="space-y-4"></div>
+      </section>
+
+      <script>
+        // DATA CONTENT
+        const accordionItems = [
+          {
+            title:
+              "Apakah voucher refund bisa digunakan lebih dari satu dalam satu transaksi?",
+            content:
+              "Bisa, voucher refund dapat digunakan lebih dari satu dalam satu transaksi dengan catatan voucher tersebut tidak sama alias berbeda dengan voucher refund lainnya.",
+          },
+          {
+            title: "Bagaimana jika muncul validasi Masa Garansi tidak sesuai?",
+            image: "./assets/validasi_masa_garansi.jpeg",
+            content:
+              "Jika muncul validasi “Masa Garansi tidak sesuai”, hal tersebut menandakan bahwa masa garansi pada barang tidak sesuai dengan masa garansi yang tercatat di sistem. Apabila kondisi ini terjadi, perlu dilakukan konfirmasi kepada tim procurement untuk memastikan apakah masa garansi tersebut sudah benar.",
+          },
+        ];
+
+        const container = document.getElementById("accordionContainer");
+
+        accordionItems.forEach((item, index) => {
+          container.innerHTML += `
+                <div class="bg-white rounded-xl shadow border border-slate-200 overflow-hidden">
+                    
+                    <button
+                        class="accordion-btn w-full flex items-center justify-between p-5 text-left font-semibold hover:bg-slate-50 transition"
+                        data-index="${index}"
+                    >
+                        <span>${item.title}</span>
+
+                        <span class="accordion-icon text-xl transition-transform duration-300">
+                            +
+                        </span>
+                    </button>
+                    <div
+                        class="accordion-content hidden px-5 pb-5 text-slate-600"
+                    >
+                        ${item.image ? `<img src="${item.image}" alt="Gambar ${item.title}" class="w-full h-auto mb-4 rounded-lg shadow-sm">` : ""}
+                        ${item.content}
                     </div>
                 </div>
-            </div>
+            `;
+        });
 
-            <div class="border-b border-slate-300 pb-2">
-                <h2 class="text-xl md:text-2xl font-bold text-slate-900 flex items-center gap-2">
-                    <span
-                        class="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 text-white text-sm font-bold">2</span>
-                    Case: Replace Different Product (Tukar Barang Beda)
-                </h2>
-            </div>
-            <!-- PROSES B: Replace Different Product -->
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 space-y-4">
-                <div class="flex flex-wrap items-center justify-between gap-2">
-                    <h3 class="text-lg font-bold text-blue-600">Replace Different Product (Tukar Barang Beda)</h3>
-                    <span
-                        class="bg-slate-100 text-slate-700 text-xs font-mono px-2.5 py-1 rounded-md border border-slate-200">Hari
-                        Sama + Produk Beda</span>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
-                    <div class="p-3 bg-amber-50/60 border-l-4 border-amber-500 rounded-r-xl">
-                        <h4 class="text-xs font-bold text-amber-800 uppercase tracking-wide mb-0.5">Tanggung Jawab CS:
-                        </h4>
-                        <p class="text-slate-700">Customer ke CS &rarr; CS cek kondisi &rarr; Isi formulir &rarr;
-                            Kasir.</p>
-                    </div>
-                    <div class="p-3 bg-emerald-50/60 border-l-4 border-emerald-500 rounded-r-xl">
-                        <h4 class="text-xs font-bold text-emerald-800 uppercase tracking-wide mb-0.5">Tanggung Jawab
-                            Kasir:</h4>
-                        <p class="text-slate-700">Cancel transaksi lama &rarr; Buat transaksi baru produk beda.
-                        </p>
-                    </div>
-                </div>
-                <!-- SLIDER BERGESER LANGSUNG DI SINI -->
-                <div data-flow="case1b"></div>
-                <div class="flex flex-wrap items-center justify-between gap-2">
-                    <h3 class="text-lg font-bold text-orange-600">Replace Different Product (Tukar Barang Beda)</h3>
-                    <span
-                        class="bg-slate-100 text-slate-700 text-xs font-mono px-2.5 py-1 rounded-md border border-slate-200">Beda
-                        Hari + Produk Beda</span>
-                </div>
-                <div data-flow="case2b"></div>
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 space-y-4">
-                    <h3 class="text-lg font-bold text-blue-600 text-center">Video Panduan CS Mengisi Form Retur/Claim
-                        Replace
-                        Different Product</h3>
+        // TOGGLE SYSTEM
+        const buttons = document.querySelectorAll(".accordion-btn");
 
-                    <div class="w-full aspect-video rounded-xl overflow-hidden shadow-md border border-slate-200">
-                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/v1MjzLJSuLw"
-                            title="Video Panduan CS Mengisi Form Retur/Claim" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-                        </iframe>
-                    </div>
-                </div>
-            </div>
+        buttons.forEach((button) => {
+          button.addEventListener("click", () => {
+            const content =
+              button.parentElement.querySelector(".accordion-content");
 
-            <div class="border-b border-slate-300 pb-2">
-                <h2 class="text-xl md:text-2xl font-bold text-slate-900 flex items-center gap-2">
-                    <span
-                        class="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 text-white text-sm font-bold">3</span>
-                    Case: Claim Refund (Klaim Pengembalian Beda Hari)
-                </h2>
-            </div>
-            <!-- PROSES C: Claim Refund -->
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 space-y-4">
-                <h3 class="text-lg font-bold text-blue-600">Claim Refund (Pengembalian Dana Tunai)</h3>
-                <!-- SLIDER BERGESER LANGSUNG DI SINI -->
-                <div data-flow="case1c"></div>
-                <!-- BLOK PROSES C BEDA HARI (COPY PASTE DI SINI) -->
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 space-y-4">
-                    <h3 class="text-lg font-bold text-orange-600">Claim Refund (Klaim Pengembalian Beda Hari)
-                    </h3>
-                    <div data-flow="case2c"></div>
-                </div>
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 space-y-4">
-                    <h3 class="text-lg font-bold text-blue-600 text-center">Video Panduan CS Mengisi Form Retur/Claim
-                        Refund</h3>
+            const icon = button.querySelector(".accordion-icon");
 
-                    <div class="w-full aspect-video rounded-xl overflow-hidden shadow-md border border-slate-200">
-                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/r2-2QARTchs"
-                            title="Video Panduan CS Mengisi Form Retur/Claim" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-                        </iframe>
-                    </div>
-                </div>
-            </div>
-        </section>
+            const isOpen = !content.classList.contains("hidden");
 
-        <!-- SECTION 3: SCRAP -->
-        <section id="kebijakan-scrap" class="bg-red-50/50 border border-red-200 p-6 rounded-2xl space-y-4">
-            <div class="flex items-center gap-2 text-red-800">
-                <svg class="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                </svg>
-                <h2 class="text-lg md:text-xl font-bold tracking-tight">4. Kebijakan Khusus: Kondisi Barang Rusak (Is
-                    Broken = True)</h2>
-            </div>
-            <div data-flow="case3"></div>
-            <h3 class="text-lg font-bold text-blue-600 text-center">Ketika Barang yang Ditukar Rusak / Is Broken Ceklist
+            // Close all
+            document.querySelectorAll(".accordion-content").forEach((item) => {
+              item.classList.add("hidden");
+            });
+
+            document.querySelectorAll(".accordion-icon").forEach((item) => {
+              item.innerHTML = "+";
+            });
+
+            // Open selected
+            if (!isOpen) {
+              content.classList.remove("hidden");
+              icon.innerHTML = "−";
+            }
+          });
+        });
+      </script>
+
+      <!-- SECTION 1: HARI SAMA -->
+      <section id="case-hari-sama" class="space-y-6">
+        <div class="border-b border-slate-300 pb-2">
+          <h2
+            class="text-xl md:text-2xl font-bold text-slate-900 flex items-center gap-2"
+          >
+            <span
+              class="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 text-white text-sm font-bold"
+              >1</span
+            >
+            Case: Replace Same Product (Tukar Barang yang Sama)
+          </h2>
+        </div>
+
+        <!-- PROSES A: Replace Same Product -->
+        <div
+          class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 space-y-4"
+        >
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <h3 class="text-lg font-bold text-blue-600">
+              Replace Same Product (Tukar Barang Sama)
             </h3>
-            <div class="w-full aspect-video rounded-xl overflow-hidden shadow-md border border-slate-200">
-                <iframe class="w-full h-full" src="https://www.youtube.com/embed/-gEa_Z1GyRo"
-                    title="Video Panduan CS Mengisi Form Retur/Claim" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-                </iframe>
-            </div>
-        </section>
+            <span
+              class="bg-slate-100 text-slate-700 text-xs font-mono px-2.5 py-1 rounded-md border border-slate-200"
+              >Hari Sama + Produk Sama</span
+            >
+          </div>
+          <!-- SLIDER BERGESER LANGSUNG DI SINI -->
+          <div data-flow="case1a"></div>
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <h3 class="text-lg font-bold text-orange-600">
+              Replace Same Product (Tukar Barang Sama)
+            </h3>
+            <span
+              class="bg-slate-100 text-slate-700 text-xs font-mono px-2.5 py-1 rounded-md border border-slate-200"
+              >Beda Hari + Produk Sama</span
+            >
+          </div>
+          <div data-flow="case2a"></div>
 
+          <!-- VIDEO PANDUAN OPERASIONAL -->
+          <div
+            class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 space-y-4"
+          >
+            <h3 class="text-lg font-bold text-blue-600 text-center">
+              Video Panduan CS Mengisi Form Retur/Claim Replace Same Product
+            </h3>
+
+            <div
+              class="w-full aspect-video rounded-xl overflow-hidden shadow-md border border-slate-200"
+            >
+              <iframe
+                class="w-full h-full"
+                src="https://www.youtube.com/embed/rmBNYKFy8TI"
+                title="Video Panduan CS Mengisi Form Retur/Claim"
+                frameborder="0"
+                allow="
+                  accelerometer;
+                  autoplay;
+                  clipboard-write;
+                  encrypted-media;
+                  gyroscope;
+                  picture-in-picture;
+                  web-share;
+                "
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              >
+              </iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-b border-slate-300 pb-2">
+          <h2
+            class="text-xl md:text-2xl font-bold text-slate-900 flex items-center gap-2"
+          >
+            <span
+              class="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 text-white text-sm font-bold"
+              >2</span
+            >
+            Case: Replace Different Product (Tukar Barang Beda)
+          </h2>
+        </div>
+        <!-- PROSES B: Replace Different Product -->
+        <div
+          class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 space-y-4"
+        >
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <h3 class="text-lg font-bold text-blue-600">
+              Replace Different Product (Tukar Barang Beda)
+            </h3>
+            <span
+              class="bg-slate-100 text-slate-700 text-xs font-mono px-2.5 py-1 rounded-md border border-slate-200"
+              >Hari Sama + Produk Beda</span
+            >
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+            <div
+              class="p-3 bg-amber-50/60 border-l-4 border-amber-500 rounded-r-xl"
+            >
+              <h4
+                class="text-xs font-bold text-amber-800 uppercase tracking-wide mb-0.5"
+              >
+                Tanggung Jawab CS:
+              </h4>
+              <p class="text-slate-700">
+                Customer ke CS &rarr; CS cek kondisi &rarr; Isi formulir &rarr;
+                Kasir.
+              </p>
+            </div>
+            <div
+              class="p-3 bg-emerald-50/60 border-l-4 border-emerald-500 rounded-r-xl"
+            >
+              <h4
+                class="text-xs font-bold text-emerald-800 uppercase tracking-wide mb-0.5"
+              >
+                Tanggung Jawab Kasir:
+              </h4>
+              <p class="text-slate-700">
+                Cancel transaksi lama &rarr; Buat transaksi baru produk beda.
+              </p>
+            </div>
+          </div>
+          <!-- SLIDER BERGESER LANGSUNG DI SINI -->
+          <div data-flow="case1b"></div>
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <h3 class="text-lg font-bold text-orange-600">
+              Replace Different Product (Tukar Barang Beda)
+            </h3>
+            <span
+              class="bg-slate-100 text-slate-700 text-xs font-mono px-2.5 py-1 rounded-md border border-slate-200"
+              >Beda Hari + Produk Beda</span
+            >
+          </div>
+          <div data-flow="case2b"></div>
+          <div
+            class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 space-y-4"
+          >
+            <h3 class="text-lg font-bold text-blue-600 text-center">
+              Video Panduan CS Mengisi Form Retur/Claim Replace Different
+              Product
+            </h3>
+
+            <div
+              class="w-full aspect-video rounded-xl overflow-hidden shadow-md border border-slate-200"
+            >
+              <iframe
+                class="w-full h-full"
+                src="https://www.youtube.com/embed/v1MjzLJSuLw"
+                title="Video Panduan CS Mengisi Form Retur/Claim"
+                frameborder="0"
+                allow="
+                  accelerometer;
+                  autoplay;
+                  clipboard-write;
+                  encrypted-media;
+                  gyroscope;
+                  picture-in-picture;
+                  web-share;
+                "
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              >
+              </iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-b border-slate-300 pb-2">
+          <h2
+            class="text-xl md:text-2xl font-bold text-slate-900 flex items-center gap-2"
+          >
+            <span
+              class="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 text-white text-sm font-bold"
+              >3</span
+            >
+            Case: Claim Refund (Klaim Pengembalian Beda Hari)
+          </h2>
+        </div>
+        <!-- PROSES C: Claim Refund -->
+        <div
+          class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 space-y-4"
+        >
+          <h3 class="text-lg font-bold text-blue-600">
+            Claim Refund (Pengembalian Dana Tunai)
+          </h3>
+          <!-- SLIDER BERGESER LANGSUNG DI SINI -->
+          <div data-flow="case1c"></div>
+          <!-- BLOK PROSES C BEDA HARI (COPY PASTE DI SINI) -->
+          <div
+            class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 space-y-4"
+          >
+            <h3 class="text-lg font-bold text-orange-600">
+              Claim Refund (Klaim Pengembalian Beda Hari)
+            </h3>
+            <div data-flow="case2c"></div>
+          </div>
+          <div
+            class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 space-y-4"
+          >
+            <h3 class="text-lg font-bold text-blue-600 text-center">
+              Video Panduan CS Mengisi Form Retur/Claim Refund
+            </h3>
+
+            <div
+              class="w-full aspect-video rounded-xl overflow-hidden shadow-md border border-slate-200"
+            >
+              <iframe
+                class="w-full h-full"
+                src="https://www.youtube.com/embed/r2-2QARTchs"
+                title="Video Panduan CS Mengisi Form Retur/Claim"
+                frameborder="0"
+                allow="
+                  accelerometer;
+                  autoplay;
+                  clipboard-write;
+                  encrypted-media;
+                  gyroscope;
+                  picture-in-picture;
+                  web-share;
+                "
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              >
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: SCRAP -->
+      <section
+        id="kebijakan-scrap"
+        class="bg-red-50/50 border border-red-200 p-6 rounded-2xl space-y-4"
+      >
+        <div class="flex items-center gap-2 text-red-800">
+          <svg
+            class="h-5 w-5 shrink-0"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+            />
+          </svg>
+          <h2 class="text-lg md:text-xl font-bold tracking-tight">
+            4. Kebijakan Khusus: Kondisi Barang Rusak (Is Broken = True)
+          </h2>
+        </div>
+        <div data-flow="case3"></div>
+        <h3 class="text-lg font-bold text-blue-600 text-center">
+          Ketika Barang yang Ditukar Rusak / Is Broken Ceklist
+        </h3>
+        <div
+          class="w-full aspect-video rounded-xl overflow-hidden shadow-md border border-slate-200"
+        >
+          <iframe
+            class="w-full h-full"
+            src="https://www.youtube.com/embed/-gEa_Z1GyRo"
+            title="Video Panduan CS Mengisi Form Retur/Claim"
+            frameborder="0"
+            allow="
+              accelerometer;
+              autoplay;
+              clipboard-write;
+              encrypted-media;
+              gyroscope;
+              picture-in-picture;
+              web-share;
+            "
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          >
+          </iframe>
+        </div>
+      </section>
     </main>
 
     <!-- SKRIP UTAMA -->
     <script src="script/flow-data.js"></script>
     <script src="script/slider-logic.js"></script>
-</body>
-
+  </body>
 </html>
