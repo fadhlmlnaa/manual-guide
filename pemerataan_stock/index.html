@@ -1,400 +1,608 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Manual Guide - Penggunaan Pemerataan Stock (with Images)</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
-        @page {
-            size: A4;
-            margin: 20mm 15mm;
+      @page {
+        size: A4;
+        margin: 20mm 15mm;
+      }
+
+      @media print {
+        body {
+          background-color: #ffffff;
+          color: #000000;
+          font-size: 11pt;
         }
 
-        @media print {
-            body {
-                background-color: #ffffff;
-                color: #000000;
-                font-size: 11pt;
-            }
-
-            .no-print {
-                display: none !important;
-            }
-
-            .page-break-before {
-                page-break-before: always;
-            }
-
-            .page-break-inside-avoid {
-                page-break-inside: avoid;
-            }
-
-            .shadow-md,
-            .shadow-lg,
-            .shadow-sm,
-            .shadow-xl {
-                box-shadow: none !important;
-                border: 1px solid #e2e8f0;
-            }
-
-            img {
-                max-width: 100% !important;
-                page-break-inside: avoid;
-            }
+        .no-print {
+          display: none !important;
         }
+
+        .page-break-before {
+          page-break-before: always;
+        }
+
+        .page-break-inside-avoid {
+          page-break-inside: avoid;
+        }
+
+        .shadow-md,
+        .shadow-lg,
+        .shadow-sm,
+        .shadow-xl {
+          box-shadow: none !important;
+          border: 1px solid #e2e8f0;
+        }
+
+        img {
+          max-width: 100% !important;
+          page-break-inside: avoid;
+        }
+      }
     </style>
     <style>
-        html {
-            visibility: hidden;
-        }
+      html {
+        visibility: hidden;
+      }
     </style>
     <script src="../guard/guard.js"></script>
-</head>
+  </head>
 
-<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-blue-500 selection:text-white">
-
+  <body
+    class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-blue-500 selection:text-white"
+  >
     <!-- Header Banner -->
-    <header class="bg-gradient-to-r from-blue-900 to-indigo-950 text-white shadow-md">
-        <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <div>
-                <div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-blue-300 mb-1">
-                    <span>Dokumentasi Sistem Inventory</span>
-                    <span class="h-1 w-1 rounded-full bg-blue-300"></span>
-                    <span>PT Bintang Internasional</span>
-                </div>
-                <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight">Panduan Penggunaan Fitur Pemerataan Stock
-                </h1>
-            </div>
+    <header
+      class="bg-gradient-to-r from-blue-900 to-indigo-950 text-white shadow-md"
+    >
+      <div
+        class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4"
+      >
+        <div>
+          <div
+            class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-blue-300 mb-1"
+          >
+            <span>Dokumentasi Sistem Inventory</span>
+            <span class="h-1 w-1 rounded-full bg-blue-300"></span>
+            <span>PT Bintang Internasional</span>
+          </div>
+          <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight">
+            Panduan Penggunaan Fitur Pemerataan Stock
+          </h1>
         </div>
+      </div>
     </header>
     <!-- Sticky Horizontal Navbar Navigation -->
-    <nav class="no-print sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6">
-            <div class="flex items-center justify-between h-14">
-                <!-- Label Mini di Kiri (Hanya muncul di desktop) -->
-                <div class="hidden md:flex items-center gap-2 shrink-0 pr-4 border-r border-slate-200">
-                    <span class="text-xs font-bold uppercase text-slate-400 tracking-wider">Daftar Isi</span>
-                </div>
+    <nav
+      class="no-print sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm"
+    >
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="flex items-center justify-between h-14">
+          <!-- Label Mini di Kiri (Hanya muncul di desktop) -->
+          <div
+            class="hidden md:flex items-center gap-2 shrink-0 pr-4 border-r border-slate-200"
+          >
+            <span
+              class="text-xs font-bold uppercase text-slate-400 tracking-wider"
+              >Daftar Isi</span
+            >
+          </div>
 
-                <!-- Menu Navigasi Horizontal -->
-                <div class="flex items-center gap-1 sm:gap-2 overflow-visible py-2 w-full md:w-auto">
-                    <a href="#version-history"
-                        class="whitespace-nowrap text-xs sm:text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-slate-50 px-3 py-1.5 rounded-md transition">Version
-                        History</a>
+          <!-- Menu Navigasi Horizontal -->
+          <div
+            class="flex items-center gap-1 sm:gap-2 overflow-visible py-2 w-full md:w-auto"
+          >
+            <a
+              href="#version-history"
+              class="whitespace-nowrap text-xs sm:text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-slate-50 px-3 py-1.5 rounded-md transition"
+              >Version History</a
+            >
 
-                    <div class="w-px h-4 bg-slate-200 mx-1"></div>
+            <div class="w-px h-4 bg-slate-200 mx-1"></div>
 
-                    <a href="#overview"
-                        class="whitespace-nowrap text-xs sm:text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-slate-50 px-3 py-1.5 rounded-md transition">Overview
-                        Fitur</a>
+            <a
+              href="#overview"
+              class="whitespace-nowrap text-xs sm:text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-slate-50 px-3 py-1.5 rounded-md transition"
+              >Overview Fitur</a
+            >
 
-                    <div class="w-px h-4 bg-slate-200 mx-1"></div>
+            <div class="w-px h-4 bg-slate-200 mx-1"></div>
 
-                    <!-- Dropdown Container -->
-                    <div class="relative inline-block text-left">
-                        <!-- Tombol Pemicu Dropdown -->
-                        <button id="dropdownBtn" type="button"
-                            class="flex items-center gap-1 whitespace-nowrap text-xs sm:text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-slate-50 px-3 py-1.5 rounded-md transition cursor-pointer">
-                            Pemerataan Stock
-                            <span id="dropdownArrow"
-                                class="inline-block text-[10px] transition-transform duration-200">▼</span>
-                        </button>
+            <!-- Dropdown Container -->
+            <div class="relative inline-block text-left">
+              <!-- Tombol Pemicu Dropdown -->
+              <button
+                id="dropdownBtn"
+                type="button"
+                class="flex items-center gap-1 whitespace-nowrap text-xs sm:text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-slate-50 px-3 py-1.5 rounded-md transition cursor-pointer"
+              >
+                Pemerataan Stock
+                <span
+                  id="dropdownArrow"
+                  class="inline-block text-[10px] transition-transform duration-200"
+                  >▼</span
+                >
+              </button>
 
-                        <!-- Menu Dropdown Item (Kita pakai inline style="display: none;" biar aman dari lock Tailwind) -->
-                        <div id="dropdownMenu" style="display: none;"
-                            class="absolute right-0 md:left-0 top-full mt-2 w-52 bg-white border border-slate-200 rounded-lg shadow-lg py-1.5 z-50">
-                            <a href="#step-1"
-                                class="block px-4 py-2 text-xs sm:text-sm text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition">Step
-                                1: Akses Menu</a>
-                            <a href="#step-2"
-                                class="block px-4 py-2 text-xs sm:text-sm text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition">Step
-                                2: Konfigurasi Filter</a>
-                            <a href="#step-3"
-                                class="block px-4 py-2 text-xs sm:text-sm text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition">Step
-                                3: Preview Report</a>
-                            <a href="#step-4"
-                                class="block px-4 py-2 text-xs sm:text-sm text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition">Step
-                                4: Unduh Dokumen</a>
-                            <div class="border-t border-slate-100 my-1"></div>
-                            <a href="#stock-akhir"
-                                class="block px-4 py-2 text-xs sm:text-sm text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition">Laporan
-                                Stok Akhir</a>
-                            <a href="#autopicking-list"
-                                class="block px-4 py-2 text-xs sm:text-sm text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition">Autopicking
-                                List</a>
-                        </div>
-                    </div>
-                </div>
+              <!-- Menu Dropdown Item (Kita pakai inline style="display: none;" biar aman dari lock Tailwind) -->
+              <div
+                id="dropdownMenu"
+                style="display: none"
+                class="absolute right-0 md:left-0 top-full mt-2 w-52 bg-white border border-slate-200 rounded-lg shadow-lg py-1.5 z-50"
+              >
+                <a
+                  href="#step-1"
+                  class="block px-4 py-2 text-xs sm:text-sm text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition"
+                  >Step 1: Akses Menu</a
+                >
+                <a
+                  href="#step-2"
+                  class="block px-4 py-2 text-xs sm:text-sm text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition"
+                  >Step 2: Konfigurasi Filter</a
+                >
+                <a
+                  href="#step-3"
+                  class="block px-4 py-2 text-xs sm:text-sm text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition"
+                  >Step 3: Preview Report</a
+                >
+                <a
+                  href="#step-4"
+                  class="block px-4 py-2 text-xs sm:text-sm text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition"
+                  >Step 4: Unduh Dokumen</a
+                >
+                <div class="border-t border-slate-100 my-1"></div>
+                <a
+                  href="#stock-akhir"
+                  class="block px-4 py-2 text-xs sm:text-sm text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition"
+                  >Laporan Stok Akhir</a
+                >
+                <a
+                  href="#autopicking-list"
+                  class="block px-4 py-2 text-xs sm:text-sm text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition"
+                  >Autopicking List</a
+                >
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </nav>
 
     <!-- Main Container -->
     <main class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+      <!-- Content Area -->
+      <section class="space-y-10">
+        <!-- Section: Version History -->
+        <div
+          id="version-history"
+          class="bg-white rounded-xl p-6 shadow-sm border border-slate-200/80 page-break-inside-avoid"
+        >
+          <div
+            class="border-b border-slate-100 pb-4 mb-4 flex items-center gap-2"
+          >
+            <div class="h-5 w-1 bg-indigo-600 rounded"></div>
+            <h2 class="text-lg font-bold text-slate-900">Version History</h2>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="min-w-full text-left text-xs border-collapse">
+              <thead>
+                <tr
+                  class="bg-slate-50 text-slate-500 uppercase font-semibold border-b border-slate-200"
+                >
+                  <th class="py-2 px-3">Ver</th>
+                  <th class="py-2 px-3">Implemented By</th>
+                  <th class="py-2 px-3">Revision Date</th>
+                  <th class="py-2 px-3">Version Summary</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 text-slate-600">
+                <tr>
+                  <td class="py-3 px-3 font-medium text-slate-900">1.0</td>
+                  <td class="py-3 px-3">Fadhil Maulana</td>
+                  <td class="py-3 px-3 whitespace-nowrap">26 Maret 2026</td>
+                  <td class="py-3 px-3">
+                    Initial Draft - Pembuatan Manual Book Fitur Pemerataan Stock
+                  </td>
+                </tr>
+                <tr class="bg-slate-50/50">
+                  <td class="py-3 px-3 font-medium text-slate-900">1.1</td>
+                  <td class="py-3 px-3">Fadhil Maulana</td>
+                  <td class="py-3 px-3 whitespace-nowrap">26 Maret 2026</td>
+                  <td class="py-3 px-3">
+                    Penambahan penjelasan lengkap bagian FILTER dan TO DO Bagian
+                    Kanan, Penjelasan detail Coverage Days, Safety Days, Days to
+                    Count, Lambda Value, Cara kerja Exponential Smoothing +
+                    Available Stock, Preview Report & Info Tambahan, Kolom tabel
+                    hasil Generate Data, Limit & Offset.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-3 font-medium text-slate-900">1.2</td>
+                  <td class="py-3 px-3">Fadhil Maulana</td>
+                  <td class="py-3 px-3 whitespace-nowrap">10 April 2026</td>
+                  <td class="py-3 px-3">
+                    Menambahkan checkbox Send Form (Parangloe, Tangerang, Toko)
+                    dan rute transfer (Parangloe to Tangerang, Toko To
+                    Tangerang).
+                  </td>
+                </tr>
+                <tr class="bg-slate-50/50">
+                  <td class="py-3 px-3 font-medium text-slate-900">1.3</td>
+                  <td class="py-3 px-3">Fadhil Maulana</td>
+                  <td class="py-3 px-3 whitespace-nowrap">10 April 2026</td>
+                  <td class="py-3 px-3">
+                    Menambahkan Fitur Picking List & Fitur Mutasi Antar Toko.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-3 font-medium text-slate-900">1.4</td>
+                  <td class="py-3 px-3">Fadhil Maulana</td>
+                  <td class="py-3 px-3 whitespace-nowrap">10 April 2026</td>
+                  <td class="py-3 px-3">
+                    Menambahkan Fitur Download Laporan Stock Akhir Setelah
+                    Pemerataan.
+                  </td>
+                </tr>
+                <tr class="bg-slate-50/50">
+                  <td class="py-3 px-3 font-medium text-slate-900">1.5</td>
+                  <td class="py-3 px-3">Fadhil Maulana</td>
+                  <td class="py-3 px-3 whitespace-nowrap">16 April 2026</td>
+                  <td class="py-3 px-3 text-indigo-600 font-medium">
+                    Menambahkan Fitur Autopicking List Gudang dan Toko.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
 
-        <!-- Content Area -->
-        <section class="space-y-10">
+        <!-- Section: Overview -->
+        <div
+          id="overview"
+          class="bg-white rounded-xl p-6 shadow-sm border border-slate-200/80"
+        >
+          <div
+            class="border-b border-slate-100 pb-4 mb-4 flex items-center gap-2"
+          >
+            <div class="h-5 w-1 bg-blue-600 rounded"></div>
+            <h2 class="text-lg font-bold text-slate-900">
+              Definisi Fitur Pemerataan Stock
+            </h2>
+          </div>
+          <div
+            class="prose prose-slate max-w-none text-sm leading-relaxed text-slate-600 space-y-3"
+          >
+            <p>
+              <strong>Pemerataan Stock</strong> adalah proses memindahkan stok
+              barang dari lokasi yang kelebihan (*overstock*) ke lokasi yang
+              kekurangan (*stockout/understock*).
+            </p>
+            <p>
+              Fitur ini menerapkan algoritma
+              <span
+                class="bg-blue-50 text-blue-700 px-1.5 py-0.5 rounded font-mono text-xs font-semibold"
+                >Exponential Daily Sales</span
+              >
+              yang dikombinasikan dengan
+              <span
+                class="bg-blue-50 text-blue-700 px-1.5 py-0.5 rounded font-mono text-xs font-semibold"
+                >Available Stock</span
+              >
+              untuk menganalisa tren penjualan harian secara otomatis. Hasilnya
+              digunakan untuk menghitung stok ideal di setiap lokasi, sehingga
+              proses pemindahan stok menjadi lebih akurat, tepat sasaran, serta
+              meminimalkan risiko kehilangan penjualan.
+            </p>
+            <div
+              class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-lg mt-2"
+            >
+              <div class="flex gap-2">
+                <span
+                  class="text-amber-700 font-bold text-xs uppercase tracking-wider block mb-1"
+                  >Contoh Sederhana:</span
+                >
+              </div>
+              <p class="text-xs text-amber-900">
+                Jika sistem mendeteksi tren penjualan naik di satu cabang
+                melalui <em>Exponential Smoothing</em>, maka cabang tersebut
+                akan direkomendasikan mendapat tambahan stok dari cabang lain
+                yang penjualannya sedang rendah (berdasarkan kapasitas
+                <em>Available Stock</em>-nya).
+              </p>
+            </div>
+          </div>
+        </div>
 
-            <!-- Section: Version History -->
-            <div id="version-history"
-                class="bg-white rounded-xl p-6 shadow-sm border border-slate-200/80 page-break-inside-avoid">
-                <div class="border-b border-slate-100 pb-4 mb-4 flex items-center gap-2">
-                    <div class="h-5 w-1 bg-indigo-600 rounded"></div>
-                    <h2 class="text-lg font-bold text-slate-900">Version History</h2>
-                </div>
-                <div class="overflow-x-auto">
-                    <table class="min-w-full text-left text-xs border-collapse">
-                        <thead>
-                            <tr class="bg-slate-50 text-slate-500 uppercase font-semibold border-b border-slate-200">
-                                <th class="py-2 px-3">Ver</th>
-                                <th class="py-2 px-3">Implemented By</th>
-                                <th class="py-2 px-3">Revision Date</th>
-                                <th class="py-2 px-3">Version Summary</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-slate-100 text-slate-600">
-                            <tr>
-                                <td class="py-3 px-3 font-medium text-slate-900">1.0</td>
-                                <td class="py-3 px-3">Fadhil Maulana</td>
-                                <td class="py-3 px-3 whitespace-nowrap">26 Maret 2026</td>
-                                <td class="py-3 px-3">Initial Draft - Pembuatan Manual Book Fitur Pemerataan Stock</td>
-                            </tr>
-                            <tr class="bg-slate-50/50">
-                                <td class="py-3 px-3 font-medium text-slate-900">1.1</td>
-                                <td class="py-3 px-3">Fadhil Maulana</td>
-                                <td class="py-3 px-3 whitespace-nowrap">26 Maret 2026</td>
-                                <td class="py-3 px-3">Penambahan penjelasan lengkap bagian FILTER dan TO DO Bagian
-                                    Kanan, Penjelasan detail Coverage Days, Safety Days, Days to Count, Lambda Value,
-                                    Cara kerja Exponential Smoothing + Available Stock, Preview Report & Info Tambahan,
-                                    Kolom tabel hasil Generate Data, Limit & Offset.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-3 px-3 font-medium text-slate-900">1.2</td>
-                                <td class="py-3 px-3">Fadhil Maulana</td>
-                                <td class="py-3 px-3 whitespace-nowrap">10 April 2026</td>
-                                <td class="py-3 px-3">Menambahkan checkbox Send Form (Parangloe, Tangerang, Toko) dan
-                                    rute transfer (Parangloe to Tangerang, Toko To Tangerang).</td>
-                            </tr>
-                            <tr class="bg-slate-50/50">
-                                <td class="py-3 px-3 font-medium text-slate-900">1.3</td>
-                                <td class="py-3 px-3">Fadhil Maulana</td>
-                                <td class="py-3 px-3 whitespace-nowrap">10 April 2026</td>
-                                <td class="py-3 px-3">Menambahkan Fitur Picking List & Fitur Mutasi Antar Toko.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-3 px-3 font-medium text-slate-900">1.4</td>
-                                <td class="py-3 px-3">Fadhil Maulana</td>
-                                <td class="py-3 px-3 whitespace-nowrap">10 April 2026</td>
-                                <td class="py-3 px-3">Menambahkan Fitur Download Laporan Stock Akhir Setelah Pemerataan.
-                                </td>
-                            </tr>
-                            <tr class="bg-slate-50/50">
-                                <td class="py-3 px-3 font-medium text-slate-900">1.5</td>
-                                <td class="py-3 px-3">Fadhil Maulana</td>
-                                <td class="py-3 px-3 whitespace-nowrap">16 April 2026</td>
-                                <td class="py-3 px-3 text-indigo-600 font-medium">Menambahkan Fitur Autopicking List
-                                    Gudang dan Toko.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+        <!-- Section: Step 1 -->
+        <div
+          id="step-1"
+          class="bg-white rounded-xl p-6 shadow-sm border border-slate-200/80 page-break-inside-avoid"
+        >
+          <div
+            class="flex items-start justify-between border-b border-slate-100 pb-4 mb-4"
+          >
+            <div class="flex items-center gap-2">
+              <div class="h-5 w-1 bg-blue-600 rounded"></div>
+              <h2 class="text-lg font-bold text-slate-900">
+                Step 1. Cara Akses Menu Pemerataan Stock
+              </h2>
+            </div>
+            <span
+              class="bg-slate-100 text-slate-800 text-xs font-semibold px-2.5 py-1 rounded-full"
+              >Langkah 1</span
+            >
+          </div>
+          <div class="p-2 space-y-6">
+            <ol class="relative border-l border-slate-200 space-y-4 ml-2">
+              <li class="mb-4 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 text-blue-800 rounded-full -left-3 font-semibold text-xs"
+                  >1</span
+                >
+                <p class="text-sm font-medium text-slate-900">
+                  Pastikan Sudah Login Odoo
+                </p>
+                <p class="text-xs text-slate-500 mt-0.5">
+                  Akses domain resmi internal apps server Odoo perusahaan Anda.
+                </p>
+              </li>
+              <li class="mb-4 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 text-blue-800 rounded-full -left-3 font-semibold text-xs"
+                  >2</span
+                >
+                <p class="text-sm font-medium text-slate-900">
+                  Buka Modul Inventory
+                </p>
+                <p class="text-xs text-slate-500 mt-0.5">
+                  Pilih aplikasi Inventory pada dashboard utama.
+                </p>
+              </li>
+              <li class="ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 text-blue-800 rounded-full -left-3 font-semibold text-xs"
+                  >3</span
+                >
+                <p class="text-sm font-medium text-slate-900">
+                  Navigasi Pemerataan Stock
+                </p>
+                <p class="text-xs text-slate-500 mt-0.5">
+                  Klik Menu
+                  <span class="font-semibold text-slate-800"
+                    >Pemerataan Stock</span
+                  >, lalu klik submenu
+                  <span class="font-semibold text-slate-800"
+                    >Pemerataan Stock</span
+                  >.
+                </p>
+              </li>
+            </ol>
+
+            <!-- Image Container Step 1 -->
+            <div
+              class="mt-4 rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 max-w-3xl mx-auto"
+            >
+              <img
+                src="https://ik.imagekit.io/fzdyx56mg/Pemerataan%20Stock/step%201%20open%20pemerataan%20stock.png"
+                alt="Screenshot Menu Akses Pemerataan Stock"
+                class="w-full object-cover aspect-video"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: Step 2 -->
+        <div
+          id="step-2"
+          class="bg-white rounded-xl p-6 shadow-sm border border-slate-200/80 page-break-before"
+        >
+          <div
+            class="flex items-start justify-between border-b border-slate-100 pb-4 mb-4"
+          >
+            <div class="flex items-center gap-2">
+              <div class="h-5 w-1 bg-blue-600 rounded"></div>
+              <h2 class="text-lg font-bold text-slate-900">
+                Step 2. Panduan Pengisian Parameter & Filter Form
+              </h2>
+            </div>
+            <span
+              class="bg-slate-100 text-slate-800 text-xs font-semibold px-2.5 py-1 rounded-full"
+              >Langkah 2</span
+            >
+          </div>
+
+          <p class="text-xs text-slate-500 mb-6">
+            Sebelum melakukan generate data, Anda wajib melengkapi parameter
+            filter di sisi kiri dan konfigurasi perhitungan di sisi kanan
+            formview:
+          </p>
+
+          <!-- Image Container Step 2 - Form View Layout -->
+          <div
+            class="mb-6 rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 max-w-3xl mx-auto"
+          >
+            <img
+              src="https://ik.imagekit.io/fzdyx56mg/Pemerataan%20Stock/step%202%20form%20pemerataan%20stock%20.png"
+              alt="Screenshot Parameter Filter Formview"
+              class="w-full object-cover aspect-video"
+            />
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
+            <!-- Sisi Kiri Filter -->
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+              <h3
+                class="text-sm font-bold text-slate-900 mb-3 flex items-center gap-1.5 text-blue-900"
+              >
+                <span>📋</span> Bagian Filter (Kiri)
+              </h3>
+              <ul class="space-y-2.5 text-slate-600">
+                <li>
+                  <strong class="text-slate-900 block">Name:</strong> Nama atau
+                  judul identitas dokumen pemerataan stock.
+                </li>
+                <li>
+                  <strong class="text-slate-900 block">Barcodes in csv:</strong>
+                  Masukkan daftar SKU jika ingin menyaring varian produk
+                  spesifik.
+                </li>
+                <li>
+                  <strong class="text-slate-900 block">Family:</strong> Isi nama
+                  kategori produk jika ingin memfilter kelompok family tertentu.
+                </li>
+                <li>
+                  <strong class="text-slate-900 block">Operating Units:</strong>
+                  Filter unit cabang operasional tertentu.
+                </li>
+                <li>
+                  <strong class="text-slate-900 block">Limit:</strong> Batas
+                  maksimal data baris produk yang ditampilkan saat proses
+                  penarikan data (*generate data*).
+                </li>
+                <li>
+                  <strong class="text-slate-900 block"
+                    >Send Form Checkboxes (Parangloe / Tangerang /
+                    Toko):</strong
+                  >
+                  Centang opsi yang sesuai untuk mengaktifkan izin pengiriman
+                  stok dari Gudang Parangloe, Gudang Tangerang, atau entitas
+                  Toko terkait.
+                </li>
+                <li>
+                  <strong class="text-slate-900 block"
+                    >Route Checkboxes (Parangloe to Tangerang / Toko to
+                    Tangerang):</strong
+                  >
+                  Centang opsi ini jika mekanisme distribusi ditujukan khusus
+                  antar wilayah tersebut.
+                </li>
+                <li>
+                  <strong class="text-slate-900 block"
+                    >Exclude New Product & New Product Days:</strong
+                  >
+                  Mengaktifkan pengecualian produk baru dari proses kalkulasi
+                  distribusi. Jika diisi
+                  <span class="italic font-semibold">90</span>, maka produk
+                  berumur &lt; 90 hari akan diabaikan.
+                </li>
+              </ul>
             </div>
 
-            <!-- Section: Overview -->
-            <div id="overview" class="bg-white rounded-xl p-6 shadow-sm border border-slate-200/80">
-                <div class="border-b border-slate-100 pb-4 mb-4 flex items-center gap-2">
-                    <div class="h-5 w-1 bg-blue-600 rounded"></div>
-                    <h2 class="text-lg font-bold text-slate-900">Definisi Fitur Pemerataan Stock</h2>
-                </div>
-                <div class="prose prose-slate max-w-none text-sm leading-relaxed text-slate-600 space-y-3">
-                    <p>
-                        <strong>Pemerataan Stock</strong> adalah proses memindahkan stok barang dari lokasi yang
-                        kelebihan (*overstock*) ke lokasi yang kekurangan (*stockout/understock*).
-                    </p>
-                    <p>
-                        Fitur ini menerapkan algoritma <span
-                            class="bg-blue-50 text-blue-700 px-1.5 py-0.5 rounded font-mono text-xs font-semibold">Exponential
-                            Daily Sales</span> yang dikombinasikan dengan <span
-                            class="bg-blue-50 text-blue-700 px-1.5 py-0.5 rounded font-mono text-xs font-semibold">Available
-                            Stock</span> untuk menganalisa tren penjualan harian secara otomatis. Hasilnya digunakan
-                        untuk menghitung stok ideal di setiap lokasi, sehingga proses pemindahan stok menjadi lebih
-                        akurat, tepat sasaran, serta meminimalkan risiko kehilangan penjualan.
-                    </p>
-                    <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-lg mt-2">
-                        <div class="flex gap-2">
-                            <span class="text-amber-700 font-bold text-xs uppercase tracking-wider block mb-1">Contoh
-                                Sederhana:</span>
-                        </div>
-                        <p class="text-xs text-amber-900">
-                            Jika sistem mendeteksi tren penjualan naik di satu cabang melalui <em>Exponential
-                                Smoothing</em>, maka cabang tersebut akan direkomendasikan mendapat tambahan stok dari
-                            cabang lain yang penjualannya sedang rendah (berdasarkan kapasitas <em>Available
-                                Stock</em>-nya).
-                        </p>
-                    </div>
-                </div>
+            <!-- Sisi Kanan Konfigurasi -->
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+              <h3
+                class="text-sm font-bold text-slate-900 mb-3 flex items-center gap-1.5 text-indigo-900"
+              >
+                <span>⚙️</span> Bagian Konfigurasi & Variabel (Kanan)
+              </h3>
+              <ul class="space-y-2.5 text-slate-600">
+                <li>
+                  <strong class="text-slate-900 block"
+                    >Is Auto Generate Purchase Order:</strong
+                  >
+                  Centang jika ingin mengaktifkan fitur pembuatan Purchase Order
+                  otomatis.
+                </li>
+                <li>
+                  <strong class="text-slate-900 block">Coverage Days:</strong>
+                  Target kecukupan jumlah hari stok untuk menutupi perkiraan
+                  penjualan di lokasi tujuan.
+                </li>
+                <li>
+                  <strong class="text-slate-900 block">Safety Days:</strong>
+                  Stok cadangan pengaman dinyatakan dalam satuan hari untuk
+                  mitigasi ketidakpastian tren pasar.
+                </li>
+                <li>
+                  <strong class="text-slate-900 block">Days to Count:</strong>
+                  Rentang historis data transaksi penjualan harian (dalam satuan
+                  hari) yang ditarik oleh rumus Exponential.
+                </li>
+                <li>
+                  <strong class="text-slate-900 block">Lambda Value:</strong>
+                  Faktor koefisien smoothing Exponential pada perhitungan *Daily
+                  Sales*. Semakin tinggi nilainya, kalkulasi sistem semakin
+                  responsif terhadap pergerakan tren penjualan teraktual.
+                </li>
+                <li>
+                  <strong class="text-slate-900 block"
+                    >Allow Cross-Island:</strong
+                  >
+                  Centang untuk mengizinkan instruksi rekomendasi transfer antar
+                  pulau.
+                </li>
+                <li>
+                  <strong class="text-slate-900 block">Max KM:</strong> Batas
+                  maksimum toleransi jarak logistik (Kilometer) antar lokasi
+                  pengirim dan penerima.
+                </li>
+                <li>
+                  <strong class="text-slate-900 block">Result Order By:</strong>
+                  Preferensi urutan data (misal: Best Seller 30 Days, Product
+                  Name, Prioritas, dll).
+                </li>
+                <li>
+                  <strong class="text-slate-900 block">Order Direction:</strong>
+                  <ul class="text-xs">
+                    <li>
+                      <strong class="text-slate-500">Ascending :</strong> Urutan
+                      dari jumlah terkecil ke terbesar.
+                    </li>
+                    <li>
+                      <strong class="text-slate-500">Descending :</strong>
+                      Urutan dari jumlah terbesar ke terkecil.
+                    </li>
+                  </ul>
+                </li>
+              </ul>
             </div>
+          </div>
 
-            <!-- Section: Step 1 -->
-            <div id="step-1"
-                class="bg-white rounded-xl p-6 shadow-sm border border-slate-200/80 page-break-inside-avoid">
-                <div class="flex items-start justify-between border-b border-slate-100 pb-4 mb-4">
-                    <div class="flex items-center gap-2">
-                        <div class="h-5 w-1 bg-blue-600 rounded"></div>
-                        <h2 class="text-lg font-bold text-slate-900">Step 1. Cara Akses Menu Pemerataan Stock</h2>
-                    </div>
-                    <span class="bg-slate-100 text-slate-800 text-xs font-semibold px-2.5 py-1 rounded-full">Langkah
-                        1</span>
-                </div>
-                <div class="p-2 space-y-6">
-                    <ol class="relative border-l border-slate-200 space-y-4 ml-2">
-                        <li class="mb-4 ml-6">
-                            <span
-                                class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 text-blue-800 rounded-full -left-3 font-semibold text-xs">1</span>
-                            <p class="text-sm font-medium text-slate-900">Pastikan Sudah Login Odoo</p>
-                            <p class="text-xs text-slate-500 mt-0.5">Akses domain resmi internal apps server Odoo
-                                perusahaan Anda.</p>
-                        </li>
-                        <li class="mb-4 ml-6">
-                            <span
-                                class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 text-blue-800 rounded-full -left-3 font-semibold text-xs">2</span>
-                            <p class="text-sm font-medium text-slate-900">Buka Modul Inventory</p>
-                            <p class="text-xs text-slate-500 mt-0.5">Pilih aplikasi Inventory pada dashboard utama.</p>
-                        </li>
-                        <li class="ml-6">
-                            <span
-                                class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 text-blue-800 rounded-full -left-3 font-semibold text-xs">3</span>
-                            <p class="text-sm font-medium text-slate-900">Navigasi Pemerataan Stock</p>
-                            <p class="text-xs text-slate-500 mt-0.5">Klik Menu <span
-                                    class="font-semibold text-slate-800">Pemerataan Stock</span>, lalu klik submenu
-                                <span class="font-semibold text-slate-800">Pemerataan Stock</span>.
-                            </p>
-                        </li>
-                    </ol>
-
-                    <!-- Image Container Step 1 -->
-                    <div
-                        class="mt-4 rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 max-w-3xl mx-auto">
-                        <img src="https://ik.imagekit.io/fzdyx56mg/Pemerataan%20Stock/step%201%20open%20pemerataan%20stock.png"
-                            alt="Screenshot Menu Akses Pemerataan Stock" class="w-full object-cover aspect-video">
-                    </div>
-                </div>
+          <!-- Bagian Versi Tampilan Teks -->
+          <div class="mt-6 border-t border-slate-100 pt-4 text-xs">
+            <h3 class="font-bold text-slate-900 mb-3">
+              Opsi Modus Tampilan Kolom (*Show View*):
+            </h3>
+            <div class="space-y-3">
+              <div class="p-3 bg-red-50/50 rounded-lg border border-red-100">
+                <span class="font-semibold text-red-800 block mb-1"
+                  >❌ Show Versi Lama</span
+                >
+                <p class="text-slate-600">
+                  Menampilkan kolom kuantitas (QTY) dan Toko Tujuan secara
+                  terpisah dalam grid yang berbeda. Model ini memiliki kelemahan
+                  karena menyulitkan pengguna saat membaca korelasi kuantitas
+                  barang ke toko tujuan.
+                </p>
+              </div>
+              <div
+                class="p-3 bg-emerald-50/50 rounded-lg border border-emerald-100"
+              >
+                <span class="font-semibold text-emerald-800 block mb-1"
+                  >✅ Show Versi Baru (Sangat Direkomendasikan)</span
+                >
+                <p class="text-slate-600">
+                  Menyatukan kolom tujuan langsung dengan jumlah kuantitas yang
+                  harus ditransfer. Format penulisan ringkas, contoh:
+                  <span
+                    class="bg-white border px-1 rounded font-mono font-bold text-emerald-700"
+                    >PR(104)</span
+                  >
+                  yang mengindikasikan lokasi tujuan adalah
+                  <span class="underline">PR</span> dengan kuantitas kirim
+                  sejumlah <span class="underline">104</span> unit.
+                </p>
+              </div>
             </div>
+          </div>
 
-            <!-- Section: Step 2 -->
-            <div id="step-2" class="bg-white rounded-xl p-6 shadow-sm border border-slate-200/80 page-break-before">
-                <div class="flex items-start justify-between border-b border-slate-100 pb-4 mb-4">
-                    <div class="flex items-center gap-2">
-                        <div class="h-5 w-1 bg-blue-600 rounded"></div>
-                        <h2 class="text-lg font-bold text-slate-900">Step 2. Panduan Pengisian Parameter & Filter Form
-                        </h2>
-                    </div>
-                    <span class="bg-slate-100 text-slate-800 text-xs font-semibold px-2.5 py-1 rounded-full">Langkah
-                        2</span>
-                </div>
-
-                <p class="text-xs text-slate-500 mb-6">Sebelum melakukan generate data, Anda wajib melengkapi parameter
-                    filter di sisi kiri dan konfigurasi perhitungan di sisi kanan formview:</p>
-
-                <!-- Image Container Step 2 - Form View Layout -->
-                <div
-                    class="mb-6 rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 max-w-3xl mx-auto">
-                    <img src="https://ik.imagekit.io/fzdyx56mg/Pemerataan%20Stock/step%202%20form%20pemerataan%20stock%20.png"
-                        alt="Screenshot Parameter Filter Formview" class="w-full object-cover aspect-video">
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
-                    <!-- Sisi Kiri Filter -->
-                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                        <h3 class="text-sm font-bold text-slate-900 mb-3 flex items-center gap-1.5 text-blue-900">
-                            <span>📋</span> Bagian Filter (Kiri)
-                        </h3>
-                        <ul class="space-y-2.5 text-slate-600">
-                            <li><strong class="text-slate-900 block">Name:</strong> Nama atau judul identitas dokumen
-                                pemerataan stock.</li>
-                            <li><strong class="text-slate-900 block">Barcodes in csv:</strong> Masukkan daftar SKU jika
-                                ingin menyaring varian produk spesifik.</li>
-                            <li><strong class="text-slate-900 block">Family:</strong> Isi nama kategori produk jika
-                                ingin memfilter kelompok family tertentu.</li>
-                            <li><strong class="text-slate-900 block">Operating Units:</strong> Filter unit cabang
-                                operasional tertentu.</li>
-                            <li><strong class="text-slate-900 block">Limit:</strong> Batas maksimal data baris produk
-                                yang ditampilkan saat proses penarikan data (*generate data*).</li>
-                            <li><strong class="text-slate-900 block">Send Form Checkboxes (Parangloe / Tangerang /
-                                    Toko):</strong> Centang opsi yang sesuai untuk mengaktifkan izin pengiriman stok
-                                dari Gudang Parangloe, Gudang Tangerang, atau entitas Toko terkait.</li>
-                            <li><strong class="text-slate-900 block">Route Checkboxes (Parangloe to Tangerang / Toko to
-                                    Tangerang):</strong> Centang opsi ini jika mekanisme distribusi ditujukan khusus
-                                antar wilayah tersebut.</li>
-                            <li><strong class="text-slate-900 block">Exclude New Product & New Product Days:</strong>
-                                Mengaktifkan pengecualian produk baru dari proses kalkulasi distribusi. Jika diisi <span
-                                    class="italic font-semibold">90</span>, maka produk berumur &lt; 90 hari akan
-                                diabaikan.</li>
-                        </ul>
-                    </div>
-
-                    <!-- Sisi Kanan Konfigurasi -->
-                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                        <h3 class="text-sm font-bold text-slate-900 mb-3 flex items-center gap-1.5 text-indigo-900">
-                            <span>⚙️</span> Bagian Konfigurasi & Variabel (Kanan)
-                        </h3>
-                        <ul class="space-y-2.5 text-slate-600">
-                            <li><strong class="text-slate-900 block">Is Auto Generate Purchase Order:</strong> Centang
-                                jika ingin mengaktifkan fitur pembuatan Purchase Order otomatis.</li>
-                            <li><strong class="text-slate-900 block">Coverage Days:</strong> Target kecukupan jumlah
-                                hari stok untuk menutupi perkiraan penjualan di lokasi tujuan.</li>
-                            <li><strong class="text-slate-900 block">Safety Days:</strong> Stok cadangan pengaman
-                                dinyatakan dalam satuan hari untuk mitigasi ketidakpastian tren pasar.</li>
-                            <li><strong class="text-slate-900 block">Days to Count:</strong> Rentang historis data
-                                transaksi penjualan harian (dalam satuan hari) yang ditarik oleh rumus Exponential.</li>
-                            <li><strong class="text-slate-900 block">Lambda Value:</strong> Faktor koefisien smoothing
-                                Exponential pada perhitungan *Daily Sales*. Semakin tinggi nilainya, kalkulasi sistem
-                                semakin responsif terhadap pergerakan tren penjualan teraktual.</li>
-                            <li><strong class="text-slate-900 block">Allow Cross-Island:</strong> Centang untuk
-                                mengizinkan instruksi rekomendasi transfer antar pulau.</li>
-                            <li><strong class="text-slate-900 block">Max KM:</strong> Batas maksimum toleransi jarak
-                                logistik (Kilometer) antar lokasi pengirim dan penerima.</li>
-                            <li><strong class="text-slate-900 block">Result Order By:</strong> Preferensi urutan
-                                data (misal: Best Seller 30 Days, Product Name, Prioritas, dll).</li>
-                            <li><strong class="text-slate-900 block">Order Direction:</strong>
-                                <ul class="text-xs">
-                                    <li><strong class="text-slate-500">Ascending :</strong> Urutan dari jumlah
-                                        terkecil ke terbesar.</li>
-                                    <li><strong class="text-slate-500">Descending :</strong> Urutan dari jumlah
-                                        terbesar ke terkecil.</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Bagian Versi Tampilan Teks -->
-                <div class="mt-6 border-t border-slate-100 pt-4 text-xs">
-                    <h3 class="font-bold text-slate-900 mb-3">Opsi Modus Tampilan Kolom (*Show View*):</h3>
-                    <div class="space-y-3">
-                        <div class="p-3 bg-red-50/50 rounded-lg border border-red-100">
-                            <span class="font-semibold text-red-800 block mb-1">❌ Show Versi Lama</span>
-                            <p class="text-slate-600">Menampilkan kolom kuantitas (QTY) dan Toko Tujuan secara terpisah
-                                dalam grid yang berbeda. Model ini memiliki kelemahan karena menyulitkan pengguna saat
-                                membaca korelasi kuantitas barang ke toko tujuan.</p>
-                        </div>
-                        <div class="p-3 bg-emerald-50/50 rounded-lg border border-emerald-100">
-                            <span class="font-semibold text-emerald-800 block mb-1">✅ Show Versi Baru (Sangat
-                                Direkomendasikan)</span>
-                            <p class="text-slate-600">Menyatukan kolom tujuan langsung dengan jumlah kuantitas yang
-                                harus ditransfer. Format penulisan ringkas, contoh: <span
-                                    class="bg-white border px-1 rounded font-mono font-bold text-emerald-700">PR(104)</span>
-                                yang mengindikasikan lokasi tujuan adalah <span class="underline">PR</span> dengan
-                                kuantitas kirim sejumlah <span class="underline">104</span> unit.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Definisi Lokasi -->
-                <!-- <div
+          <!-- Definisi Lokasi -->
+          <!-- <div
                     class="mt-4 bg-blue-50/40 p-4 rounded-xl border border-blue-100/60 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
                     <div><span class="font-bold text-blue-900 block">Main Location:</span> Lokasi Utama operasional.
                     </div>
@@ -405,93 +613,175 @@
                     <div><span class="font-bold text-blue-900 block">Scrap Location:</span> Alokasi pembuangan produk
                         rusak.</div>
                 </div> -->
+        </div>
+
+        <!-- Section: Step 3 -->
+        <div
+          id="step-3"
+          class="bg-white rounded-xl p-6 shadow-sm border border-slate-200/80 page-break-inside-avoid"
+        >
+          <div
+            class="flex items-start justify-between border-b border-slate-100 pb-4 mb-4"
+          >
+            <div class="flex items-center gap-2">
+              <div class="h-5 w-1 bg-blue-600 rounded"></div>
+              <h2 class="text-lg font-bold text-slate-900">
+                Step 3. Eksekusi Generate & Preview Report
+              </h2>
+            </div>
+            <span
+              class="bg-slate-100 text-slate-800 text-xs font-semibold px-2.5 py-1 rounded-full"
+              >Langkah 3</span
+            >
+          </div>
+          <div class="space-y-4 text-sm text-slate-600">
+            <p>
+              Setelah seluruh konfigurasi variabel diisi, klik tombol
+              <span
+                class="bg-blue-600 text-white font-medium px-2.5 py-1 rounded text-xs shadow-sm"
+                >Generate Report</span
+              >
+              untuk memicu kalkulasi background job sistem.
+            </p>
+            <p>
+              Jika proses kalkulasi selesai, klik tombol
+              <span
+                class="bg-green-800 text-white font-medium px-2.5 py-1 rounded text-xs shadow-sm"
+                >Preview Pemerataan</span
+              >
+              untuk memunculkan data grid interaktif hasil komparasi.
+            </p>
+
+            <!-- Image Container Step 3 -->
+            <div
+              class="my-4 rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 max-w-3xl mx-auto"
+            >
+              <img
+                src="https://ik.imagekit.io/fzdyx56mg/Pemerataan%20Stock/step%203%20preview%20pemerataan%20stock.png"
+                alt="Screenshot Data Grid Preview Report"
+                class="w-full object-cover aspect-video"
+              />
             </div>
 
-            <!-- Section: Step 3 -->
-            <div id="step-3"
-                class="bg-white rounded-xl p-6 shadow-sm border border-slate-200/80 page-break-inside-avoid">
-                <div class="flex items-start justify-between border-b border-slate-100 pb-4 mb-4">
-                    <div class="flex items-center gap-2">
-                        <div class="h-5 w-1 bg-blue-600 rounded"></div>
-                        <h2 class="text-lg font-bold text-slate-900">Step 3. Eksekusi Generate & Preview Report</h2>
-                    </div>
-                    <span class="bg-slate-100 text-slate-800 text-xs font-semibold px-2.5 py-1 rounded-full">Langkah
-                        3</span>
+            <!-- Detail Informasi Tambahan Interaktif -->
+            <div
+              class="bg-slate-50 rounded-xl p-4 border border-slate-100 text-xs"
+            >
+              <span class="font-bold text-slate-900 block mb-3"
+                >💡 Rincian Info Tambahan Ketika Record Toko Tujuan Di-Klik
+                (Contoh: GRTL(157)):</span
+              >
+              <div
+                class="my-4 rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 max-w-3xl mx-auto"
+              >
+                <img
+                  src="https://ik.imagekit.io/fzdyx56mg/Pemerataan%20Stock/addtional%20info.png"
+                  alt="Screenshot Addtional Info"
+                  class="w-full object-cover aspect-video"
+                />
+              </div>
+              <div
+                class="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4 text-slate-600"
+              >
+                <div>
+                  •
+                  <span class="font-medium text-slate-900"
+                    >Nama Lokasi Tujuan:</span
+                  >
+                  Keterangan detail toko/cabang peminta stok.
                 </div>
-                <div class="space-y-4 text-sm text-slate-600">
-                    <p>Setelah seluruh konfigurasi variabel diisi, klik tombol <span
-                            class="bg-blue-600 text-white font-medium px-2.5 py-1 rounded text-xs shadow-sm">Generate
-                            Report</span> untuk memicu kalkulasi background job sistem.</p>
-                    <p>Jika proses kalkulasi selesai, klik tombol <span
-                            class="bg-green-800 text-white font-medium px-2.5 py-1 rounded text-xs shadow-sm">Preview
-                            Pemerataan</span>
-                        untuk memunculkan data grid interaktif hasil komparasi.</p>
-
-                    <!-- Image Container Step 3 -->
-                    <div
-                        class="my-4 rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 max-w-3xl mx-auto">
-                        <img src="https://ik.imagekit.io/fzdyx56mg/Pemerataan%20Stock/step%203%20preview%20pemerataan%20stock.png"
-                            alt="Screenshot Data Grid Preview Report" class="w-full object-cover aspect-video">
-                    </div>
-
-                    <!-- Detail Informasi Tambahan Interaktif -->
-                    <div class="bg-slate-50 rounded-xl p-4 border border-slate-100 text-xs">
-                        <span class="font-bold text-slate-900 block mb-3">💡 Rincian Info Tambahan Ketika Record Toko
-                            Tujuan Di-Klik (Contoh: GRTL(157)):</span>
-                        <div
-                            class="my-4 rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 max-w-3xl mx-auto">
-                            <img src="https://ik.imagekit.io/fzdyx56mg/Pemerataan%20Stock/addtional%20info.png"
-                                alt="Screenshot Addtional Info" class="w-full object-cover aspect-video">
-                        </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4 text-slate-600">
-                            <div>• <span class="font-medium text-slate-900">Nama Lokasi Tujuan:</span> Keterangan detail
-                                toko/cabang peminta stok.</div>
-                            <div>• <span class="font-medium text-slate-900">Kode & Nama Produk:</span> SKU dan deskripsi
-                                penuh material item.</div>
-                            <div>• <span class="font-medium text-slate-900">Family:</span> Klasifikasi grup besar atau
-                                kategori produk.</div>
-                            <div>• <span class="font-medium text-slate-900">Stock Status:</span> Kondisi ketersediaan
-                                stok riil di lokasi tujuan.</div>
-                            <div>• <span class="font-medium text-slate-900">Current Stock:</span> Volume fisik stok saat
-                                ini di lokasi tersebut.</div>
-                            <div>• <span class="font-medium text-slate-900">Ideal Stock:</span> Target jumlah stok
-                                seharusnya berdasar rumusan tren.</div>
-                            <div>• <span class="font-medium text-slate-900">Daily Average:</span> Prediksi rata-rata
-                                volume penjualan harian (*forecast*).</div>
-                            <div>• <span class="font-medium text-slate-900">Kurang:</span> Deviasi selisih angka riil vs
-                                ideal (nilai minus = butuh pasokan).</div>
-                            <div>• <span class="font-medium text-slate-900">Daily Trend & Monthly Stats:</span> Grafik
-                                batang visual tren 1 minggu - 6 bulan serta rerata bulanan.</div>
-                        </div>
-                    </div>
+                <div>
+                  •
+                  <span class="font-medium text-slate-900"
+                    >Kode & Nama Produk:</span
+                  >
+                  SKU dan deskripsi penuh material item.
                 </div>
+                <div>
+                  •
+                  <span class="font-medium text-slate-900">Family:</span>
+                  Klasifikasi grup besar atau kategori produk.
+                </div>
+                <div>
+                  •
+                  <span class="font-medium text-slate-900">Stock Status:</span>
+                  Kondisi ketersediaan stok riil di lokasi tujuan.
+                </div>
+                <div>
+                  •
+                  <span class="font-medium text-slate-900">Current Stock:</span>
+                  Volume fisik stok saat ini di lokasi tersebut.
+                </div>
+                <div>
+                  •
+                  <span class="font-medium text-slate-900">Ideal Stock:</span>
+                  Target jumlah stok seharusnya berdasar rumusan tren.
+                </div>
+                <div>
+                  •
+                  <span class="font-medium text-slate-900">Daily Average:</span>
+                  Prediksi rata-rata volume penjualan harian (*forecast*).
+                </div>
+                <div>
+                  •
+                  <span class="font-medium text-slate-900">Kurang:</span>
+                  Deviasi selisih angka riil vs ideal (nilai minus = butuh
+                  pasokan).
+                </div>
+                <div>
+                  •
+                  <span class="font-medium text-slate-900"
+                    >Daily Trend & Monthly Stats:</span
+                  >
+                  Grafik batang visual tren 1 minggu - 6 bulan serta rerata
+                  bulanan.
+                </div>
+              </div>
             </div>
+          </div>
+        </div>
 
-            <!-- Section: Step 4-6 -->
-            <div id="step-4"
-                class="bg-white rounded-xl p-6 shadow-sm border border-slate-200/80 page-break-inside-avoid">
-                <div class="flex items-start justify-between border-b border-slate-100 pb-4 mb-4">
-                    <div class="flex items-center gap-2">
-                        <div class="h-5 w-1 bg-blue-600 rounded"></div>
-                        <h2 class="text-lg font-bold text-slate-900">Step 4. Fitur Unduh Dokumen Output & Laporan</h2>
-                    </div>
-                    <span class="bg-slate-100 text-slate-800 text-xs font-semibold px-2.5 py-1 rounded-full">Output
-                        File</span>
-                </div>
-                <p class="text-xs text-slate-500 mb-4">Gunakan tombol-tombol fungsional ekspor di bagian atas form view
-                    untuk mengunduh berkas spreadsheet pendukung:</p>
+        <!-- Section: Step 4-6 -->
+        <div
+          id="step-4"
+          class="bg-white rounded-xl p-6 shadow-sm border border-slate-200/80 page-break-inside-avoid"
+        >
+          <div
+            class="flex items-start justify-between border-b border-slate-100 pb-4 mb-4"
+          >
+            <div class="flex items-center gap-2">
+              <div class="h-5 w-1 bg-blue-600 rounded"></div>
+              <h2 class="text-lg font-bold text-slate-900">
+                Step 4. Fitur Unduh Dokumen Output & Laporan
+              </h2>
+            </div>
+            <span
+              class="bg-slate-100 text-slate-800 text-xs font-semibold px-2.5 py-1 rounded-full"
+              >Output File</span
+            >
+          </div>
+          <p class="text-xs text-slate-500 mb-4">
+            Gunakan tombol-tombol fungsional ekspor di bagian atas form view
+            untuk mengunduh berkas spreadsheet pendukung:
+          </p>
 
-                <!-- Image Container Step 4 -->
+          <!-- Image Container Step 4 -->
 
-                <div class="grid grid-cols-1 md:grid-cols-1 gap-4 text-xs">
-                    <div class="border border-slate-100 p-4 rounded-xl bg-slate-50/50">
-                        <span class="font-bold text-slate-900 block mb-1">Step 4. Download Lap Pemerataan</span>
-                        <p class="text-slate-600">Klik tombol <span class="underline font-medium text-blue-700">Download
-                                Lap Pemerataan</span> untuk mengunduh hasil dari pemerataan stock yang sudah di generate
-                            dalam
-                            ekstensi Excel.</p>
-                    </div>
-                    <!-- <div class="border border-slate-100 p-4 rounded-xl bg-slate-50/50">
+          <div class="grid grid-cols-1 md:grid-cols-1 gap-4 text-xs">
+            <div class="border border-slate-100 p-4 rounded-xl bg-slate-50/50">
+              <span class="font-bold text-slate-900 block mb-1"
+                >Step 4. Download Lap Pemerataan</span
+              >
+              <p class="text-slate-600">
+                Klik tombol
+                <span class="underline font-medium text-blue-700"
+                  >Download Lap Pemerataan</span
+                >
+                untuk mengunduh hasil dari pemerataan stock yang sudah di
+                generate dalam ekstensi Excel.
+              </p>
+            </div>
+            <!-- <div class="border border-slate-100 p-4 rounded-xl bg-slate-50/50">
                         <span class="font-bold text-slate-900 block mb-1">Step 5. Download Picking List - Gudang</span>
                         <p class="text-slate-600">Klik tombol <span class="underline font-medium text-blue-700">Picking
                                 List - Gudang</span> untuk menerbitkan instruksi penyiapan muatan atau daftar bon
@@ -503,166 +793,473 @@
                                 Antar Toko</span> untuk menerbitkan berkas manifes mutasi pemindahan barang spesifik
                             antar cabang toko ritel.</p>
                     </div> -->
-                </div>
+          </div>
+        </div>
+
+        <!-- Section: Laporan Stock Akhir -->
+        <div
+          id="stock-akhir"
+          class="bg-white rounded-xl p-6 shadow-sm border border-slate-200/80 page-break-before"
+        >
+          <div
+            class="flex items-start justify-between border-b border-slate-100 pb-4 mb-4"
+          >
+            <div class="flex items-center gap-2">
+              <div class="h-5 w-1 bg-indigo-600 rounded"></div>
+              <h2 class="text-lg font-bold text-slate-900">
+                Cara Download Laporan Stock Akhir Setelah Pemerataan
+              </h2>
+            </div>
+            <span
+              class="bg-indigo-50 text-indigo-700 text-xs font-bold px-2.5 py-1 rounded-full"
+              >Prosedur Tambahan</span
+            >
+          </div>
+          <div class="p-2 text-sm text-slate-600 space-y-4">
+            <p class="text-xs text-slate-500">
+              Mekanisme mengekstrak simulasi laporan posisi saldo stok final
+              pasca alokasi perpindahan barang:
+            </p>
+
+            <div
+              class="bg-slate-50 rounded-xl p-4 border border-slate-100 text-xs space-y-2"
+            >
+              <p>
+                <span class="font-semibold text-slate-900">1.</span> Buka
+                <span class="font-medium text-slate-900">Modul Inventory</span>
+                &gt;&gt;
+                <span class="font-medium text-slate-900">Menu Laporan</span>
+                &gt;&gt;
+                <span class="font-medium text-slate-900">Pemerataan Stock</span
+                >.
+              </p>
+              <p>
+                <span class="font-semibold text-slate-900">2.</span> Cari dan
+                berikan tanda centang (*select*) pada salah satu atau beberapa
+                daftar baris record data dokumen yang ingin diekspor.
+              </p>
+              <p>
+                <span class="font-semibold text-slate-900">3.</span> Klik menu
+                tombol dropdown
+                <span class="font-bold text-indigo-700 uppercase">Action</span>
+                di bagian tengah atas, lalu pilih opsi menu
+                <span class="font-medium text-slate-900"
+                  >Download Laporan Stock Akhir</span
+                >.
+              </p>
+              <p>
+                <span class="font-semibold text-slate-900">4.</span> Isi
+                parameter isian popup wizard form yang muncul:
+              </p>
+              <ul class="list-disc pl-5 space-y-1 mt-1 text-slate-500">
+                <li>
+                  <span class="font-medium text-slate-800">Name:</span> Nama
+                  file excel keluaran.
+                </li>
+                <li>
+                  <span class="font-medium text-slate-800"
+                    >Operating Unit:</span
+                  >
+                  Unit kantor cabang yang ingin ditinjau nilai saldo akhir
+                  stoknya.
+                </li>
+                <li>
+                  <span class="font-medium text-slate-800"
+                    >Maksimum Stock Akhir:</span
+                  >
+                  Nilai kuantitas batas atas ketersediaan barang (*Available
+                  Qty*) pasca kalkulasi alokasi dilakukan.
+                </li>
+              </ul>
             </div>
 
-            <!-- Section: Laporan Stock Akhir -->
-            <div id="stock-akhir"
-                class="bg-white rounded-xl p-6 shadow-sm border border-slate-200/80 page-break-before">
-                <div class="flex items-start justify-between border-b border-slate-100 pb-4 mb-4">
-                    <div class="flex items-center gap-2">
-                        <div class="h-5 w-1 bg-indigo-600 rounded"></div>
-                        <h2 class="text-lg font-bold text-slate-900">Cara Download Laporan Stock Akhir Setelah
-                            Pemerataan</h2>
-                    </div>
-                    <span class="bg-indigo-50 text-indigo-700 text-xs font-bold px-2.5 py-1 rounded-full">Prosedur
-                        Tambahan</span>
-                </div>
-                <div class="p-2 text-sm text-slate-600 space-y-4">
-                    <p class="text-xs text-slate-500">Mekanisme mengekstrak simulasi laporan posisi saldo stok final
-                        pasca alokasi perpindahan barang:</p>
-
-                    <div class="bg-slate-50 rounded-xl p-4 border border-slate-100 text-xs space-y-2">
-                        <p><span class="font-semibold text-slate-900">1.</span> Buka <span
-                                class="font-medium text-slate-900">Modul Inventory</span> &gt;&gt; <span
-                                class="font-medium text-slate-900">Menu Laporan</span> &gt;&gt; <span
-                                class="font-medium text-slate-900">Pemerataan Stock</span>.</p>
-                        <p><span class="font-semibold text-slate-900">2.</span> Cari dan berikan tanda centang
-                            (*select*) pada salah satu atau beberapa daftar baris record data dokumen yang ingin
-                            diekspor.</p>
-                        <p><span class="font-semibold text-slate-900">3.</span> Klik menu tombol dropdown <span
-                                class="font-bold text-indigo-700 uppercase">Action</span> di bagian tengah atas, lalu
-                            pilih opsi menu <span class="font-medium text-slate-900">Download Laporan Stock
-                                Akhir</span>.</p>
-                        <p><span class="font-semibold text-slate-900">4.</span> Isi parameter isian popup wizard form
-                            yang muncul:</p>
-                        <ul class="list-disc pl-5 space-y-1 mt-1 text-slate-500">
-                            <li><span class="font-medium text-slate-800">Name:</span> Nama file excel keluaran.</li>
-                            <li><span class="font-medium text-slate-800">Operating Unit:</span> Unit kantor cabang yang
-                                ingin ditinjau nilai saldo akhir stoknya.</li>
-                            <li><span class="font-medium text-slate-800">Maksimum Stock Akhir:</span> Nilai kuantitas
-                                batas atas ketersediaan barang (*Available Qty*) pasca kalkulasi alokasi dilakukan.</li>
-                        </ul>
-                    </div>
-
-                    <!-- Image Container Laporan Stok Akhir -->
-                    <div class="flex w-full gap-2">
-                        <div
-                            class="rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 max-w-3xl mx-auto">
-                            <img src="https://ik.imagekit.io/fzdyx56mg/Pemerataan%20Stock/laporan%20akhir%20pemerataan.png"
-                                alt="Screenshot Pop-up Wizard Laporan Stok Akhir"
-                                class="w-full object-cover aspect-video">
-                        </div>
-                        <div
-                            class="rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 max-w-3xl mx-auto">
-                            <img src="https://ik.imagekit.io/fzdyx56mg/Pemerataan%20Stock/akhir%20laporan%20wizard.png"
-                                alt="Screenshot Pop-up Wizard Laporan Stok Akhir"
-                                class="w-full object-cover aspect-video">
-                        </div>
-                    </div>
-
-                    <div class="bg-amber-50/70 border-l-4 border-amber-600 p-3 rounded-r-lg text-xs text-amber-900">
-                        <span class="font-bold block text-amber-800 mb-1">📝 Catatan Lapangan (Note):</span>
-                        Apabila memilih unit di luar cabang <span class="font-bold underline">Office (Parangloe)</span>,
-                        sistem secara dinamis memunculkan field isian baru yaitu <span
-                            class="italic font-semibold">"Under Minimum For X Days"</span>. Isian ini berfungsi
-                        menyaring hanya item produk yang sangat kritis atau berisiko kehabisan stok dalam periode
-                        rentang jumlah hari 'X' yang ditentukan.
-                    </div>
-                </div>
+            <!-- Image Container Laporan Stok Akhir -->
+            <div class="flex w-full gap-2">
+              <div
+                class="rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 max-w-3xl mx-auto"
+              >
+                <img
+                  src="https://ik.imagekit.io/fzdyx56mg/Pemerataan%20Stock/laporan%20akhir%20pemerataan.png"
+                  alt="Screenshot Pop-up Wizard Laporan Stok Akhir"
+                  class="w-full object-cover aspect-video"
+                />
+              </div>
+              <div
+                class="rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 max-w-3xl mx-auto"
+              >
+                <img
+                  src="https://ik.imagekit.io/fzdyx56mg/Pemerataan%20Stock/akhir%20laporan%20wizard.png"
+                  alt="Screenshot Pop-up Wizard Laporan Stok Akhir"
+                  class="w-full object-cover aspect-video"
+                />
+              </div>
             </div>
 
-            <!-- Section: Autopicking List -->
-            <div id="autopicking-list"
-                class="bg-white rounded-xl p-6 shadow-sm border border-slate-200/80 page-break-inside-avoid">
-                <div class="flex items-start justify-between border-b border-slate-100 pb-4 mb-4">
-                    <div class="flex items-center gap-2">
-                        <div class="h-5 w-1 bg-indigo-600 rounded"></div>
-                        <h2 class="text-lg font-bold text-slate-900">Panduan Membuat Autopicking List</h2>
-                    </div>
-                    <span class="bg-indigo-50 text-indigo-700 text-xs font-bold px-2.5 py-1 rounded-full">Prosedur
-                        Otomasi</span>
-                </div>
-
-                <div class="text-xs text-slate-600 space-y-4">
-                    <p class="text-sm">Fitur ini mempermudah pembuatan otomatis dokumen Picking List logistik tanpa
-                        perlu menginput baris item satu per satu secara manual:</p>
-
-                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 space-y-2">
-                        <p><span class="font-bold text-slate-900">1. Alur Inisiasi:</span> Buka submenu Pemerataan Stock
-                            &gt;&gt; Pilih dokumen pemerataan stock yang ingin dibuat dokumen picking list &gt;&gt; Klik
-                            <span class="font-bold text-indigo-700">Action</span> &gt;&gt; Pilih fungsi <span
-                                class="font-medium text-slate-900">Create Batch Picking List</span>.
-                        </p>
-                        <p><span class="font-bold text-slate-900">2. Pop up Wizard Form:</span> Klik <span
-                                class="bg-emerald-600 text-white px-2 py-0.5 rounded font-medium shadow-sm text-[10px]">Confirm</span>.
-                            Maka nanti laporan pemerataan stock yang dipilih tadi
-                            membentuk dokumen picking list dan status di pemerataan tadi menjadi <span
-                                class="bg-emerald-100 text-emerald-800 px-1.5 py-0.2 rounded font-semibold font-mono text-[10px]">DONE</span>.
-                        </p>
-                    </div>
-
-                    <!-- Image Container Autopicking 1 -->
-                    <div class="flex gap-2">
-                        <div class="flex flex-col">
-                            <div
-                                class="rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 max-w-3xl mx-auto">
-                                <img src="https://ik.imagekit.io/fzdyx56mg/Pemerataan%20Stock/create%20picking%20list.png"
-                                    alt="Screenshot Form Wizard Create Picking List"
-                                    class="w-full object-cover aspect-video">
-                            </div>
-                            <span class="mt-2 text-center text-slate-500 italic">Step 1. Ketika user pilih action
-                                "create
-                                batch picking list", muncul pop up seperti ini.</span>
-                        </div>
-                        <div class="flex flex-col">
-                            <div
-                                class="rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 max-w-3xl mx-auto">
-                                <img src="https://ik.imagekit.io/fzdyx56mg/Pemerataan%20Stock/wizard%20picking%20list.png"
-                                    alt="Screenshot Form Wizard Create Picking List"
-                                    class="w-full object-cover aspect-video">
-                            </div>
-                            <span class="mt-2 text-center text-slate-500 italic">Step 2. Muncul Form ketika user create
-                                batch picking list</span>
-                        </div>
-                    </div>
-
-                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 space-y-2">
-                        <p><span class="font-bold text-slate-900">3. Batch Picking List hasil dari pemerataan:</span>
-                        </p>
-                        <p class="text-slate-500">Masuk ke Modul Inventory &gt;&gt; Klik <span
-                                class="font-medium text-slate-900">Batch Picking List</span>. Sistem akan menampilkan
-                            seluruh batch dokumen picking list sesuai dengan data yang dipilih pada laporan pemerataan.
-                        </p>
-                    </div>
-
-                    <!-- Image Container Autopicking 2 test-->
-                    <div class="flex gap-2">
-                        <div class="flex flex-col">
-                            <div
-                                class="rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 max-w-3xl mx-auto">
-                                <img src="https://ik.imagekit.io/fzdyx56mg/Pemerataan%20Stock/picking%20list%20batch.png"
-                                    alt="Screenshot Menu Akhir Dokumen Picking List"
-                                    class="w-full object-cover aspect-video">
-                            </div>
-                            <span class="mt-2 text-center text-slate-500 italic">Setelah klik menu picking list batch
-                                muncul list batch picking</span>
-                        </div>
-                        <div class="flex flex-col">
-                            <div
-                                class="rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 max-w-3xl mx-auto">
-                                <img src="https://ik.imagekit.io/fzdyx56mg/Pemerataan%20Stock/download%20mutasi.png"
-                                    alt="Screenshot Menu Akhir Dokumen Picking List"
-                                    class="w-full object-cover aspect-video">
-                            </div>
-                            <span class="mt-2 text-center text-slate-500 italic">Ketika klik record di list batch
-                                picking, maka akan muncul <span class="font-bold text-green-600">Download Mutasi Antar
-                                    Toko</span>. jika picking dari toko ke toko</span>
-                        </div>
-                    </div>
-                </div>
+            <div
+              class="bg-amber-50/70 border-l-4 border-amber-600 p-3 rounded-r-lg text-xs text-amber-900"
+            >
+              <span class="font-bold block text-amber-800 mb-1"
+                >📝 Catatan Lapangan (Note):</span
+              >
+              Apabila memilih unit di luar cabang
+              <span class="font-bold underline">Office (Parangloe)</span>,
+              sistem secara dinamis memunculkan field isian baru yaitu
+              <span class="italic font-semibold"
+                >"Under Minimum For X Days"</span
+              >. Isian ini berfungsi menyaring hanya item produk yang sangat
+              kritis atau berisiko kehabisan stok dalam periode rentang jumlah
+              hari 'X' yang ditentukan.
             </div>
-        </section>
+          </div>
+        </div>
+
+        <!-- Section: Autopicking List -->
+        <div
+          id="autopicking-list"
+          class="bg-white rounded-xl p-6 shadow-sm border border-slate-200/80 page-break-inside-avoid"
+        >
+          <div
+            class="flex items-start justify-between border-b border-slate-100 pb-4 mb-4"
+          >
+            <div class="flex items-center gap-2">
+              <div class="h-5 w-1 bg-indigo-600 rounded"></div>
+              <h2 class="text-lg font-bold text-slate-900">
+                Panduan Membuat Autopicking List
+              </h2>
+            </div>
+            <span
+              class="bg-indigo-50 text-indigo-700 text-xs font-bold px-2.5 py-1 rounded-full"
+              >Prosedur Otomasi</span
+            >
+          </div>
+
+          <div class="text-xs text-slate-600 space-y-4">
+            <p class="text-sm">
+              Fitur ini mempermudah pembuatan otomatis dokumen Picking List
+              logistik tanpa perlu menginput baris item satu per satu secara
+              manual:
+            </p>
+
+            <div
+              class="bg-slate-50 p-4 rounded-xl border border-slate-100 space-y-2"
+            >
+              <p>
+                <span class="font-bold text-slate-900">1. Alur Inisiasi:</span>
+                Buka submenu Pemerataan Stock &gt;&gt; Pilih dokumen pemerataan
+                stock yang ingin dibuat dokumen picking list &gt;&gt; Klik
+                <span class="font-bold text-indigo-700">Action</span> &gt;&gt;
+                Pilih fungsi
+                <span class="font-medium text-slate-900"
+                  >Create Batch Picking List</span
+                >.
+              </p>
+              <p>
+                <span class="font-bold text-slate-900"
+                  >2. Pop up Wizard Form:</span
+                >
+                Klik
+                <span
+                  class="bg-emerald-600 text-white px-2 py-0.5 rounded font-medium shadow-sm text-[10px]"
+                  >Confirm</span
+                >. Maka nanti laporan pemerataan stock yang dipilih tadi
+                membentuk dokumen picking list dan status di pemerataan tadi
+                menjadi
+                <span
+                  class="bg-emerald-100 text-emerald-800 px-1.5 py-0.2 rounded font-semibold font-mono text-[10px]"
+                  >DONE</span
+                >.
+              </p>
+            </div>
+
+            <!-- Image Container Autopicking 1 -->
+            <div class="flex gap-2">
+              <div class="flex flex-col">
+                <div
+                  class="rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 max-w-3xl mx-auto"
+                >
+                  <img
+                    src="https://ik.imagekit.io/fzdyx56mg/Pemerataan%20Stock/create%20picking%20list.png"
+                    alt="Screenshot Form Wizard Create Picking List"
+                    class="w-full object-cover aspect-video"
+                  />
+                </div>
+                <span class="mt-2 text-center text-slate-500 italic"
+                  >Step 1. Ketika user pilih action "create batch picking list",
+                  muncul pop up seperti ini.</span
+                >
+              </div>
+              <div class="flex flex-col">
+                <div
+                  class="rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 max-w-3xl mx-auto"
+                >
+                  <img
+                    src="https://ik.imagekit.io/fzdyx56mg/Pemerataan%20Stock/wizard%20picking%20list.png"
+                    alt="Screenshot Form Wizard Create Picking List"
+                    class="w-full object-cover aspect-video"
+                  />
+                </div>
+                <span class="mt-2 text-center text-slate-500 italic"
+                  >Step 2. Muncul Form ketika user create batch picking
+                  list</span
+                >
+              </div>
+            </div>
+
+            <div
+              class="bg-slate-50 p-4 rounded-xl border border-slate-100 space-y-2"
+            >
+              <p>
+                <span class="font-bold text-slate-900"
+                  >3. Batch Picking List hasil dari pemerataan:</span
+                >
+              </p>
+              <p class="text-slate-500">
+                Masuk ke Modul Inventory &gt;&gt; Klik
+                <span class="font-medium text-slate-900"
+                  >Batch Picking List</span
+                >. Sistem akan menampilkan seluruh batch dokumen picking list
+                sesuai dengan data yang dipilih pada laporan pemerataan.
+              </p>
+            </div>
+
+            <!-- Image Container Autopicking 2 test-->
+            <div class="flex gap-2">
+              <div class="flex flex-col">
+                <div
+                  class="rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 max-w-3xl mx-auto"
+                >
+                  <img
+                    src="https://ik.imagekit.io/fzdyx56mg/Pemerataan%20Stock/picking%20list%20batch.png"
+                    alt="Screenshot Menu Akhir Dokumen Picking List"
+                    class="w-full object-cover aspect-video"
+                  />
+                </div>
+                <span class="mt-2 text-center text-slate-500 italic"
+                  >Setelah klik menu picking list batch muncul list batch
+                  picking</span
+                >
+              </div>
+              <div class="flex flex-col">
+                <div
+                  class="rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 max-w-3xl mx-auto"
+                >
+                  <img
+                    src="https://ik.imagekit.io/fzdyx56mg/Pemerataan%20Stock/download%20mutasi.png"
+                    alt="Screenshot Menu Akhir Dokumen Picking List"
+                    class="w-full object-cover aspect-video"
+                  />
+                </div>
+                <span class="mt-2 text-center text-slate-500 italic"
+                  >Ketika klik record di list batch picking, maka akan muncul
+                  <span class="font-bold text-green-600"
+                    >Download Mutasi Antar Toko</span
+                  >. jika picking dari toko ke toko</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step Membuat Picking List Otomatis-->
+        <div
+          id="autopicking-list"
+          class="bg-white rounded-xl p-6 shadow-sm border border-slate-200/80 page-break-inside-avoid"
+        >
+          <div
+            class="flex items-start justify-between border-b border-slate-100 pb-4 mb-4"
+          >
+            <div class="flex items-center gap-2">
+              <div class="h-5 w-1 bg-indigo-600 rounded"></div>
+              <h2 class="text-lg font-bold text-slate-900">
+                Panduan Membuat Autopicking List Lanjutan -> Hingga Terbentuk
+                Internal Transfer
+              </h2>
+            </div>
+            <span
+              class="bg-indigo-50 text-indigo-700 text-xs font-bold px-2.5 py-1 rounded-full"
+              >Prosedur Otomasi</span
+            >
+          </div>
+
+          <div class="text-xs text-slate-600 space-y-4">
+            <p
+              class="text-sm italic bg-slate-50 p-4 rounded-xl border border-slate-100 space-y-2"
+            >
+              Fitur ini mempermudah pembuatan otomatis dokumen Picking List
+              logistik tanpa perlu menginput baris item satu per satu secara
+              manual:
+            </p>
+
+            <!-- Image Container Autopicking 1 -->
+            <div class="flex gap-2">
+              <div class="flex flex-col text-start text-slate-900">
+                <span class="mt-2 font-semibold"
+                  >1. Ketika user klik menu picking list batch, maka akan
+                  menampilkan list batch picking, pilih batch picking yang akan
+                  dilakukan hitung product hingga nanti terbentuk internal
+                  transfer.</span
+                >
+                <img
+                  src="img/picking_list_batch.png"
+                  class="w-1/2 object-cover aspect-video mt-2"
+                />
+                <span class="mt-2 font-semibold"
+                  >2. Muncul Form ketika user create batch picking list</span
+                >
+                <span class="mt-2 font-semibold">
+                  3. Klik Open pada picking yang akan dilakukan perhitungan dan
+                  dibuat internal transfer
+                </span>
+                <img
+                  src="img/form_picking_list_batch.png"
+                  class="w-1/2 object-cover aspect-video mt-2"
+                />
+                <span class="mt-2 font-semibold"
+                  >4. Setelah klik open pada picking list batch maka akan muncul
+                  form seperti dibawah ini (Klik Start Jika Crew/Logistik Sudah
+                  siap untuk menghitung Produk real yang ada di
+                  gudang/toko)</span
+                >
+                <div class="flex gap-2">
+                  <div class="flex flex-col w-1/2">
+                    <img
+                      src="img/form_picking.png"
+                      alt="Form Picking List"
+                      class="object-cover aspect-video mt-2"
+                    />
+                    <span class="mt-2 text-slate-500 text-center font-semibold"
+                      >Ketika diklik Start Counting maka status akan update
+                      menjadi Counting Proses</span
+                    >
+                  </div>
+                  <div class="flex flex-col w-1/2">
+                    <img
+                      src="img/preview_picking_list.png"
+                      alt="Form Preview Picking List"
+                      class="object-cover aspect-video mt-2"
+                    />
+                    <span class="mt-2 text-slate-500 text-center font-semibold"
+                      >Preview Picking List</span
+                    >
+                  </div>
+                </div>
+                <span class="mt-2 font-semibold"
+                  >5. Selanjutnya Crew/Logistik jika status sudah Counting
+                  Proses, maka Crew/Logistik melakukan perhitungan Produk real
+                  yang ada di gudang/toko menggunakan Mobile Apps Employee
+                  sesuai dengan area nya masing-masing.
+                  <span class="font-semibold text-orange-500"
+                    >Contohnya ada di bawah ini picking list PL/20260622/001/PLG
+                    .</span
+                  ></span
+                >
+                <img
+                  src="img/form_picking.png"
+                  alt="Form Picking List"
+                  class="w-1/2 object-cover aspect-video mt-2"
+                />
+                <span class="mt-2 font-semibold"
+                  >6. Selanjutnya Crew/Logistik Login Mobile Apps Employee lalu
+                  Pilih Menu Picking List.
+                </span>
+                <img
+                  src="img/dashboard_mobile.png"
+                  alt="Dashboard Mobile Picking List"
+                  class="w-[200px] object-cover mt-2"
+                />
+                <span class="mt-2 font-semibold"
+                  >7. Selanjutnya Crew/Logistik Pilih List yang statusnya sedang
+                  dihitung.
+                </span>
+                <img
+                  src="img/list_picking.png"
+                  alt="List Picking List"
+                  class="w-[200px] object-cover mt-2"
+                />
+                <span class="mt-2 font-semibold"
+                  >8. Selanjutnya Crew/Logistik setelah memilih Picking List
+                  yang akan dihitung, maka nanti didalam form mobile Picking
+                  List akan muncul list-list Product yang harus dihitung real
+                  qty sesuai dengan area nya. (Contohnya ada dibawah ini Picking
+                  list PL/20260622/001/PLG ).
+                </span>
+                <img
+                  src="img/form_mobile_picking.png"
+                  alt="Form Mobile Picking List"
+                  class="w-[200px] object-cover mt-2"
+                />
+                <span class="mt-2 font-semibold"
+                  >9. Klik Product yang akan dihitung, Jika Qty Tidak Sama Maka
+                  Akan Muncul Notes Yang Wajib Diisi Sebelum Klik Save.
+                </span>
+                <img
+                  src="img/jika_qty_tidaksama.png"
+                  alt="Jika Qty Tidak Sama Akan Muncul Notes yang wajib diisi"
+                  class="w-[200px] object-cover mt-2"
+                />
+                <span class="mt-2 font-semibold"
+                  >10. Berikut Contoh Perhitungan Produk pada Picking List
+                  PL/20260622/001/PLG (Semua Product pada Picking list ini Qty
+                  nya Sama Dengan Product yang tertera pada picking list,
+                  tinggal klik Simpan).</span
+                >
+                <img
+                  src="img/simpan_mobile.png"
+                  alt="Klik Simpan"
+                  class="w-[200px] object-cover mt-2"
+                />
+                <span class="mt-2 font-semibold">
+                  11. Jika Product sudah dihitung oleh tim Crew/Logistik dan
+                  sudah disimpan, maka pada list Picking List akan muncul tombol
+                  Stop Counting. Klik Stop Counting untuk menyimpan hasil
+                  perhitungan.
+                </span>
+                <img
+                  src="img/stop_counting.png"
+                  class="w-1/2 object-cover aspect-video mt-2"
+                />
+                <span class="mt-2 font-semibold">
+                  12. Jika Proses Hitung Selesai, maka selanjutnya untuk membuat
+                  Internal Transfer kembali ke halaman utama Picking List (Odoo
+                  Web) lalu klik Tombol Create Internal Transfer.
+                </span>
+                <img
+                  src="img/create_itf.png"
+                  class="w-1/2 object-cover aspect-video mt-2"
+                />
+                <span class="mt-2 font-semibold">
+                  13. Setelah Klik Create Internal Transfer, akan muncul Button
+                  View Internal Transfer (Untuk Melihat Draft ITF) dan Confirm
+                  All Internal Transfer (Untuk Mengupdate semua ITF dari picking
+                  list tersebut menjadi Ready).
+                </span>
+                <img
+                  src="img/setelah_klik_create_itf.png"
+                  class="w-1/2 object-cover aspect-video mt-2"
+                />
+                <span class="mt-2 font-semibold">
+                  14. Selanjutnya Klik Tombol View Internal Transfer untuk
+                  melihat Draft dari ITF yang akan dikirim.
+                </span>
+                <img
+                  src="img/klik_view_itf.png"
+                  class="w-1/2 object-cover aspect-video mt-2"
+                />
+                <span class="mt-2 font-semibold">
+                  15. Selanjutnya Klik Tombol Confirm All Internal Transfer
+                  untuk mengupdate semua ITF dari picking list tersebut menjadi
+                  Ready, Selanjutnya tinggal cek berkala (View Internal
+                  Transfer).
+                </span>
+                <img
+                  src="img/konfirmasi_itf.png"
+                  class="w-1/2 object-cover aspect-video mt-2"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <!-- Footer Area -->
@@ -675,126 +1272,157 @@
     </footer> -->
 
     <!-- Lightbox Modal for Fullscreen Images -->
-    <div id="imageLightbox"
-        class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-slate-950/95 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300 ease-out no-print">
-        <!-- Close button -->
-        <button id="lightboxClose"
-            class="absolute top-4 right-4 text-white/70 hover:text-white text-4xl font-light focus:outline-none transition p-4 cursor-pointer">&times;</button>
-        <!-- Lightbox Image Wrapper with zoom animation -->
-        <div class="max-w-[90%] max-h-[85%] flex flex-col items-center gap-3">
-            <img id="lightboxImg" src="" alt=""
-                class="max-w-full max-h-[80vh] rounded-lg shadow-2xl border border-white/10 scale-95 transition-transform duration-300 ease-out object-contain cursor-zoom-out">
-            <!-- Caption -->
-            <p id="lightboxCaption"
-                class="text-white/80 text-xs sm:text-sm font-medium tracking-wide text-center max-w-xl px-4"></p>
-        </div>
+    <div
+      id="imageLightbox"
+      class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-slate-950/95 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300 ease-out no-print"
+    >
+      <!-- Close button -->
+      <button
+        id="lightboxClose"
+        class="absolute top-4 right-4 text-white/70 hover:text-white text-4xl font-light focus:outline-none transition p-4 cursor-pointer"
+      >
+        &times;
+      </button>
+      <!-- Lightbox Image Wrapper with zoom animation -->
+      <div class="max-w-[90%] max-h-[85%] flex flex-col items-center gap-3">
+        <img
+          id="lightboxImg"
+          src=""
+          alt=""
+          class="max-w-full max-h-[80vh] rounded-lg shadow-2xl border border-white/10 scale-95 transition-transform duration-300 ease-out object-contain cursor-zoom-out"
+        />
+        <!-- Caption -->
+        <p
+          id="lightboxCaption"
+          class="text-white/80 text-xs sm:text-sm font-medium tracking-wide text-center max-w-xl px-4"
+        ></p>
+      </div>
     </div>
 
     <script>
-        (function () {
-            const initDropdown = () => {
-                const dropdownBtn = document.getElementById('dropdownBtn');
-                const dropdownMenu = document.getElementById('dropdownMenu');
-                const dropdownArrow = document.getElementById('dropdownArrow');
+      (function () {
+        const initDropdown = () => {
+          const dropdownBtn = document.getElementById("dropdownBtn");
+          const dropdownMenu = document.getElementById("dropdownMenu");
+          const dropdownArrow = document.getElementById("dropdownArrow");
 
-                if (dropdownBtn && dropdownMenu) {
-                    // Fungsi buka tutup pakai style display langsung
-                    dropdownBtn.addEventListener('click', function (e) {
-                        e.stopPropagation();
-                        if (dropdownMenu.style.display === 'none' || dropdownMenu.style.display === '') {
-                            dropdownMenu.style.display = 'block';
-                            if (dropdownArrow) dropdownArrow.style.transform = 'rotate(180deg)';
-                        } else {
-                            dropdownMenu.style.display = 'none';
-                            if (dropdownArrow) dropdownArrow.style.transform = 'rotate(0deg)';
-                        }
-                    });
+          if (dropdownBtn && dropdownMenu) {
+            // Fungsi buka tutup pakai style display langsung
+            dropdownBtn.addEventListener("click", function (e) {
+              e.stopPropagation();
+              if (
+                dropdownMenu.style.display === "none" ||
+                dropdownMenu.style.display === ""
+              ) {
+                dropdownMenu.style.display = "block";
+                if (dropdownArrow)
+                  dropdownArrow.style.transform = "rotate(180deg)";
+              } else {
+                dropdownMenu.style.display = "none";
+                if (dropdownArrow)
+                  dropdownArrow.style.transform = "rotate(0deg)";
+              }
+            });
 
-                    // Klik di luar menu otomatis menutup dropdown
-                    window.addEventListener('click', function (e) {
-                        if (!dropdownBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
-                            dropdownMenu.style.display = 'none';
-                            if (dropdownArrow) dropdownArrow.style.transform = 'rotate(0deg)';
-                        }
-                    });
+            // Klik di luar menu otomatis menutup dropdown
+            window.addEventListener("click", function (e) {
+              if (
+                !dropdownBtn.contains(e.target) &&
+                !dropdownMenu.contains(e.target)
+              ) {
+                dropdownMenu.style.display = "none";
+                if (dropdownArrow)
+                  dropdownArrow.style.transform = "rotate(0deg)";
+              }
+            });
 
-                    // Klik salah satu link di dalam dropdown otomatis menutup menu
-                    const links = dropdownMenu.querySelectorAll('a');
-                    links.forEach(function (link) {
-                        link.addEventListener('click', function () {
-                            dropdownMenu.style.display = 'none';
-                            if (dropdownArrow) dropdownArrow.style.transform = 'rotate(0deg)';
-                        });
-                    });
-                }
+            // Klik salah satu link di dalam dropdown otomatis menutup menu
+            const links = dropdownMenu.querySelectorAll("a");
+            links.forEach(function (link) {
+              link.addEventListener("click", function () {
+                dropdownMenu.style.display = "none";
+                if (dropdownArrow)
+                  dropdownArrow.style.transform = "rotate(0deg)";
+              });
+            });
+          }
+        };
+
+        const initLightbox = () => {
+          const imageLightbox = document.getElementById("imageLightbox");
+          const lightboxImg = document.getElementById("lightboxImg");
+          const lightboxClose = document.getElementById("lightboxClose");
+          const lightboxCaption = document.getElementById("lightboxCaption");
+
+          if (imageLightbox && lightboxImg && lightboxClose) {
+            const closeLightbox = () => {
+              lightboxImg.classList.remove("scale-100");
+              lightboxImg.classList.add("scale-95");
+              imageLightbox.classList.add("opacity-0", "pointer-events-none");
             };
 
-            const initLightbox = () => {
-                const imageLightbox = document.getElementById('imageLightbox');
-                const lightboxImg = document.getElementById('lightboxImg');
-                const lightboxClose = document.getElementById('lightboxClose');
-                const lightboxCaption = document.getElementById('lightboxCaption');
+            // Close on click close button
+            lightboxClose.addEventListener("click", closeLightbox);
 
-                if (imageLightbox && lightboxImg && lightboxClose) {
-                    const closeLightbox = () => {
-                        lightboxImg.classList.remove('scale-100');
-                        lightboxImg.classList.add('scale-95');
-                        imageLightbox.classList.add('opacity-0', 'pointer-events-none');
-                    };
+            // Close on click backdrop or the image itself
+            imageLightbox.addEventListener("click", function (e) {
+              if (e.target === imageLightbox || e.target === lightboxImg) {
+                closeLightbox();
+              }
+            });
 
-                    // Close on click close button
-                    lightboxClose.addEventListener('click', closeLightbox);
+            // Close on Escape key press
+            window.addEventListener("keydown", function (e) {
+              if (e.key === "Escape") {
+                closeLightbox();
+              }
+            });
 
-                    // Close on click backdrop or the image itself
-                    imageLightbox.addEventListener('click', function (e) {
-                        if (e.target === imageLightbox || e.target === lightboxImg) {
-                            closeLightbox();
-                        }
-                    });
+            // Attach zoom events to all main images
+            const images = document.querySelectorAll("main img");
+            images.forEach((img) => {
+              // Apply styling classes programmatically
+              img.classList.add(
+                "cursor-zoom-in",
+                "transition-all",
+                "duration-300",
+                "hover:scale-[1.015]",
+                "hover:brightness-105",
+              );
 
-                    // Close on Escape key press
-                    window.addEventListener('keydown', function (e) {
-                        if (e.key === 'Escape') {
-                            closeLightbox();
-                        }
-                    });
+              img.addEventListener("click", function () {
+                lightboxImg.src = this.src;
+                lightboxImg.alt = this.alt;
+                lightboxCaption.textContent =
+                  this.alt || "Visualisasi Panduan Pemerataan Stock";
 
-                    // Attach zoom events to all main images
-                    const images = document.querySelectorAll('main img');
-                    images.forEach(img => {
-                        // Apply styling classes programmatically
-                        img.classList.add('cursor-zoom-in', 'transition-all', 'duration-300', 'hover:scale-[1.015]', 'hover:brightness-105');
+                // Show overlay
+                imageLightbox.classList.remove(
+                  "opacity-0",
+                  "pointer-events-none",
+                );
 
-                        img.addEventListener('click', function () {
-                            lightboxImg.src = this.src;
-                            lightboxImg.alt = this.alt;
-                            lightboxCaption.textContent = this.alt || 'Visualisasi Panduan Pemerataan Stock';
+                // Scale up image with smooth transition
+                setTimeout(() => {
+                  lightboxImg.classList.remove("scale-95");
+                  lightboxImg.classList.add("scale-100");
+                }, 50);
+              });
+            });
+          }
+        };
 
-                            // Show overlay
-                            imageLightbox.classList.remove('opacity-0', 'pointer-events-none');
+        const init = () => {
+          initDropdown();
+          initLightbox();
+        };
 
-                            // Scale up image with smooth transition
-                            setTimeout(() => {
-                                lightboxImg.classList.remove('scale-95');
-                                lightboxImg.classList.add('scale-100');
-                            }, 50);
-                        });
-                    });
-                }
-            };
-
-            const init = () => {
-                initDropdown();
-                initLightbox();
-            };
-
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', init);
-            } else {
-                init();
-            }
-        })();
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", init);
+        } else {
+          init();
+        }
+      })();
     </script>
-</body>
-
+  </body>
 </html>
