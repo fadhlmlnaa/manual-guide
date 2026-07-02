@@ -59,7 +59,7 @@
     try {
         const origin = new URL(ref).origin;
 
-        if (origin !== allowed) {
+        if (origin !== allowed && origin !== window.location.origin) {
             deny();
             return;
         }
