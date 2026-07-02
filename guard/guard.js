@@ -2,7 +2,7 @@
     const allowed = 'https://app.mybintang.co.id';
 
     // ENV detection (clean way)
-    const ENV = location.hostname.includes('localhost') || location.hostname === '127.0.0.1'
+    const ENV = location.hostname.includes('localhost') || location.hostname === '127.0.0.1' || location.protocol === 'file:'
         ? 'dev'
         : 'prod';
 

@@ -1,0 +1,661 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manual Guide - Extend Garansi 2 Minggu</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+      @page {
+        size: A4;
+        margin: 20mm 15mm;
+      }
+      @media print {
+        body {
+          background-color: #ffffff;
+          color: #000000;
+          font-size: 11pt;
+        }
+        .no-print {
+          display: none !important;
+        }
+        .page-break-before {
+          page-break-before: always;
+        }
+        .page-break-inside-avoid {
+          page-break-inside: avoid;
+        }
+        .shadow-md,
+        .shadow-lg,
+        .shadow-sm,
+        .shadow-xl {
+          box-shadow: none !important;
+          border: 1px solid #e2e8f0;
+        }
+        img {
+          max-width: 100% !important;
+          page-break-inside: avoid;
+        }
+      }
+    </style>
+  </head>
+  <body
+    class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-blue-500 selection:text-white"
+  >
+    <header
+      class="bg-gradient-to-r from-slate-900 to-blue-950 text-white shadow-md"
+    >
+      <div
+        class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4"
+      >
+        <div>
+          <div
+            class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-blue-300 mb-1"
+          >
+            <span>Dokumentasi Sistem Claim & Warranty</span>
+            <span class="h-1 w-1 rounded-full bg-blue-300"></span>
+            <span>PT Bintang Internasional</span>
+          </div>
+          <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight">
+            Extend Garansi 2 Minggu
+          </h1>
+        </div>
+        <!-- <button
+          onclick="window.print()"
+          class="no-print self-start md:self-center bg-blue-600 hover:bg-blue-500 text-white font-medium text-sm px-4 py-2.5 rounded-lg transition shadow-sm inline-flex items-center gap-2 cursor-pointer"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="currentColor"
+            class="w-4 h-4"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0 1 10.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0 .229 1.258a1.791 1.791 0 0 1-1.753 2.112H7.864a1.791 1.791 0 0 1-1.753-2.112L6.34 18M18 10V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v4h12ZM12 14v4h.01"
+            />
+          </svg>
+          Cetak / Simpan PDF
+        </button> -->
+      </div>
+    </header>
+
+    <nav
+      class="no-print sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm"
+    >
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="flex items-center justify-between h-14">
+          <div
+            class="hidden md:flex items-center gap-2 shrink-0 pr-4 border-r border-slate-200"
+          >
+            <span
+              class="text-xs font-bold uppercase text-slate-400 tracking-wider"
+              >Daftar Isi</span
+            >
+          </div>
+
+          <div
+            class="flex items-center gap-1 sm:gap-2 overflow-x-auto py-2 w-full md:w-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          >
+            <a
+              href="#validation-no-stock"
+              class="whitespace-nowrap text-xs sm:text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-slate-50 px-3 py-1.5 rounded-md transition"
+              >1. Validasi Gagal Extend</a
+            >
+
+            <div class="w-px h-4 bg-slate-200 mx-1"></div>
+
+            <a
+              href="#popup-extend"
+              class="whitespace-nowrap text-xs sm:text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-slate-50 px-3 py-1.5 rounded-md transition"
+              >2. Pop-up Sukses Extend</a
+            >
+
+            <div class="w-px h-4 bg-slate-200 mx-1"></div>
+
+            <div class="relative inline-block text-left">
+              <button
+                id="dropdownBtn"
+                type="button"
+                class="flex items-center gap-1 whitespace-nowrap text-xs sm:text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-slate-50 px-3 py-1.5 rounded-md transition cursor-pointer"
+              >
+                3. Aturan & Aturan Logistik
+                <span
+                  id="dropdownArrow"
+                  class="inline-block text-[10px] transition-transform duration-200"
+                  >▼</span
+                >
+              </button>
+
+              <div
+                id="dropdownMenu"
+                style="display: none"
+                class="absolute right-0 md:left-0 top-full mt-2 w-56 bg-white border border-slate-200 rounded-lg shadow-lg py-1.5 z-50"
+              >
+                <a
+                  href="#tipe-garansi"
+                  class="block px-4 py-2 text-xs sm:text-sm text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition"
+                  >Tipe Klaim Garansi (CS)</a
+                >
+                <a
+                  href="#jalur-logistik"
+                  class="block px-4 py-2 text-xs sm:text-sm text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition"
+                  >Alur ITF (Gudang & Toko)</a
+                >
+                <a
+                  href="#pembuatan-po"
+                  class="block px-4 py-2 text-xs sm:text-sm text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition"
+                  >Alur Draft PO Otomatis</a
+                >
+                <!-- <div class="border-t border-slate-100 my-1"></div>
+                <a
+                  href="#task-product"
+                  class="block px-4 py-2 text-xs sm:text-sm text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition"
+                  >Master Product Task (60 Hari)</a
+                > -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+      <button
+        onclick="window.location.href = './index.html'"
+        class="bg-blue-600 hover:bg-blue-500 text-white font-medium text-sm px-4 py-2.5 rounded-lg transition shadow-sm inline-flex items-center gap-2 cursor-pointer mb-8"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+          class="w-4 h-4"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0 1 10.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0 .229 1.258a1.791 1.791 0 0 1-1.753 2.112H7.864a1.791 1.791 0 0 1-1.753-2.112L6.34 18M18 10V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v4h12ZM12 14v4h.01"
+          />
+        </svg>
+        Back to Manual Guide Garansi
+      </button>
+      <section class="space-y-10">
+        <div
+          id="validation-no-stock"
+          class="bg-white rounded-xl p-6 shadow-sm border border-slate-200/80 page-break-inside-avoid"
+        >
+          <div
+            class="flex items-start justify-between border-b border-slate-100 pb-4 mb-4"
+          >
+            <div class="flex items-center gap-2">
+              <div class="h-5 w-1 bg-red-600 rounded"></div>
+              <h2 class="text-lg font-bold text-slate-900">
+                1. Validasi: Produk Tidak Memiliki Stok & Tidak Bisa Di-extend
+              </h2>
+            </div>
+            <span
+              class="bg-red-50 text-red-700 text-xs font-semibold px-2.5 py-1 rounded-full"
+              >Kondisi Blokir</span
+            >
+          </div>
+          <div
+            class="prose prose-slate max-w-none text-sm text-slate-600 space-y-3"
+          >
+            <p>
+              Jika <strong>Produk A</strong> diajukan untuk proses retur oleh
+              customer, namun setelah dicek sistem ternyata produk tersebut
+              <strong>tidak memiliki stok secara global</strong> dan kondisi
+              datanya
+              <strong
+                >tidak memenuhi syarat untuk diperpanjang masa
+                garansinya</strong
+              >, maka sistem Odoo akan memunculkan pesan validasi
+              error/peringatan keras.
+            </p>
+
+            <div
+              class="mt-4 rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 max-w-3xl mx-auto"
+            >
+              <img
+                src="https://placehold.co/800x450/e2e8f0/475569?text=Gambar+Validasi+Error+Tidak+Ada+Stok"
+                alt="Screenshot Validasi No Stock & No Extend"
+                class="w-full object-cover aspect-video"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div
+          id="popup-extend"
+          class="bg-white rounded-xl p-6 shadow-sm border border-slate-200/80 page-break-inside-avoid"
+        >
+          <div
+            class="flex items-start justify-between border-b border-slate-100 pb-4 mb-4"
+          >
+            <div class="flex items-center gap-2">
+              <div class="h-5 w-1 bg-emerald-600 rounded"></div>
+              <h2 class="text-lg font-bold text-slate-900">
+                2. Pop-up: Penawaran Extend Garansi &lt; 2 Minggu
+              </h2>
+            </div>
+            <span
+              class="bg-emerald-50 text-emerald-700 text-xs font-semibold px-2.5 py-1 rounded-full"
+              >Kondisi Aktif</span
+            >
+          </div>
+          <div
+            class="prose prose-slate max-w-none text-sm text-slate-600 space-y-3"
+          >
+            <p>
+              Apabila produk tersebut dinyatakan dapat di-extend dengan syarat
+              utama yaitu
+              <strong
+                >sisa masa garansi produk saat ini kurang dari 2 minggu</strong
+              >, maka sistem akan menampilkan jendela
+              <em>pop-up konfirmasi</em>. Pop-up ini dipicu jika customer
+              menyatakan bersedia/ingin menunggu kedatangan barang yang sama.
+            </p>
+
+            <div
+              class="mt-4 rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 max-w-3xl mx-auto"
+            >
+              <img
+                src="https://placehold.co/800x450/e2e8f0/475569?text=Gambar+Pop-up+Konfirmasi+Extend+Garansi"
+                alt="Screenshot Pop up penawaran extend"
+                class="w-full object-cover aspect-video"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div
+          id="tipe-garansi"
+          class="bg-white rounded-xl p-6 shadow-sm border border-slate-200/80"
+        >
+          <div
+            class="border-b border-slate-100 pb-4 mb-4 flex items-center gap-2"
+          >
+            <div class="h-5 w-1 bg-blue-600 rounded"></div>
+            <h2 class="text-lg font-bold text-slate-900">
+              3. Aturan Pengisian Parameter Garansi oleh Customer Service (CS)
+            </h2>
+          </div>
+          <p class="text-xs text-slate-500 mb-4">
+            Saat pop-up disetujui, CS wajib memastikan data terisi berdasarkan
+            kategori jaminan yang di-claim sebagai berikut:
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+              <span
+                class="bg-blue-100 text-blue-800 text-xs font-bold px-2 py-0.5 rounded mb-2 inline-block"
+                >Kategori: Garansi Pembelian</span
+              >
+              <ul class="space-y-2 text-xs text-slate-600 mt-2">
+                <li>
+                  <strong class="text-slate-900">pos_order_id:</strong>
+                  Referensi nota order POS terkait.
+                </li>
+                <li>
+                  <strong class="text-slate-900">product_id / Qty:</strong> ID
+                  Produk yang di-claim dengan Default
+                  <span
+                    class="font-mono bg-white px-1 border border-slate-200 rounded"
+                    >qty = 1</span
+                  >.
+                </li>
+                <li>
+                  <strong class="text-slate-900 text-red-600"
+                    >Notes (Wajib):</strong
+                  >
+                  CS wajib mengisi alasan detail mengapa perpanjangan dilakukan.
+                </li>
+                <li>
+                  <strong class="text-slate-900">end_date_pembelian:</strong>
+                  Otomatis di-set
+                  <span class="underline font-semibold"
+                    >2 minggu (14 hari) dari hari ini</span
+                  >.
+                </li>
+                <li>
+                  <strong class="text-slate-900">end_date_pemakaian:</strong>
+                  Otomatis di-set
+                  <span class="underline font-semibold"
+                    >2 minggu (14 hari) dari hari ini</span
+                  >.
+                </li>
+              </ul>
+            </div>
+
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+              <span
+                class="bg-indigo-100 text-indigo-800 text-xs font-bold px-2 py-0.5 rounded mb-2 inline-block"
+                >Kategori: Garansi Pemakaian</span
+              >
+              <ul class="space-y-2 text-xs text-slate-600 mt-2">
+                <li>
+                  <strong class="text-slate-900">pos_order_id:</strong>
+                  Referensi nota order POS terkait.
+                </li>
+                <li>
+                  <strong class="text-slate-900">product_id / Qty:</strong> ID
+                  Produk yang di-claim dengan Default
+                  <span
+                    class="font-mono bg-white px-1 border border-slate-200 rounded"
+                    >qty = 1</span
+                  >.
+                </li>
+                <li>
+                  <strong class="text-slate-900 text-red-600"
+                    >Notes (Wajib):</strong
+                  >
+                  CS wajib mengisi alasan detail mengapa perpanjangan dilakukan.
+                </li>
+                <li>
+                  <strong class="text-slate-900">end_date_pemakaian:</strong>
+                  Otomatis di-set
+                  <span class="underline font-semibold"
+                    >2 minggu (14 hari) dari hari ini</span
+                  >.
+                </li>
+                <li class="text-slate-400 italic">
+                  • Field end_date_pembelian tidak mengalami perubahan.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div
+            class="mt-6 rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 max-w-3xl mx-auto"
+          >
+            <img
+              src="https://placehold.co/800x450/e2e8f0/475569?text=Gambar+Form+Isian+Extend+Garansi+CS"
+              alt="Screenshot Form Input CS"
+              class="w-full object-cover aspect-video"
+            />
+          </div>
+        </div>
+
+        <div
+          id="jalur-logistik"
+          class="bg-white rounded-xl p-6 shadow-sm border border-slate-200/80 page-break-before"
+        >
+          <div
+            class="flex items-start justify-between border-b border-slate-100 pb-4 mb-4"
+          >
+            <div class="flex items-center gap-2">
+              <div class="h-5 w-1 bg-amber-600 rounded"></div>
+              <h2 class="text-lg font-bold text-slate-900">
+                4. Alur Otomasi Logistik: Internal Transfer (ITF)
+              </h2>
+            </div>
+            <span
+              class="bg-amber-50 text-amber-700 text-xs font-bold px-2.5 py-1 rounded-full"
+              >Stok Ready</span
+            >
+          </div>
+          <div class="space-y-4 text-xs sm:text-sm text-slate-600">
+            <p>
+              Apabila stok produk tersedia di dalam sistem Gudang Pusat atau
+              Operating Unit (OU) terdekat, Odoo akan otomatis menerbitkan
+              dokumen <strong>ITF (Internal Transfer)</strong> dengan aturan
+              penentuan rute berikut:
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs mt-2">
+              <div
+                class="p-4 bg-slate-50 rounded-xl border-l-4 border-blue-600"
+              >
+                <span class="font-bold text-slate-900 block mb-1"
+                  >Rute A: Stok Tersedia di Gudang</span
+                >
+                <p class="text-slate-600">
+                  Sistem otomatis membuat dokumen
+                  <strong>IT TF Gudang Parangloe</strong> menuju ke lokasi
+                  <strong>OU Transit terkait</strong> (Lokasi unit tempat klaim
+                  dilakukan).
+                </p>
+              </div>
+              <div
+                class="p-4 bg-slate-50 rounded-xl border-l-4 border-indigo-600"
+              >
+                <span class="font-bold text-slate-900 block mb-1"
+                  >Rute B: Stok Tersedia di Toko Terdekat</span
+                >
+                <p class="text-slate-600">
+                  Sistem otomatis membuat dokumen
+                  <strong>IT TF Toko OU Terdekat</strong> menuju ke lokasi
+                  <strong>OU Transit terkait</strong>.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="mt-4 rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 max-w-3xl mx-auto"
+            >
+              <img
+                src="https://placehold.co/800x450/e2e8f0/475569?text=Gambar+Dokumen+Internal+Transfer+ITF"
+                alt="Screenshot Dokumen ITF Terbentuk"
+                class="w-full object-cover aspect-video"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div
+          id="pembuatan-po"
+          class="bg-white rounded-xl p-6 shadow-sm border border-slate-200/80 page-break-inside-avoid"
+        >
+          <div
+            class="flex items-start justify-between border-b border-slate-100 pb-4 mb-4"
+          >
+            <div class="flex items-center gap-2">
+              <div class="h-5 w-1 bg-red-600 rounded"></div>
+              <h2 class="text-lg font-bold text-slate-900">
+                5. Aturan Pembuatan Draft Purchase Order (PO) Otomatis
+              </h2>
+            </div>
+            <span
+              class="bg-red-50 text-red-700 text-xs font-bold px-2.5 py-1 rounded-full"
+              >Stok Kosong / Kritis</span
+            >
+          </div>
+          <div class="text-xs sm:text-sm text-slate-600 space-y-3">
+            <p>
+              Sistem akan memicu pembuatan dokumen <strong>Draft PO</strong> ke
+              vendor apabila kondisi inventori berada pada skenario kritis di
+              bawah ini:
+            </p>
+
+            <div
+              class="bg-red-50/50 p-4 rounded-xl border border-red-200 text-xs space-y-2"
+            >
+              <p class="font-semibold text-red-900">
+                Kondisi Trigger PO Otomatis:
+              </p>
+              <ol
+                class="list-decimal pl-5 space-y-1 text-slate-700 font-medium"
+              >
+                <li>
+                  Stok fisik/available di OU Lokasi Claim bernilai
+                  <span class="text-red-600 font-bold">KOSONG</span>.
+                </li>
+                <li>
+                  Flag parameter
+                  <span
+                    class="bg-white border px-1 rounded font-mono text-indigo-700"
+                    >is_extend == TRUE</span
+                  >.
+                </li>
+                <li>
+                  Stok fisik di Gudang Parangloe
+                  <span class="text-red-600 font-bold">KOSONG</span>.
+                </li>
+                <li>
+                  Stok fisik di seluruh Toko/OU terdekat
+                  <span class="text-red-600 font-bold">KOSONG</span>.
+                </li>
+                <li>
+                  <strong class="text-slate-900 text-amber-700">ATAU:</strong>
+                  Jumlah total stok produk secara global berada di bawah target
+                  kebutuhan proyeksi penjualan selama
+                  <strong>60 hari kedepan</strong> (<span
+                    class="font-bold text-amber-700"
+                    >Global Stock &lt; Kebutuhan 60 Hari</span
+                  >).
+                </li>
+              </ol>
+            </div>
+
+            <div
+              class="mt-4 rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 max-w-3xl mx-auto"
+            >
+              <img
+                src="https://placehold.co/800x450/e2e8f0/475569?text=Gambar+Draft+Purchase+Order+PO+Otomatis"
+                alt="Screenshot Dokumen Draft PO Terbentuk"
+                class="w-full object-cover aspect-video"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- <div
+          id="task-product"
+          class="bg-white rounded-xl p-6 shadow-sm border border-slate-200/80 page-break-inside-avoid"
+        >
+          <div
+            class="flex items-start justify-between border-b border-slate-100 pb-4 mb-4"
+          >
+            <div class="flex items-center gap-2">
+              <div class="h-5 w-1 bg-indigo-600 rounded"></div>
+              <h2 class="text-lg font-bold text-slate-900">
+                6. Modul Task / Fitur Baru: Monitoring Kebutuhan Produk 60 Hari
+              </h2>
+            </div>
+            <span
+              class="bg-indigo-50 text-indigo-700 text-xs font-bold px-2.5 py-1 rounded-full"
+              >Developer Task</span
+            >
+          </div>
+          <div class="text-xs sm:text-sm text-slate-600 space-y-3">
+            <p>
+              Telah dibuatkan sebuah penugasan (*Task*) sistem baru untuk
+              menampilkan visualisasi data analisis prediksi ketersediaan
+              produk:
+            </p>
+            <div
+              class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs"
+            >
+              <p class="font-bold text-slate-900 mb-1">Lokasi Fitur:</p>
+              <p class="text-slate-600 mb-3">
+                Dapat diakses melalui menu
+                <span class="font-semibold text-slate-800">Master Product</span>
+                atau pada dashboard fungsional menu internal baru.
+              </p>
+              <p class="font-bold text-slate-900 mb-1">Output Kegunaan:</p>
+              <p class="text-slate-600">
+                Menghitung dan memunculkan secara real-time nominal kuantitas
+                aman / kebutuhan stock barang yang harus dipenuhi untuk
+                meng-cover operasional retail selama
+                <strong>60 hari kedepan</strong> berdasarkan kalkulasi laju
+                penjualan historis harian.
+              </p>
+            </div>
+
+            <div
+              class="mt-4 rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 max-w-3xl mx-auto"
+            >
+              <img
+                src="https://placehold.co/800x450/e2e8f0/475569?text=Gambar+Fitur+Baru+Kebutuhan+60+Hari+Master+Product"
+                alt="Screenshot Interface Master Product Fitur Baru"
+                class="w-full object-cover aspect-video"
+              />
+            </div>
+          </div>
+        </div> -->
+      </section>
+    </main>
+    <!-- 
+    <footer
+      class="bg-slate-900 text-slate-400 mt-16 border-t border-slate-800 no-print"
+    >
+      <div class="max-w-6xl mx-auto px-6 py-8 text-center text-xs space-y-2">
+        <p class="font-semibold text-slate-300">
+          Hak Cipta &copy; 2026 PT Bintang Internasional. Seluruh Hak Cipta
+          Dilindungi Undang-Undang.
+        </p>
+        <p>
+          Sistem Odoo Enterprise Warranty Custom Module Framework — Operational
+          Manual Guide.
+        </p>
+      </div>
+    </footer> -->
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const dropdownBtn = document.getElementById("dropdownBtn");
+        const dropdownMenu = document.getElementById("dropdownMenu");
+        const dropdownArrow = document.getElementById("dropdownArrow");
+        const navContainer = dropdownBtn
+          ? dropdownBtn.closest(".overflow-x-auto")
+          : null;
+
+        function closeDropdown() {
+          if (dropdownMenu) dropdownMenu.style.display = "none";
+          if (dropdownArrow) dropdownArrow.style.transform = "rotate(0deg)";
+          if (navContainer) {
+            navContainer.classList.remove("overflow-visible");
+            navContainer.classList.add("overflow-x-auto");
+          }
+        }
+
+        function openDropdown() {
+          if (dropdownMenu) dropdownMenu.style.display = "block";
+          if (dropdownArrow) dropdownArrow.style.transform = "rotate(180deg)";
+          if (navContainer) {
+            navContainer.classList.remove("overflow-x-auto");
+            navContainer.classList.add("overflow-visible");
+          }
+        }
+
+        if (dropdownBtn && dropdownMenu) {
+          // Toggle Dropdown menu via style display
+          dropdownBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            if (
+              dropdownMenu.style.display === "none" ||
+              dropdownMenu.style.display === ""
+            ) {
+              openDropdown();
+            } else {
+              closeDropdown();
+            }
+          });
+
+          // Close dropdown if user clicks outside
+          window.addEventListener("click", function (e) {
+            if (
+              !dropdownBtn.contains(e.target) &&
+              !dropdownMenu.contains(e.target)
+            ) {
+              closeDropdown();
+            }
+          });
+
+          // Close dropdown when one of the item links is clicked
+          const links = dropdownMenu.querySelectorAll("a");
+          links.forEach(function (link) {
+            link.addEventListener("click", function () {
+              closeDropdown();
+            });
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
