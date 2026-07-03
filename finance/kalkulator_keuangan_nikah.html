@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator & Tracker Keuangan Nikah</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen">
+
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-emerald-600 via-teal-600 to-indigo-600 text-white shadow-lg py-6 mb-8">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <h1 class="text-3xl font-extrabold tracking-tight">Rencana Keuangan Nikah 2 Tahun</h1>
+                <p class="text-teal-100 mt-1">Kelola gaji Rp11 Juta, lunasin cicilan, dan capai target pernikahan.</p>
+            </div>
+            <div class="bg-white/10 backdrop-blur-md px-4 py-2 rounded-lg border border-white/20 text-center">
+                <span class="text-xs uppercase tracking-wider text-teal-200 block">Status Target</span>
+                <span id="target-countdown" class="text-lg font-bold">Menghitung...</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 pb-16">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- Kiri: Input Finansial -->
+            <div class="lg:col-span-2 space-y-6">
+                
+                <!-- Card 1: Parameter Pendapatan & Pengeluaran -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                    <h2 class="text-xl font-bold mb-4 text-slate-800 flex items-center gap-2">
+                        <span class="p-2 bg-emerald-50 text-emerald-600 rounded-lg">💰</span>
+                        Arus Kas Utama
+                    </h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-600 mb-1">Pendapatan Bulanan (Gaji)</label>
+                            <div class="relative">
+                                <span class="absolute left-3 top-2.5 text-slate-400 font-medium">Rp</span>
+                                <input type="number" id="input-salary" class="w-full pl-10 pr-3 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500" value="11000000">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-600 mb-1">Jatah Jajan & Hidup Bulanan</label>
+                            <div class="relative">
+                                <span class="absolute left-3 top-2.5 text-slate-400 font-medium">Rp</span>
+                                <input type="number" id="input-spending" class="w-full pl-10 pr-3 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500" value="1672000">
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-md font-bold mt-6 mb-3 text-slate-700">Pengeluaran Wajib Bulanan</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-500 mb-1">Cicilan Laptop (Set 0 jika lunas)</label>
+                            <div class="relative">
+                                <span class="absolute left-3 top-2 text-slate-400 text-sm">Rp</span>
+                                <input type="number" id="input-laptop" class="w-full pl-10 pr-3 py-1.5 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 text-sm" value="1200000">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-500 mb-1">Membership Gym</label>
+                            <div class="relative">
+                                <span class="absolute left-3 top-2 text-slate-400 text-sm">Rp</span>
+                                <input type="number" id="input-gym" class="w-full pl-10 pr-3 py-1.5 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 text-sm" value="278000">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-500 mb-1">Wifi Rumah</label>
+                            <div class="relative">
+                                <span class="absolute left-3 top-2 text-slate-400 text-sm">Rp</span>
+                                <input type="number" id="input-wifi" class="w-full pl-10 pr-3 py-1.5 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 text-sm" value="250000">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-500 mb-1">Kasih Orang Tua</label>
+                            <div class="relative">
+                                <span class="absolute left-3 top-2 text-slate-400 text-sm">Rp</span>
+                                <input type="number" id="input-parents" class="w-full pl-10 pr-3 py-1.5 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 text-sm" value="600000">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Pengatur Alokasi Tabungan -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-xl font-bold text-slate-800 flex items-center gap-2">
+                            <span class="p-2 bg-indigo-50 text-indigo-600 rounded-lg">⚖️</span>
+                            Porsi Tabungan (Sisa Bersih)
+                        </h2>
+                        <span id="savings-pool-display" class="px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full font-bold text-sm">Rp0</span>
+                    </div>
+
+                    <p class="text-xs text-slate-500 mb-6">Sesuaikan persentase alokasi di bawah ini. Pastikan total persentase tepat 100%.</p>
+
+                    <div class="space-y-4">
+                        <!-- Slider Emas -->
+                        <div>
+                            <div class="flex justify-between text-sm font-semibold mb-1">
+                                <span class="text-amber-600">Pos Emas (Mahar)</span>
+                                <span id="pct-emas-label">28.5%</span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <input type="range" id="slider-emas" min="0" max="100" step="0.5" value="28.5" class="w-full h-2 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-amber-500">
+                                <span id="val-emas" class="text-sm font-bold text-slate-700 w-24 text-right">Rp0</span>
+                            </div>
+                        </div>
+
+                        <!-- Slider RDPU -->
+                        <div>
+                            <div class="flex justify-between text-sm font-semibold mb-1">
+                                <span class="text-teal-600">Pos RDPU / Deposito (Pesta)</span>
+                                <span id="pct-rdpu-label">64.3%</span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <input type="range" id="slider-rdpu" min="0" max="100" step="0.5" value="64.3" class="w-full h-2 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-teal-500">
+                                <span id="val-rdpu" class="text-sm font-bold text-slate-700 w-24 text-right">Rp0</span>
+                            </div>
+                        </div>
+
+                        <!-- Slider Darurat -->
+                        <div>
+                            <div class="flex justify-between text-sm font-semibold mb-1">
+                                <span class="text-indigo-600">Pos Dana Darurat</span>
+                                <span id="pct-darurat-label">7.2%</span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <input type="range" id="slider-darurat" min="0" max="100" step="0.5" value="7.2" class="w-full h-2 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-indigo-500">
+                                <span id="val-darurat" class="text-sm font-bold text-slate-700 w-24 text-right">Rp0</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-3 border-t border-slate-100 flex justify-between items-center text-sm">
+                            <span class="font-semibold text-slate-600">Total Persentase:</span>
+                            <span id="pct-total" class="font-bold text-emerald-600">100%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Target Simulasi Pernikahan -->
+                <div class="bg-gradient-to-br from-indigo-900 to-slate-900 text-white p-6 rounded-2xl shadow-lg">
+                    <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+                        <span>💍</span> Simulasi Target Pernikahan
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-xs uppercase tracking-wider text-indigo-200 font-semibold mb-1">Target Total Biaya Nikah</label>
+                                <div class="relative">
+                                    <span class="absolute left-3 top-2 text-slate-400 font-medium text-sm">Rp</span>
+                                    <input type="number" id="input-target-cost" class="w-full pl-10 pr-3 py-1.5 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 text-white font-bold" value="80000000">
+                                </div>
+                            </div>
+                            <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+                                <div class="text-xs text-indigo-200">Estimasi Kebutuhan Waktu:</div>
+                                <div id="months-estimate" class="text-3xl font-extrabold text-teal-300 mt-1">-- Bulan</div>
+                                <div class="text-xxs text-indigo-300 mt-1">*Berdasarkan akumulasi alokasi Emas + RDPU</div>
+                            </div>
+                        </div>
+                        <div class="space-y-3 text-sm text-indigo-100">
+                            <div class="flex justify-between border-b border-white/10 pb-1">
+                                <span>Alokasi Gabungan Bulanan:</span>
+                                <span id="sim-monthly-save" class="font-bold text-white">Rp0</span>
+                            </div>
+                            <div class="flex justify-between border-b border-white/10 pb-1">
+                                <span>Total Terkumpul 1 Tahun:</span>
+                                <span id="sim-1year-save" class="font-bold text-teal-300">Rp0</span>
+                            </div>
+                            <div class="flex justify-between pb-1">
+                                <span>Total Terkumpul 2 Tahun:</span>
+                                <span id="sim-2year-save" class="font-bold text-teal-300">Rp0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Kanan: Visualisasi Ringkasan & Grafik -->
+            <div class="space-y-6">
+                
+                <!-- Card 4: Summary Card -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 text-center">
+                    <span class="text-xs uppercase tracking-widest text-slate-400 font-bold">Total Tabungan Bulanan</span>
+                    <h2 id="summary-total-savings" class="text-3xl font-extrabold text-indigo-600 mt-1">Rp0</h2>
+                    <p class="text-xs text-slate-500 mt-1">Setara <span id="summary-savings-ratio" class="font-bold text-emerald-600">0%</span> dari total pendapatan bulanan</p>
+                </div>
+
+                <!-- Card 5: Grafik Alokasi -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                    <h3 class="text-md font-bold mb-4 text-slate-800 text-center">Visualisasi Pembagian Dana</h3>
+                    <div class="relative h-64 flex justify-center items-center">
+                        <canvas id="allocationChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Card 6: Kelebihan Metode Ini -->
+                <div class="bg-emerald-50 border border-emerald-100 p-6 rounded-2xl text-emerald-800">
+                    <h4 class="font-bold text-sm mb-2 flex items-center gap-1">
+                        <span>💡</span> Tips Sukses Menabung 2 Tahun:
+                    </h4>
+                    <ul class="text-xs space-y-2 list-disc list-inside">
+                        <li><b>Autodebet:</b> Transfer langsung jatah Rp7 Juta di awal gajian biar gak terpakai jajan.</li>
+                        <li><b>Sanksi Kredit:</b> Jangan menambah kredit konsumtif baru sebelum nikah terlaksana.</li>
+                        <li><b>Sinergi Jago & Bibit:</b> Hubungkan kantong Jago ke Bibit untuk kemudahan investasi otomatis.</li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Bagian Bawah: Pencatatan Riwayat Bulanan -->
+        <div class="mt-8 bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-800 flex items-center gap-2">
+                        <span class="p-2 bg-indigo-50 text-indigo-600 rounded-lg">📅</span>
+                        Riwayat Tabungan Riil Bulanan
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">Input data riil di sini setiap bulan untuk merekam kemajuan tabungan nikah lu.</p>
+                </div>
+                <div class="flex gap-2">
+                    <button id="btn-export" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl text-sm transition flex items-center gap-1">
+                        📥 Ekspor ke Excel (CSV)
+                    </button>
+                    <button id="btn-add-log" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl text-sm transition flex items-center gap-1">
+                        ➕ Tambah Bulan Baru
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tabel Riwayat -->
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="border-b border-slate-100 text-slate-400 text-xs uppercase tracking-wider font-semibold">
+                            <th class="py-3 px-4">Bulan / Tahun</th>
+                            <th class="py-3 px-4 text-right">Tabungan Emas</th>
+                            <th class="py-3 px-4 text-right">Tabungan RDPU</th>
+                            <th class="py-3 px-4 text-right">Dana Darurat</th>
+                            <th class="py-3 px-4 text-right">Total Tabungan</th>
+                            <th class="py-3 px-4 text-center">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="log-table-body" class="text-sm">
+                        <!-- Diisi otomatis oleh Javascript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 text-center text-xs">
+        <p>© 2026 Dashboard Keuangan Nikah Mandiri. Dibuat khusus buat membantu langkah finansial lu, bro!</p>
+    </footer>
+
+    <script>
+        // Data inisiasi default untuk disimpan di LocalStorage
+        const defaultLogs = [
+            { id: 1, month: "Juli 2026", emas: 2000000, rdpu: 4500000, darurat: 500000 },
+            { id: 2, month: "Agustus 2026", emas: 2000000, rdpu: 4500000, darurat: 500000 }
+        ];
+
+        // Ambil data dari LocalStorage atau buat baru jika kosong
+        let logs = JSON.parse(localStorage.getItem('wedding_savings_logs')) || defaultLogs;
+
+        // Inisialisasi Chart.js
+        let ctx = document.getElementById('allocationChart').getContext('2d');
+        let allocationChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Emas (Mahar)', 'RDPU / Deposito', 'Dana Darurat'],
+                datasets: [{
+                    data: [2000000, 4500000, 500000],
+                    backgroundColor: ['#f59e0b', '#14b8a6', '#6366f1'],
+                    borderWidth: 2,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            font: { family: 'Plus Jakarta Sans', size: 11 },
+                            boxWidth: 12
+                        }
+                    }
+                },
+                cutout: '70%'
+            }
+        });
+
+        // Format angka ke format mata uang Rupiah
+        function formatRupiah(num) {
+            return new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                maximumFractionDigits: 0
+            }).format(num);
+        }
+
+        // Hitung Keuangan & Update DOM secara real-time
+        function calculateFinances() {
+            // Input data
+            const salary = parseFloat(document.getElementById('input-salary').value) || 0;
+            const spending = parseFloat(document.getElementById('input-spending').value) || 0;
+            const laptop = parseFloat(document.getElementById('input-laptop').value) || 0;
+            const gym = parseFloat(document.getElementById('input-gym').value) || 0;
+            const wifi = parseFloat(document.getElementById('input-wifi').value) || 0;
+            const parents = parseFloat(document.getElementById('input-parents').value) || 0;
+
+            const targetCost = parseFloat(document.getElementById('input-target-cost').value) || 80000000;
+
+            // Hitung Pengeluaran Wajib & Sisa Tabungan
+            const totalWajib = laptop + gym + wifi + parents;
+            const totalTabungan = Math.max(0, salary - totalWajib - spending);
+            
+            document.getElementById('savings-pool-display').innerText = formatRupiah(totalTabungan);
+            document.getElementById('summary-total-savings').innerText = formatRupiah(totalTabungan);
+            
+            const savingsRatio = salary > 0 ? ((totalTabungan / salary) * 100).toFixed(0) : 0;
+            document.getElementById('summary-savings-ratio').innerText = savingsRatio + "%";
+
+            // Alokasi Slider Persen
+            let pctEmas = parseFloat(document.getElementById('slider-emas').value);
+            let pctRdpu = parseFloat(document.getElementById('slider-rdpu').value);
+            let pctDarurat = parseFloat(document.getElementById('slider-darurat').value);
+
+            // Validasi Persentase agar total 100%
+            let totalPct = pctEmas + pctRdpu + pctDarurat;
+            document.getElementById('pct-total').innerText = totalPct.toFixed(1) + "%";
+            if (Math.abs(totalPct - 100) > 0.1) {
+                document.getElementById('pct-total').className = "font-bold text-red-500";
+            } else {
+                document.getElementById('pct-total').className = "font-bold text-emerald-600";
+            }
+
+            // Hitung nominal masing-masing pos
+            const valEmas = Math.round(totalTabungan * (pctEmas / 100));
+            const valRdpu = Math.round(totalTabungan * (pctRdpu / 100));
+            const valDarurat = Math.round(totalTabungan * (pctDarurat / 100));
+
+            // Update Label Nominal
+            document.getElementById('val-emas').innerText = formatRupiah(valEmas);
+            document.getElementById('val-rdpu').innerText = formatRupiah(valRdpu);
+            document.getElementById('val-darurat').innerText = formatRupiah(valDarurat);
+
+            document.getElementById('pct-emas-label').innerText = pctEmas.toFixed(1) + "%";
+            document.getElementById('pct-rdpu-label').innerText = pctRdpu.toFixed(1) + "%";
+            document.getElementById('pct-darurat-label').innerText = pctDarurat.toFixed(1) + "%";
+
+            // Simulasi Pernikahan
+            const monthlyJointSavings = valEmas + valRdpu; // Gabungan Emas dan RDPU untuk nikah
+            document.getElementById('sim-monthly-save').innerText = formatRupiah(monthlyJointSavings);
+            document.getElementById('sim-1year-save').innerText = formatRupiah(monthlyJointSavings * 12);
+            document.getElementById('sim-2year-save').innerText = formatRupiah(monthlyJointSavings * 24);
+
+            let monthsNeeded = "--";
+            if (monthlyJointSavings > 0) {
+                monthsNeeded = Math.ceil(targetCost / monthlyJointSavings);
+                document.getElementById('months-estimate').innerText = monthsNeeded + " Bulan";
+                document.getElementById('target-countdown').innerText = "Butuh " + monthsNeeded + " Bulan Lagi";
+                document.getElementById('target-countdown').className = "text-lg font-bold text-teal-300";
+            } else {
+                document.getElementById('months-estimate').innerText = "-- Bulan";
+                document.getElementById('target-countdown').innerText = "Alokasi Nabung Kosong";
+                document.getElementById('target-countdown').className = "text-lg font-bold text-red-300";
+            }
+
+            // Update data grafik
+            allocationChart.data.datasets[0].data = [valEmas, valRdpu, valDarurat];
+            allocationChart.update();
+        }
+
+        // Kunci Slider agar balance dinamis (Opsional: memudahkan user input)
+        // Agar jika digeser, sisanya didistribusikan ke yang lain sehingga total selalu 100%
+        function balanceSliders(activeSlider) {
+            let valEmas = parseFloat(document.getElementById('slider-emas').value);
+            let valRdpu = parseFloat(document.getElementById('slider-rdpu').value);
+            let valDarurat = parseFloat(document.getElementById('slider-darurat').value);
+
+            let diff = 100 - (valEmas + valRdpu + valDarurat);
+
+            if (activeSlider === 'emas') {
+                valRdpu += diff;
+                if (valRdpu < 0) {
+                    valDarurat += valRdpu;
+                    valRdpu = 0;
+                }
+            } else if (activeSlider === 'rdpu') {
+                valEmas += diff;
+                if (valEmas < 0) {
+                    valDarurat += valEmas;
+                    valEmas = 0;
+                }
+            } else if (activeSlider === 'darurat') {
+                valRdpu += diff;
+                if (valRdpu < 0) {
+                    valEmas += valRdpu;
+                    valRdpu = 0;
+                }
+            }
+
+            // Tetapkan kembali nilai slider setelah disesuaikan
+            document.getElementById('slider-emas').value = Math.max(0, Math.min(100, valEmas));
+            document.getElementById('slider-rdpu').value = Math.max(0, Math.min(100, valRdpu));
+            document.getElementById('slider-darurat').value = Math.max(0, Math.min(100, valDarurat));
+
+            calculateFinances();
+        }
+
+        // Render tabel riwayat
+        function renderLogs() {
+            const tableBody = document.getElementById('log-table-body');
+            tableBody.innerHTML = "";
+
+            logs.forEach((log) => {
+                const total = log.emas + log.rdpu + log.darurat;
+                const row = document.createElement('tr');
+                row.className = "border-b border-slate-100 hover:bg-slate-50 transition";
+                row.innerHTML = `
+                    <td class="py-4 px-4 font-semibold text-slate-700">${log.month}</td>
+                    <td class="py-4 px-4 text-right text-amber-600 font-medium">${formatRupiah(log.emas)}</td>
+                    <td class="py-4 px-4 text-right text-teal-600 font-medium">${formatRupiah(log.rdpu)}</td>
+                    <td class="py-4 px-4 text-right text-indigo-600 font-medium">${formatRupiah(log.darurat)}</td>
+                    <td class="py-4 px-4 text-right font-bold text-slate-800">${formatRupiah(total)}</td>
+                    <td class="py-4 px-4 text-center">
+                        <button onclick="deleteLog(${log.id})" class="text-red-500 hover:text-red-700 hover:bg-red-50 px-2 py-1 rounded transition text-xs">
+                            Hapus
+                        </button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Tambah baris riwayat bulan baru
+        document.getElementById('btn-add-log').addEventListener('click', () => {
+            const monthInput = prompt("Masukkan Bulan & Tahun (Contoh: September 2026):");
+            if (!monthInput) return;
+
+            // Ambil nominal alokasi bulanan saat ini sebagai default value input baru
+            const valEmas = Math.round((parseFloat(document.getElementById('summary-total-savings').innerText.replace(/[^0-9]/g, '')) || 0) * (parseFloat(document.getElementById('slider-emas').value) / 100));
+            const valRdpu = Math.round((parseFloat(document.getElementById('summary-total-savings').innerText.replace(/[^0-9]/g, '')) || 0) * (parseFloat(document.getElementById('slider-rdpu').value) / 100));
+            const valDarurat = Math.round((parseFloat(document.getElementById('summary-total-savings').innerText.replace(/[^0-9]/g, '')) || 0) * (parseFloat(document.getElementById('slider-darurat').value) / 100));
+
+            const emasInput = parseFloat(prompt("Nominal Tabungan Emas:", valEmas)) || 0;
+            const rdpuInput = parseFloat(prompt("Nominal Tabungan RDPU / Deposito:", valRdpu)) || 0;
+            const daruratInput = parseFloat(prompt("Nominal Dana Darurat:", valDarurat)) || 0;
+
+            const newLog = {
+                id: Date.now(),
+                month: monthInput,
+                emas: emasInput,
+                rdpu: rdpuInput,
+                darurat: daruratInput
+            };
+
+            logs.push(newLog);
+            localStorage.setItem('wedding_savings_logs', JSON.stringify(logs));
+            renderLogs();
+        });
+
+        // Hapus log bulanan
+        window.deleteLog = function(id) {
+            if (confirm("Apakah lu yakin pengen menghapus log bulan ini?")) {
+                logs = logs.filter(log => log.id !== id);
+                localStorage.setItem('wedding_savings_logs', JSON.stringify(logs));
+                renderLogs();
+            }
+        };
+
+        // Ekspor ke CSV agar bisa dibuka di Google Sheets/Excel
+        document.getElementById('btn-export').addEventListener('click', () => {
+            let csvContent = "data:text/csv;charset=utf-8,";
+            csvContent += "Bulan/Tahun,Tabungan Emas,Tabungan RDPU,Dana Darurat,Total Ditabung\n";
+
+            logs.forEach(log => {
+                const total = log.emas + log.rdpu + log.darurat;
+                csvContent += `"${log.month}",${log.emas},${log.rdpu},${log.darurat},${total}\n`;
+            });
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "Rencana_Tabungan_Nikah.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+
+        // Event Listeners untuk slider & inputs
+        document.getElementById('slider-emas').addEventListener('input', () => balanceSliders('emas'));
+        document.getElementById('slider-rdpu').addEventListener('input', () => balanceSliders('rdpu'));
+        document.getElementById('slider-darurat').addEventListener('input', () => balanceSliders('darurat'));
+
+        const allInputs = ['input-salary', 'input-spending', 'input-laptop', 'input-gym', 'input-wifi', 'input-parents', 'input-target-cost'];
+        allInputs.forEach(id => {
+            document.getElementById(id).addEventListener('input', calculateFinances);
+        });
+
+        // Inisialisasi awal saat halaman dibuka
+        calculateFinances();
+        renderLogs();
+    </script>
+</body>
+</html>
