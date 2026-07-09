@@ -1,0 +1,729 @@
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Panduan &amp; Simulator Fitur Temporary Stock (Odoo - Jubelio)
+    </title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- FontAwesome for beautiful icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+              jakarta: ["Plus Jakarta Sans", "sans-serif"],
+            },
+            colors: {
+              brand: {
+                50: "#eef2ff",
+                100: "#e0e7ff",
+                500: "#6366f1",
+                600: "#4f46e5",
+                700: "#4338ca",
+                900: "#312e81",
+              },
+              odoo: "#714B67",
+              jubelio: "#24AEB1",
+            },
+          },
+        },
+      };
+    </script>
+    <script src="/guard/guard.js"></script>
+    <style>
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: #f1f5f9;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 4px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+      }
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-brand-500 selection:text-white"
+  >
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="font-jakarta font-extrabold text-3xl text-slate-900">
+          History Version
+        </h2>
+        <p class="text-slate-500 mt-2">Perkembangan History Fitur</p>
+      </div>
+      <div
+        class="overflow-hidden bg-white border border-slate-200 shadow-md rounded-2xl"
+      >
+        <div class="overflow-x-auto custom-scrollbar">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-slate-900 text-white text-sm font-semibold">
+                <th class="p-4 sm:p-5">Version</th>
+                <th class="p-4 sm:p-5">Implementation Date</th>
+                <th class="p-4 sm:p-5 text-center">Revision Date</th>
+                <th class="p-4 sm:p-5">Summary</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200 text-sm">
+              <!-- Row 1 -->
+              <tr class="hover:bg-slate-50/80 transition-colors">
+                <td class="p-4 sm:p-5 font-semibold text-slate-900">
+                  Version 1.0
+                </td>
+                <td class="p-4 sm:p-5 font-bold">Thursday, 9 July 2026</td>
+                <td class="p-4 sm:p-5 text-center">-</td>
+                <td class="p-4 sm:p-5 font-medium text-slate-600">
+                  Initial Draft
+                </td>
+              </tr>
+              <!-- Row 2 -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hero Banner Section -->
+    <section
+      class="relative overflow-hidden pt-12 pb-16 lg:pt-20 lg:pb-24 bg-white"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="max-w-7xl mx-auto mb-12">
+          <h1
+            class="font-jakarta font-extrabold text-3xl sm:text-4xl lg:text-5xl text-slate-900 tracking-tight leading-tight"
+          >
+            <span
+              class="bg-gradient-to-r from-brand-600 to-indigo-600 bg-clip-text text-transparent"
+              >Temporary Stock</span
+            >
+          </h1>
+          <p class="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
+            Fitur Temporary Stock dibuat agar user dapat menentukan Qty Dummy
+            yang akan dikirim ke Jubelio, sehingga produk tetap dapat dijual di
+            marketplace meskipun stok fisik di Odoo sedang kosong. Fitur ini
+            umumnya digunakan untuk kebutuhan Pre-Order (PO) atau ketika barang
+            sedang dalam proses restock.
+          </p>
+        </div>
+
+        <!-- Quick Summary Cards (Key Concept) -->
+        <div
+          id="konsep"
+          class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mt-12 scroll-mt-20"
+        >
+          <!-- Odoo Card -->
+          <div
+            class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition-all group duration-300 relative overflow-hidden"
+          >
+            <div class="absolute top-0 left-0 w-2 h-full bg-odoo"></div>
+            <div class="flex justify-between items-start mb-4">
+              <div class="p-3 bg-purple-50 text-odoo rounded-xl">
+                <i class="fa-solid fa-warehouse text-xl"></i>
+              </div>
+              <span
+                class="text-xs font-semibold px-2.5 py-1 bg-purple-50 text-odoo rounded-md"
+                >ERP Backend</span
+              >
+            </div>
+            <h3
+              class="font-jakarta font-bold text-lg text-slate-900 group-hover:text-odoo transition-colors"
+            >
+              Stok Fisik Odoo
+            </h3>
+            <p class="text-sm text-slate-500 mt-2 leading-relaxed">
+              Mewakili jumlah barang yang saat ini benar-benar ada secara riil
+              di gudang fisik Anda.
+            </p>
+          </div>
+
+          <!-- Temporary Stock Card -->
+          <div
+            class="bg-white p-6 sm:p-8 rounded-2xl border border-brand-200/80 shadow-md shadow-brand-500/5 hover:shadow-lg transition-all group duration-300 relative overflow-hidden"
+          >
+            <div
+              class="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-brand-500 to-indigo-500"
+            ></div>
+            <div class="flex justify-between items-start mb-4">
+              <div class="p-3 bg-brand-50 text-brand-600 rounded-xl">
+                <i class="fa-solid fa-sliders text-xl"></i>
+              </div>
+              <span
+                class="text-xs font-semibold px-2.5 py-1 bg-brand-50 text-brand-600 rounded-md"
+                >Dummy Override</span
+              >
+            </div>
+            <h3
+              class="font-jakarta font-bold text-lg text-slate-900 group-hover:text-brand-600 transition-colors"
+            >
+              Temporary Stock (Dummy)
+            </h3>
+            <p class="text-sm text-slate-500 mt-2 leading-relaxed">
+              Nilai stok buatan yang ditentukan manual oleh user sebagai
+              prioritas sinkronisasi saat diaktifkan.
+            </p>
+          </div>
+
+          <!-- Jubelio Card -->
+          <div
+            class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition-all group duration-300 relative overflow-hidden"
+          >
+            <div class="absolute top-0 left-0 w-2 h-full bg-jubelio"></div>
+            <div class="flex justify-between items-start mb-4">
+              <div class="p-3 bg-teal-50 text-jubelio rounded-xl">
+                <i class="fa-solid fa-shop text-xl"></i>
+              </div>
+              <span
+                class="text-xs font-semibold px-2.5 py-1 bg-teal-50 text-jubelio rounded-md"
+                >Omnichannel</span
+              >
+            </div>
+            <h3
+              class="font-jakarta font-bold text-lg text-slate-900 group-hover:text-jubelio transition-colors"
+            >
+              Marketplace (Jubelio)
+            </h3>
+            <p class="text-sm text-slate-500 mt-2 leading-relaxed">
+              Hasil akhir stok yang tampil di Shopee, Tokopedia, TikTok Shop,
+              dll yang disinkronkan oleh Jubelio.
+            </p>
+          </div>
+        </div>
+        <div class="justify-center bg-gray-50 p-6 mt-8 rounded-2xl">
+          <div class="my-8 flex justify-center">
+            <span
+              class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xl font-semibold bg-green-100 text-green-800 mb-4"
+              >Panduan Fitur Temporary Stock</span
+            >
+          </div>
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80">
+          <iframe
+            class="mx-auto"
+            width="100%"
+            height="600"
+            src="https://www.awesomescreenshot.com/embed?id=54394247&shareKey=4f9d9ff42593a0d604405f45a8f035ac"
+            title="YouTube video player"
+            frameborder="0"
+            allow="
+              accelerometer;
+              autoplay;
+              clipboard-write;
+              encrypted-media;
+              gyroscope;
+              picture-in-picture;
+              web-share;
+            "
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step-by-Step Flowchart & Guide -->
+    <section id="alur-kerja" class="py-16 bg-white scroll-mt-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span
+            class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-semibold bg-purple-100 text-purple-800 mb-4"
+          >
+            Panduan Praktis
+          </span>
+          <h2
+            class="font-jakarta font-extrabold text-3xl sm:text-4xl text-slate-900"
+          >
+            Alur Kerja Penggunaan Fitur
+          </h2>
+        </div>
+
+        <!-- Vertical Timeline -->
+        <div
+          class="relative border-l-2 border-slate-200 ml-4 md:ml-32 space-y-12"
+        >
+          <!-- Step 1 -->
+          <div class="relative pl-8 md:pl-12">
+            <span
+              class="absolute -left-4 top-1.5 bg-purple-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm shadow-md ring-4 ring-white"
+            >
+              1
+            </span>
+            <div
+              class="absolute -left-20 top-3 text-xs font-bold text-slate-400 hidden md:block text-right w-12"
+            >
+              Fase Inisiasi
+            </div>
+            <div
+              class="bg-slate-50 p-6 rounded-2xl border border-slate-200/60 hover:shadow-sm transition-all"
+            >
+              <span
+                class="text-xs font-bold text-purple-600 uppercase tracking-wider block mb-1"
+                >Stok Fisik Kosong / Menipis</span
+              >
+              <h4 class="font-jakarta font-bold text-lg text-slate-900">
+                1. Terjadi Kebutuhan Pre-Order (PO)
+              </h4>
+              <p class="text-sm text-slate-600 mt-2 leading-relaxed">
+                Ketika stok fisik produk tertentu di Odoo bernilai
+                <strong class="text-red-600">0</strong>, tetapi Anda sebagai
+                pelaku bisnis masih ingin terus menjual produk tersebut di
+                Shopee, Tokopedia, atau TikTok Shop karena barang sedang
+                restock/produksi.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="relative pl-8 md:pl-12">
+            <span
+              class="absolute -left-4 top-1.5 bg-brand-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm shadow-md ring-4 ring-white"
+            >
+              2
+            </span>
+            <div
+              class="absolute -left-20 top-3 text-xs font-bold text-slate-400 hidden md:block text-right w-12"
+            >
+              Fase Odoo
+            </div>
+            <div
+              class="bg-slate-50 p-6 rounded-2xl border border-slate-200/60 hover:shadow-sm transition-all"
+            >
+              <span
+                class="text-xs font-bold text-brand-600 uppercase tracking-wider block mb-1"
+                >Set Manual Odoo</span
+              >
+              <h4 class="font-jakarta font-bold text-lg text-slate-900">
+                2. Aktifkan Temporary Stock &amp; Isi Kuantitas
+              </h4>
+              <p class="text-sm text-slate-600 mt-2 leading-relaxed">
+                Buka modul produk bersangkutan di Odoo:
+              </p>
+              <ul
+                class="list-none space-y-1.5 text-sm text-slate-600 mt-3 pl-1"
+              >
+                <li class="flex items-center gap-2">
+                  <i class="fa-regular fa-square-check text-brand-600"></i>
+                  Centang opsi <strong>"Enable Temporary Stock"</strong>.
+                </li>
+                <li class="flex items-center gap-2">
+                  <i class="fa-regular fa-square-check text-brand-600"></i>
+                  Isikan jumlah kuantiti cadangan (misal: <strong>100</strong>).
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="relative pl-8 md:pl-12">
+            <span
+              class="absolute -left-4 top-1.5 bg-amber-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm shadow-md ring-4 ring-white"
+            >
+              3
+            </span>
+            <div
+              class="absolute -left-20 top-3 text-xs font-bold text-slate-400 hidden md:block text-right w-12"
+            >
+              Fase Sync
+            </div>
+            <div
+              class="bg-slate-50 p-6 rounded-2xl border border-slate-200/60 hover:shadow-sm transition-all"
+            >
+              <span
+                class="text-xs font-bold text-amber-600 uppercase tracking-wider block mb-1"
+                >Otomatisasi Sistem</span
+              >
+              <h4 class="font-jakarta font-bold text-lg text-slate-900">
+                3. Sinkronisasi Data ke Jubelio
+              </h4>
+              <p class="text-sm text-slate-600 mt-2 leading-relaxed">
+                Sistem integrasi mengenali bahwa status Temporary Stock produk
+                ini <strong>Aktif</strong>. Saat sinkronisasi terjadwal
+                berjalan, sistem memprioritaskan nilai Temporary Stock (Dummy)
+                untuk dikirim ke Jubelio.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="relative pl-8 md:pl-12">
+            <span
+              class="absolute -left-4 top-1.5 bg-teal-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm shadow-md ring-4 ring-white"
+            >
+              4
+            </span>
+            <div
+              class="absolute -left-20 top-3 text-xs font-bold text-slate-400 hidden md:block text-right w-12"
+            >
+              Fase Berakhir
+            </div>
+            <div
+              class="bg-slate-50 p-6 rounded-2xl border border-slate-200/60 hover:shadow-sm transition-all"
+            >
+              <span
+                class="text-xs font-bold text-teal-600 uppercase tracking-wider block mb-1"
+                >Normalisasi</span
+              >
+              <h4 class="font-jakarta font-bold text-lg text-slate-900">
+                4. Penonaktifan Pasca Restock Berhasil
+              </h4>
+              <p class="text-sm text-slate-600 mt-2 leading-relaxed">
+                Setelah produk fisik Anda benar-benar sampai di gudang dan telah
+                di-update di Odoo (misal: masuk 250 pcs):
+              </p>
+              <ul
+                class="list-none space-y-1.5 text-sm text-slate-600 mt-3 pl-1"
+              >
+                <li class="flex items-center gap-2">
+                  <i class="fa-solid fa-toggle-off text-red-500"></i>
+                  Non-aktifkan centang
+                  <strong>"Enable Temporary Stock"</strong> di Odoo.
+                </li>
+                <li class="flex items-center gap-2">
+                  <i class="fa-solid fa-arrows-rotate text-teal-600"></i>
+                  Jubelio akan langsung kembali menggunakan angka real stok
+                  fisik dari Odoo (<strong class="text-teal-600">250</strong>).
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Business Scenario & Study Cases -->
+    <section
+      id="studi-kasus"
+      class="py-16 bg-slate-50 border-t border-slate-200 scroll-mt-20"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <h2 class="font-jakarta font-extrabold text-3xl text-slate-900">
+            Matriks Skenario
+          </h2>
+          <p class="text-slate-500 mt-2">
+            Gambaran komparatif kapan sistem mengambil keputusan nilai stok.
+          </p>
+        </div>
+
+        <!-- Scenario Matrix Table / Grid -->
+        <div
+          class="overflow-hidden bg-white border border-slate-200 shadow-md rounded-2xl"
+        >
+          <div class="overflow-x-auto custom-scrollbar">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="bg-slate-900 text-white text-sm font-semibold">
+                  <th class="p-4 sm:p-5">Kondisi Bisnis</th>
+                  <th class="p-4 sm:p-5">Stok Fisik Odoo</th>
+                  <th class="p-4 sm:p-5 text-center">Status Temp Stock</th>
+                  <th class="p-4 sm:p-5">Nilai Temp Stock</th>
+                  <th class="p-4 sm:p-5 bg-teal-950 text-teal-300">
+                    Hasil Akhir di Jubelio
+                  </th>
+                  <th class="p-4 sm:p-5">Logika Sistem</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200 text-sm">
+                <!-- Row 1 -->
+                <tr class="hover:bg-slate-50/80 transition-colors">
+                  <td class="p-4 sm:p-5 font-semibold text-slate-900">
+                    Masa Pre-Order (PO)
+                  </td>
+                  <td class="p-4 sm:p-5 text-red-600 font-bold">0</td>
+                  <td class="p-4 sm:p-5 text-center">
+                    <span
+                      class="inline-flex px-2.5 py-1 rounded-md text-xs font-bold bg-green-100 text-green-800"
+                      >AKTIF</span
+                    >
+                  </td>
+                  <td class="p-4 sm:p-5 font-medium text-slate-600">100</td>
+                  <td class="p-4 sm:p-5 font-bold text-teal-600 bg-teal-50/40">
+                    100
+                  </td>
+                  <td class="p-4 sm:p-5 text-slate-500">
+                    Memprioritaskan nilai dummy karena fitur aktif.
+                  </td>
+                </tr>
+                <!-- Row 2 -->
+                <tr class="hover:bg-slate-50/80 transition-colors">
+                  <td class="p-4 sm:p-5 font-semibold text-slate-900">
+                    Stok Menipis (Buffer)
+                  </td>
+                  <td class="p-4 sm:p-5 text-slate-600 font-bold">5</td>
+                  <td class="p-4 sm:p-5 text-center">
+                    <span
+                      class="inline-flex px-2.5 py-1 rounded-md text-xs font-bold bg-green-100 text-green-800"
+                      >AKTIF</span
+                    >
+                  </td>
+                  <td class="p-4 sm:p-5 font-medium text-slate-600">200</td>
+                  <td class="p-4 sm:p-5 font-bold text-teal-600 bg-teal-50/40">
+                    200
+                  </td>
+                  <td class="p-4 sm:p-5 text-slate-500">
+                    Bypass stok fisik 5 menjadi dummy 200.
+                  </td>
+                </tr>
+                <!-- Row 3 -->
+                <tr class="hover:bg-slate-50/80 transition-colors">
+                  <td class="p-4 sm:p-5 font-semibold text-slate-900">
+                    Pasca Restock (Kembali Normal)
+                  </td>
+                  <td class="p-4 sm:p-5 text-slate-900 font-bold">350</td>
+                  <td class="p-4 sm:p-5 text-center">
+                    <span
+                      class="inline-flex px-2.5 py-1 rounded-md text-xs font-bold bg-slate-100 text-slate-600"
+                      >MATI</span
+                    >
+                  </td>
+                  <td class="p-4 sm:p-5 font-medium text-slate-400">
+                    100 (Diabaikan)
+                  </td>
+                  <td
+                    class="p-4 sm:p-5 font-bold text-indigo-600 bg-indigo-50/30"
+                  >
+                    350
+                  </td>
+                  <td class="p-4 sm:p-5 text-slate-500">
+                    Mengambil stok fisik asli dari Odoo secara murni.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Key Takeaways & Rules -->
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="p-6 rounded-2xl bg-teal-50 border border-teal-200">
+            <div class="flex gap-3">
+              <span class="text-xl text-teal-600"
+                ><i class="fa-solid fa-circle-check"></i
+              ></span>
+              <div>
+                <h4 class="font-jakarta font-bold text-teal-900">
+                  Kelebihan Fitur
+                </h4>
+                <p class="text-xs text-teal-700 mt-1 leading-relaxed">
+                  Toko online tetap aktif tanpa penalti pembatalan marketplace
+                  akibat stock-out. User memiliki kendali 100% manual kapan
+                  menutup kran penjualan tersebut.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 rounded-2xl bg-amber-50 border border-amber-200">
+            <div class="flex gap-3">
+              <span class="text-xl text-amber-600"
+                ><i class="fa-solid fa-triangle-exclamation"></i
+              ></span>
+              <div>
+                <h4 class="font-jakarta font-bold text-amber-900">
+                  Catatan Penting Operasional
+                </h4>
+                <p class="text-xs text-amber-700 mt-1 leading-relaxed">
+                  Pastikan untuk mematikan fitur ini ketika stok fisik baru
+                  telah diinput ke Odoo agar tidak terjadi *overselling*
+                  berlebih di luar kapasitas produksi.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Script Logic for Live Simulator -->
+    <script>
+      // DOM Elements
+      const odooStockInput = document.getElementById("odoo-stock");
+      const tempStockToggle = document.getElementById("temp-stock-toggle");
+      const tempStockQtyInput = document.getElementById("temp-stock-qty");
+      const tempStockQtyContainer = document.getElementById(
+        "temp-stock-qty-container",
+      );
+
+      // Node Elements
+      const nodeOdoo = document.getElementById("node-odoo");
+      const nodeTemp = document.getElementById("node-temp");
+      const nodeJubelio = document.getElementById("node-jubelio");
+      const nodeTempStatus = document.getElementById("node-temp-status");
+
+      // Dynamic Display Values
+      const odooValNode = document.getElementById("odoo-val-node");
+      const tempValNode = document.getElementById("temp-val-node");
+      const jubelioValNode = document.getElementById("jubelio-val-node");
+      const syncSourceBadge = document.getElementById("sync-source-badge");
+      const scenarioText = document.getElementById("scenario-text");
+
+      // Connection Arrows
+      const arrow1H = document.getElementById("arrow-1-h");
+      const arrow1V = document.getElementById("arrow-1-v");
+      const arrow2H = document.getElementById("arrow-2-h");
+      const arrow2V = document.getElementById("arrow-2-v");
+
+      function toggleTempStockState() {
+        const isActive = tempStockToggle.checked;
+
+        if (isActive) {
+          // Enable Input
+          tempStockQtyInput.disabled = false;
+          tempStockQtyContainer.classList.remove("opacity-50");
+
+          // Active State Nodes Colors
+          nodeTemp.classList.remove("border-slate-700", "opacity-50");
+          nodeTemp.classList.add(
+            "border-brand-500/80",
+            "ring-2",
+            "ring-brand-500/20",
+          );
+          nodeTempStatus.textContent = "AKTIF";
+          nodeTempStatus.classList.remove("bg-slate-600");
+          nodeTempStatus.classList.add("bg-brand-600");
+        } else {
+          // Disable Input
+          tempStockQtyInput.disabled = true;
+          tempStockQtyContainer.classList.add("opacity-50");
+
+          // Inactive State Nodes Colors
+          nodeTemp.classList.remove(
+            "border-brand-500/80",
+            "ring-2",
+            "ring-brand-500/20",
+          );
+          nodeTemp.classList.add("border-slate-700", "opacity-50");
+          nodeTempStatus.textContent = "NON-AKTIF";
+          nodeTempStatus.classList.remove("bg-brand-600");
+          nodeTempStatus.classList.add("bg-slate-600");
+        }
+
+        calculateSync();
+      }
+
+      function calculateSync() {
+        // Get current inputs values
+        let odooQty = parseInt(odooStockInput.value) || 0;
+        let tempQty = parseInt(tempStockQtyInput.value) || 0;
+        const isTempActive = tempStockToggle.checked;
+
+        // Enforce Non-Negative values
+        if (odooQty < 0) {
+          odooQty = 0;
+          odooStockInput.value = 0;
+        }
+        if (tempQty < 0) {
+          tempQty = 0;
+          tempStockQtyInput.value = 0;
+        }
+
+        // Update individual node texts
+        odooValNode.textContent = odooQty;
+        tempValNode.textContent = isTempActive ? tempQty : "-";
+
+        // Main Core Logic
+        let finalJubelioQty = 0;
+        if (isTempActive) {
+          finalJubelioQty = tempQty;
+
+          // Highlight active path (Temporary path)
+          nodeOdoo.classList.remove("border-purple-500");
+          nodeOdoo.classList.add("border-slate-700");
+
+          arrow1H.classList.add("text-slate-600");
+          arrow1H.classList.remove("text-brand-400");
+          arrow1V.classList.add("text-slate-600");
+          arrow1V.classList.remove("text-brand-400");
+
+          arrow2H.classList.remove("text-slate-600");
+          arrow2H.classList.add("text-brand-400");
+          arrow2V.classList.remove("text-slate-600");
+          arrow2V.classList.add("text-brand-400");
+
+          // Badge styling
+          syncSourceBadge.textContent = "Menggunakan Dummy Stock";
+          syncSourceBadge.className =
+            "inline-block mt-3 px-3 py-1 rounded-full text-xs font-semibold bg-brand-500/15 text-brand-300 border border-brand-500/30";
+
+          // Dynamic explanation generator
+          scenarioText.innerHTML = `Sistem mendeteksi status Temporary Stock <strong>AKTIF</strong> dengan nilai kuantitas <strong>${tempQty}</strong>. Berapapun stok asli Odoo (saat ini ${odooQty}), yang dikirim ke Jubelio adalah <strong>${tempQty}</strong>. Sangat ideal untuk program Pre-Order!`;
+        } else {
+          finalJubelioQty = odooQty;
+
+          // Highlight active path (Direct physical path)
+          nodeOdoo.classList.remove("border-slate-700");
+          nodeOdoo.classList.add("border-purple-500");
+
+          arrow1H.classList.remove("text-slate-600");
+          arrow1H.classList.add("text-brand-400");
+          arrow1V.classList.remove("text-slate-600");
+          arrow1V.classList.add("text-brand-400");
+
+          arrow2H.classList.add("text-slate-600");
+          arrow2H.classList.remove("text-brand-400");
+          arrow2V.classList.add("text-slate-600");
+          arrow2V.classList.remove("text-brand-400");
+
+          // Badge styling
+          syncSourceBadge.textContent = "Menggunakan Stok Fisik Odoo";
+          syncSourceBadge.className =
+            "inline-block mt-3 px-3 py-1 rounded-full text-xs font-semibold bg-purple-500/15 text-purple-300 border border-purple-500/30";
+
+          // Dynamic explanation generator
+          scenarioText.innerHTML = `Saat ini fitur Temporary Stock <strong>NON-AKTIF</strong>. Sistem menggunakan jalur data normal, di mana stok asli dari gudang Odoo (<strong>${odooQty}</strong>) langsung dipublikasikan murni menuju Jubelio.`;
+        }
+
+        // Update Final Jubelio Node
+        jubelioValNode.textContent = finalJubelioQty;
+      }
+
+      // Preset Configurations Quick Setter
+      function setPreset(type) {
+        if (type === "po") {
+          odooStockInput.value = 0;
+          tempStockToggle.checked = true;
+          tempStockQtyInput.value = 100;
+        } else if (type === "normal") {
+          odooStockInput.value = 250;
+          tempStockToggle.checked = false;
+          tempStockQtyInput.value = 0;
+        } else if (type === "empty") {
+          odooStockInput.value = 0;
+          tempStockToggle.checked = false;
+          tempStockQtyInput.value = 0;
+        }
+
+        toggleTempStockState();
+      }
+
+      // Initialize view on load
+      window.onload = function () {
+        toggleTempStockState();
+      };
+    </script>
+  </body>
+</html>
