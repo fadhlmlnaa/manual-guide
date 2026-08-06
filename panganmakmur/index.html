@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SOP Operasional & Workflow Odoo 18</title>
+    <style>
+      @page {
+        size: A4;
+        margin: 20mm;
+      }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        color: #333;
+        line-height: 1.5;
+        background-color: #fff;
+        margin: 0;
+        padding: 0;
+      }
+      .header {
+        border-bottom: 3px solid #7c7bad;
+        padding-bottom: 15px;
+        margin-bottom: 25px;
+      }
+      .header h1 {
+        color: #7c7bad;
+        margin: 0 0 5px 0;
+        font-size: 24px;
+        text-transform: uppercase;
+      }
+      .header p {
+        margin: 0;
+        color: #666;
+        font-size: 13px;
+      }
+      .meta-table,
+      .data-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+        font-size: 12px;
+      }
+      .data-table th,
+      .data-table td {
+        border: 1px solid #e0e0e0;
+        padding: 8px 10px;
+        text-align: left;
+      }
+      .data-table th {
+        background-color: #7c7bad;
+        color: white;
+        font-weight: 600;
+      }
+      .data-table tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+      .section-title {
+        background-color: #f2f2f7;
+        border-left: 4px solid #7c7bad;
+        padding: 6px 12px;
+        font-size: 15px;
+        font-weight: bold;
+        color: #333;
+        margin-top: 25px;
+        margin-bottom: 12px;
+      }
+      .role-box {
+        border: 1px solid #e0e0e0;
+        border-radius: 6px;
+        padding: 12px 15px;
+        margin-bottom: 15px;
+        page-break-inside: avoid;
+      }
+      .role-title {
+        font-size: 14px;
+        font-weight: bold;
+        color: #7c7bad;
+        margin-bottom: 8px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .role-title span {
+        font-size: 11px;
+        background: #eef0f8;
+        color: #4a4a4a;
+        padding: 2px 8px;
+        border-radius: 4px;
+      }
+      ul,
+      ol {
+        margin: 0;
+        padding-left: 20px;
+        font-size: 12px;
+      }
+      li {
+        margin-bottom: 5px;
+      }
+      .workflow-diagram {
+        background: #fdfdfd;
+        border: 1px dashed #7c7bad;
+        padding: 10px;
+        text-align: center;
+        font-size: 11px;
+        font-weight: bold;
+        color: #444;
+        margin: 15px 0;
+        border-radius: 4px;
+      }
+      .footer {
+        margin-top: 30px;
+        padding-top: 10px;
+        border-top: 1px solid #e0e0e0;
+        text-align: right;
+        font-size: 10px;
+        color: #888;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>STANDAR OPERASIONAL PROSEDUR (SOP)</h1>
+      <p>
+        <strong>Sistem Integrasi Odoo 18</strong> | OCA Users Role & OdooMates
+        Accounting
+      </p>
+    </div>
+
+    <div class="section-title">1. DAFTAR PERSONEL & PEMETAAN HAK AKSES</div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Nama Personel</th>
+          <th>Email (Username)</th>
+          <th>No. Handphone</th>
+          <th>Divisi / Role Odoo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Kadek Mulyani</strong></td>
+          <td>panganpodomakmur@gmail.com</td>
+          <td>0819 3765 1508</td>
+          <td>Direktur / General Admin</td>
+        </tr>
+        <tr>
+          <td><strong>Ni Putu Sukma Wijayanti</strong></td>
+          <td>nusapork@gmail.com</td>
+          <td>0819 3765 1508</td>
+          <td>Direktur / General Admin</td>
+        </tr>
+        <tr>
+          <td><strong>Jingga</strong></td>
+          <td>nusaporkmarketing@gmail.com</td>
+          <td>0877 8205 0808</td>
+          <td>Marketing / Sales</td>
+        </tr>
+        <tr>
+          <td><strong>Vita</strong></td>
+          <td>nusameats@gmail.com</td>
+          <td>0877 8205 0808</td>
+          <td>Produksi</td>
+        </tr>
+        <tr>
+          <td><strong>Andra</strong></td>
+          <td>tokodagingbabijakarta@gmail.com</td>
+          <td>0877 8205 0808</td>
+          <td>Gudang / Logistics</td>
+        </tr>
+        <tr>
+          <td><strong>Suksma Wijayanti</strong></td>
+          <td>finance@nusapork.com</td>
+          <td>0877 8205 0808</td>
+          <td>Finance / Accounting</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="section-title">2. ALUR INTEGRASI LINTAS DIVISI</div>
+    <div class="workflow-diagram">
+      PENJUALAN: Marketing (Sales Order) ➔ Gudang (Delivery Order) ➔ Finance
+      (Customer Invoice)<br /><br />
+      PEMBELIAN: Produksi (RFQ) ➔ Direktur (PO Approval) ➔ Gudang (Receipt) ➔
+      Finance (Vendor Bill)
+    </div>
+
+    <div class="section-title">3. DETAIL WORKFLOW ALUR KERJA PER ROLE</div>
+
+    <!-- MARKETING -->
+    <div class="role-box">
+      <div class="role-title">
+        1. MARKETING / SALES (Jingga)
+        <span>Akses: Sales (User), Inventory (Read Only)</span>
+      </div>
+      <ul>
+        <li>
+          <strong>Input Pelanggan:</strong> Buka menu
+          <i>Sales > Customers</i> untuk menginput atau memperbarui data
+          pembeli.
+        </li>
+        <li>
+          <strong>Buat Penawaran (Quotation):</strong> Masuk ke
+          <i>Sales > Quotations > New</i>, masukkan daftar item produk, jumlah,
+          dan harga jual.
+        </li>
+        <li>
+          <strong>Konfirmasi Pesanan (Sales Order):</strong> Klik tombol
+          <i>Confirm</i> saat pelanggan menyetujui. Sistem akan otomatis
+          mengirim draf dokumen pengiriman ke tim Gudang.
+        </li>
+        <li>
+          <strong>Monitoring:</strong> Cek ikon pengiriman di pojok kanan atas
+          SO untuk memantau status pengiriman barang oleh Gudang.
+        </li>
+      </ul>
+    </div>
+
+    <!-- PRODUKSI -->
+    <div class="role-box">
+      <div class="role-title">
+        2. PRODUKSI (Vita)
+        <span>Akses: Inventory (User), Purchase (User)</span>
+      </div>
+      <ul>
+        <li>
+          <strong>Pengajuan Bahan Baku (RFQ):</strong> Buka
+          <i>Purchase > Requests for Quotation > New</i> untuk mengajukan
+          pembelian karkas/bahan baku jika stok menipis.
+        </li>
+        <li>
+          <strong>Konversi Stok (Potong/Processing):</strong>
+          <ol>
+            <li>
+              Buka menu <i>Inventory > Operations > Physical Inventory</i>.
+            </li>
+            <li>
+              <strong>Kurangi (-)</strong> jumlah bahan mentah yang dipotong
+              (contoh: Karkas Mentah -100 kg).
+            </li>
+            <li>
+              <strong>Tambah (+)</strong> jumlah produk daging siap jual sesuai
+              hasil timbangan (contoh: Samcan +35 kg, Iga +25 kg, Daging Cincang
+              +30 kg).
+            </li>
+            <li>
+              Klik <i>Apply</i> untuk memperbarui stok sistem secara akurat.
+            </li>
+          </ol>
+        </li>
+        <li>
+          <strong>Pencatatan Susut/Limbah (Scrap):</strong> Buka
+          <i>Inventory > Operations > Scrap > New</i> untuk menginput sisa
+          tulang/lemak buangan hasil potong (contoh: 10 kg).
+        </li>
+      </ul>
+    </div>
+
+    <!-- GUDANG -->
+    <div class="role-box">
+      <div class="role-title">
+        3. GUDANG / LOGISTICS (Andra)
+        <span>Akses: Inventory (Administrator), Sales/Purchase (User)</span>
+      </div>
+      <ul>
+        <li>
+          <strong>Barang Masuk (Receipts):</strong> Buka
+          <i>Inventory > Receipts</i>, pilih PO dari supplier. Timbang
+          karkas/barang yang datang, isi kolom <i>Done</i>, lalu klik
+          <i>Validate</i>.
+        </li>
+        <li>
+          <strong>Barang Keluar (Delivery Orders):</strong> Buka
+          <i>Inventory > Delivery Orders</i>, pilih SO dari Marketing. Siapkan
+          dan timbang produk sesuai pesanan, isi kolom <i>Done</i>, lalu klik
+          <i>Validate</i>.
+        </li>
+        <li>
+          <strong>Pencatatan Rusak:</strong> Gunakan menu
+          <i>Inventory > Operations > Scrap</i> jika ada daging yang rusak/busuk
+          di dalam gudang.
+        </li>
+      </ul>
+    </div>
+
+    <!-- FINANCE -->
+    <div class="role-box">
+      <div class="role-title">
+        4. FINANCE / ACCOUNTING (Suksma Wijayanti)
+        <span>Akses: Invoicing/Accounting (Accountant/Manager)</span>
+      </div>
+      <ul>
+        <li>
+          <strong>Invoicing Penjualan:</strong> Buka
+          <i>Invoicing > Sales > Customer Invoices</i> (atau buat dari SO yang
+          barangnya sudah divalidasi Gudang). Klik <i>Confirm / Post</i> dan
+          catat pembayaran via <i>Register Payment</i> saat uang diterima.
+        </li>
+        <li>
+          <strong>Tagihan Vendor (Vendor Bills):</strong> Buka
+          <i>Invoicing > Vendors > Bills</i> berdasarkan PO dari Gudang. Klik
+          <i>Confirm / Post</i> dan selesaikan via <i>Register Payment</i> saat
+          transfer keluar dilakukan.
+        </li>
+        <li>
+          <strong>Rekonsiliasi:</strong> Kelola transaksi Kas & Bank harian
+          serta pantau Laporan Laba Rugi (Profit & Loss) dan Neraca melalui
+          modul OdooMates.
+        </li>
+      </ul>
+    </div>
+
+    <!-- DIREKTUR -->
+    <div class="role-box">
+      <div class="role-title">
+        5. DIREKTUR / GENERAL ADMIN (Kadek Mulyani & Ni Putu Sukma)
+        <span>Akses: Full Business Admin (Non-Technical IT)</span>
+      </div>
+      <ul>
+        <li>
+          <strong>Approval Pembelian:</strong> Buka menu
+          <i>Purchase > Orders > To Approve</i> untuk meninjau dan menyetujui
+          pengajuan PO bernilai besar dari tim Produksi/Gudang.
+        </li>
+        <li>
+          <strong>Supervisi Operasional:</strong> Memantau tren omset harian di
+          Dashboard Sales, ketersediaan persediaan daging di Dashboard
+          Inventory, dan arus kas perusahaan di Laporan Keuangan.
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer">
+      Dicetak otomatis untuk dokumen internal operasional Odoo 18.
+    </div>
+  </body>
+</html>
