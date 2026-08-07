@@ -20,9 +20,65 @@
     </style>
     <script src="../guard/guard.js"></script>
   </head>
+
   <body class="bg-slate-50 font-sans text-slate-800 antialiased">
     <div class="py-4"></div>
     <main class="max-w-6xl mx-auto px-4 pb-20">
+      <section class="space-y-6">
+        <h2
+          class="text-xl md:text-2xl font-bold text-slate-900 flex items-center gap-2"
+        >
+          History Version
+        </h2>
+        <table
+          class="border border-slate-200 rounded-xl w-full bg-white shadow-sm overflow-hidden"
+        >
+          <thead>
+            <tr class="bg-slate-100">
+              <th class="p-3 text-left font-bold">Version</th>
+              <th class="p-3 text-left font-bold">Developer</th>
+              <th class="p-3 text-left font-bold">Implemented by</th>
+              <th class="p-3 text-left font-bold">Revision Date</th>
+              <th class="p-3 text-left font-bold">Version Summary</th>
+            </tr>
+          </thead>
+
+          <tbody id="versionTableBody"></tbody>
+        </table>
+        <script>
+          const versions = [
+            {
+              version: "1.0",
+              developer: "Jacky Supit",
+              implementedBy: "Fadhil Maulana",
+              revisionDate: "06 August 2026",
+              summary: "Initial Creation",
+            },
+            {
+              version: "1.1",
+              developer: "Jacky Supit",
+              implementedBy: "Fadhil Maulana",
+              revisionDate: "07 August 2026",
+              summary: "Add Detail Rekam - Proses Packing & Pencarian History",
+            },
+          ];
+
+          const tableBody = document.getElementById("versionTableBody");
+
+          versions.forEach((item) => {
+            tableBody.innerHTML += `
+                <tr class="border-t border-slate-200 hover:bg-slate-50">
+                    <td class="p-3">${item.version}</td>
+                    <td class="p-3">${item.developer}</td>
+                    <td class="p-3">${item.implementedBy}</td>
+                    <td class="p-3">${item.revisionDate}</td>
+                    <td class="p-3">${item.summary}</td>
+                </tr>
+            `;
+          });
+        </script>
+      </section>
+
       <!-- Ringkasan Alur Fitur -->
       <section
         class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-100 mb-8"
