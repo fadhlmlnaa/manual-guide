@@ -43,18 +43,24 @@
           </svg>
           Panduan Penggunaan Fitur Bukti Rekaman
         </h2>
-        <p class="text-slate-600 text-sm leading-relaxed mb-4">
-          <p class="text-sm text-slate-600 italic"><strong>Ringkasan Fitur:</strong><br> Bukti Rekaman Proses Packing Fitur Bukti Rekaman
-          dirancang untuk mendukung operasional seller dan admin dalam
-          mendokumentasikan proses pengepakan (packing) barang. Fitur ini
-          memungkinkan perekaman otomatis saat seller melakukan input atau scan
-          barcode barang. Rekaman video tersimpan secara terstruktur dalam
-          sistem, sehingga memudahkan seller atau admin mencari video bukti
-          packing historis (baik 7 hari, 1 minggu, hingga 1 bulan yang lalu)
-          secara cepat dan presisi. Keberadaan bukti video ini krusial untuk
-          memperkuat posisi seller saat mengajukan banding atas klaim retur atau
-          refund dari pembeli.</p>
-        </p>
+
+        <!-- Tag p ganda diperbaiki menjadi div -->
+        <div class="text-slate-600 text-sm leading-relaxed mb-4">
+          <p class="text-sm text-slate-600 italic">
+            <strong>Ringkasan Fitur:</strong><br />
+            Bukti Rekaman Proses Packing Fitur Bukti Rekaman dirancang untuk
+            mendukung operasional seller dan admin dalam mendokumentasikan
+            proses pengepakan (packing) barang. Fitur ini memungkinkan perekaman
+            otomatis saat seller melakukan input atau scan barcode barang.
+            Rekaman video tersimpan secara terstruktur dalam sistem, sehingga
+            memudahkan seller atau admin mencari video bukti packing historis
+            (baik 7 hari, 1 minggu, hingga 1 bulan yang lalu) secara cepat dan
+            presisi. Keberadaan bukti video ini krusial untuk memperkuat posisi
+            seller saat mengajukan banding atas klaim retur atau refund dari
+            pembeli.
+          </p>
+        </div>
+
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
           <div class="p-4 rounded-xl bg-blue-50/50 border border-blue-100/50">
             <span
@@ -103,6 +109,246 @@
           >
           </iframe>
         </div>
+      </section>
+
+      <!-- Proses Rekam -->
+
+      <section>
+        <details
+          id="case-2-po"
+          class="group bg-white rounded-xl shadow-sm border border-slate-200/80 page-break-inside-avoid overflow-hidden transition-all duration-300"
+        >
+          <!-- Header Card (Sekaligus Tombol Accordion) -->
+          <summary
+            class="flex items-center justify-between p-6 cursor-pointer select-none hover:bg-slate-50/80 transition-colors list-none"
+          >
+            <div class="flex items-center gap-2.5">
+              <div class="h-5 w-1 bg-red-600 rounded-full"></div>
+              <h2 class="text-lg font-bold text-slate-900">
+                Panduan Merekam Bukti Rekam
+              </h2>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <span
+                class="bg-red-50 text-red-700 text-xs font-semibold px-2.5 py-1 rounded-full border border-red-100 hidden sm:inline-block"
+              >
+                Panduan Merekam Bukti Proses Packing
+              </span>
+
+              <!-- Icon Panah (Berputar saat di-open) -->
+              <svg
+                class="w-5 h-5 text-slate-400 transition-transform duration-300 group-open:rotate-180"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                ></path>
+              </svg>
+            </div>
+          </summary>
+
+          <!-- Content Layout (Muncul/Sembunyi) -->
+          <div class="px-6 pb-6 pt-2 border-t border-slate-100">
+            <div class="flex flex-col md:flex-row md:items-start md:gap-6">
+              <!-- Sisi Kiri: Teks & Gambar Step-by-Step -->
+              <div class="flex-1 text-xs sm:text-sm text-slate-600 space-y-4">
+                <!-- Step 1 -->
+                <div>
+                  <p class="leading-relaxed mb-2">
+                    1. Masukkan Resi Marketplace kedalam kolom "Scan Barcode"
+                  </p>
+                  <div
+                    class="rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 max-w-lg"
+                  >
+                    <img
+                      src="./assets/scan-barcodes.png"
+                      alt="Status Scan"
+                      class="w-full h-auto object-cover block"
+                    />
+                  </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div>
+                  <p class="leading-relaxed mb-2">
+                    2. Jika Sudah Dimasukkan No Resi tekan enter, maka nanti
+                    dipojok kanan atas statusnya started, pada status started
+                    itu menandakan rekaman sedang berjalan, jadi disini user
+                    melakukan packing hingga selesai packing
+                  </p>
+                  <div
+                    class="rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 max-w-xs"
+                  >
+                    <img
+                      src="./assets/after-scan.png"
+                      alt="Status Scan"
+                      class="w-full h-auto object-cover block"
+                    />
+                  </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div>
+                  <p class="leading-relaxed mb-2">
+                    3. Setelah selesai proses packing, maka user diharuskan
+                    melakukan scan barcode lagi, jika sudah maka akan muncul pop
+                    berikut ketika muncul pop up dan proses packing selesai bisa
+                    scan lagi barcode nya untuk menghentikan rekaman
+                  </p>
+
+                  <p
+                    class="text-xs text-slate-500 bg-slate-50 p-3 my-2 rounded-lg border border-slate-100 leading-relaxed"
+                  >
+                    <span class="font-semibold text-slate-700">Catatan :</span>
+                    Ketika Start (Mulai Rekam) itu scan 1x, dan jika rekaman
+                    ingin diselesaikan itu scan 2x, yaitu satunya untuk
+                    konfirmasi.
+                  </p>
+
+                  <div
+                    class="rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 max-w-lg mt-2"
+                  >
+                    <img
+                      src="./assets/pop-up-selesai.png"
+                      alt="Status Scan"
+                      class="w-full h-auto object-cover block"
+                    />
+                  </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div>
+                  <p class="leading-relaxed mb-2">
+                    4. Ketika sudah selesai rekam, akan muncul pesan atau
+                    catatan, jika ingin mendownload bisa klik
+                    <span
+                      class="bg-blue-500 text-white text-xs px-2 py-0.5 rounded-md font-medium"
+                      >Download</span
+                    >, jika ingin melihat hasilnya/preview itu bisa tekan button
+                    <span
+                      class="bg-blue-500 text-white text-xs px-2 py-0.5 rounded-md font-medium"
+                      >View Video</span
+                    >
+                  </p>
+                  <div
+                    class="rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 max-w-lg"
+                  >
+                    <img
+                      src="./assets/selesai-rekam.png"
+                      alt="Status Scan"
+                      class="w-full h-auto object-cover block"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </details>
+      </section>
+
+      <div class="py-4"></div>
+
+      <!-- Cari History Rekam -->
+      <section>
+        <details
+          id="case-2-po"
+          class="group bg-white rounded-xl shadow-sm border border-slate-200/80 page-break-inside-avoid overflow-hidden transition-all duration-300"
+        >
+          <!-- Header Card (Sekaligus Tombol Accordion) -->
+          <summary
+            class="flex items-center justify-between p-6 cursor-pointer select-none hover:bg-slate-50/80 transition-colors list-none"
+          >
+            <div class="flex items-center gap-2.5">
+              <div class="h-5 w-1 bg-red-600 rounded-full"></div>
+              <h2 class="text-lg font-bold text-slate-900">
+                Mencari History Rekaman Packing
+              </h2>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <span
+                class="bg-red-50 text-red-700 text-xs font-semibold px-2.5 py-1 rounded-full border border-red-100 hidden sm:inline-block"
+              >
+                History Bukti Rekam
+              </span>
+
+              <!-- Icon Panah (Berputar saat di-open) -->
+              <svg
+                class="w-5 h-5 text-slate-400 transition-transform duration-300 group-open:rotate-180"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                ></path>
+              </svg>
+            </div>
+          </summary>
+
+          <!-- Content Layout (Muncul/Sembunyi) -->
+          <div class="px-6 pb-6 pt-2 border-t border-slate-100">
+            <div class="flex flex-col md:flex-row md:items-start md:gap-6">
+              <!-- Sisi Kiri: Teks & Gambar Step-by-Step -->
+              <div class="flex-1 text-xs sm:text-sm text-slate-600 space-y-4">
+                <!-- Step 1 -->
+                <div>
+                  <p class="leading-relaxed mb-2">
+                    1. Ketik "Cari" pada kolom scan barcode
+                  </p>
+                  <div
+                    class="rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 max-w-lg"
+                  >
+                    <img
+                      src="./assets/cari.png"
+                      alt="Status Scan"
+                      class="w-full h-auto object-cover block"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <p class="leading-relaxed mb-2">
+                    2. Akan muncul pop Apakah anda ingin mencari history video?
+                    jika iya bisa scan barcode/resi nya
+                  </p>
+                  <div
+                    class="rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 max-w-lg"
+                  >
+                    <img
+                      src="./assets/popup-cari.png"
+                      alt="Status Scan"
+                      class="w-full h-auto object-cover block"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <p class="leading-relaxed mb-2">
+                    3. Hasil Pencarian akan muncul seperti gambar di bawah ini
+                  </p>
+                  <div
+                    class="rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 max-w-lg"
+                  >
+                    <img
+                      src="./assets/hasil-cari.png"
+                      alt="Status Scan"
+                      class="w-full h-auto object-cover block"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </details>
       </section>
     </main>
   </body>
