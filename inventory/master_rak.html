@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Guide - Master Rak & Internal Transfer Rak</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            .page-break {
+                page-break-before: always;
+            }
+            .shadow-custom {
+                box-shadow: none !important;
+                border: 1px solid #e5e7eb !important;
+            }
+        }
+        .shadow-custom {
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 2px 6px -1px rgba(0, 0, 0, 0.03);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen">
+
+    <!-- Top Floating Header Bar (Hidden on Print) -->
+    <header class="no-print sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <span class="bg-brand-600 text-white p-2 rounded-lg text-sm font-semibold flex items-center justify-center w-9 h-9 shadow-sm">
+                    <i class="fa-solid fa-book-open"></i>
+                </span>
+                <div>
+                    <h1 class="text-sm font-bold text-slate-900 leading-tight">SOP & User Manual</h1>
+                    <p class="text-xs text-slate-500">Sistem Manajemen Gudang & Inventori</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-2">
+                <button onclick="window.print()" class="inline-flex items-center px-3.5 py-1.5 border border-slate-300 text-xs font-medium rounded-lg text-slate-700 bg-white hover:bg-slate-50 hover:border-slate-400 transition-all shadow-sm">
+                    <i class="fa-solid fa-print mr-1.5 text-slate-500"></i> Cetak / Save PDF
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <div class="bg-white rounded-2xl shadow-custom border border-slate-200/80 p-6 md:p-10">
+
+            <!-- Document Meta & Title Header -->
+            <div class="border-b border-slate-200 pb-8 mb-8">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-brand-50 text-brand-700 border border-brand-200">
+                        <i class="fa-solid fa-circle-info mr-1.5 text-[10px]"></i> Standard Operating Procedure
+                    </span>
+                </div>
+                
+                <!-- MAIN TITLE -->
+                <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mb-3">
+                    Master Rak dan Internal Transfer Rak
+                </h1>
+                <p class="text-slate-600 text-sm md:text-base leading-relaxed max-w-3xl">
+                    Panduan teknis pengoperasian modul pengelolaan master data lokasi rak penyimpanan barang serta prosedur pelaksanaan transfer barang secara internal maupun antar rak gudang.
+                </p>
+            </div>
+
+            <!-- SECTION: Version History Table -->
+            <div class="mb-12">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-sm font-bold uppercase tracking-wider text-slate-500 flex items-center gap-2">
+                        <i class="fa-solid fa-clock-rotate-left text-brand-600"></i> Riwayat Versi Dokumen (Version History)
+                    </h2>
+                </div>
+                
+                <div class="overflow-x-auto rounded-xl border border-slate-200 shadow-sm">
+                    <table class="w-full text-left text-sm text-slate-700">
+                        <thead class="bg-slate-100 text-slate-800 text-xs font-semibold uppercase tracking-wider border-b border-slate-200">
+                            <tr>
+                                <th scope="col" class="px-4 py-3.5 w-24 text-center">Versi</th>
+                                <th scope="col" class="px-4 py-3.5 w-32">Implemented By</th>
+                                <th scope="col" class="px-4 py-3.5 w-40">Revision Date</th>
+                                <th scope="col" class="px-4 py-3.5 w-40">Version Summary</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 bg-white">
+                            <tr class="hover:bg-slate-50/80 transition-colors">
+                                <td class="px-4 py-3 font-semibold text-center text-brand-600 bg-slate-50/50">v1.0.0</td>
+                                <td class="px-4 py-3 text-slate-600 whitespace-nowrap">Fadhil Maulana</td>
+                                <td class="px-4 py-3 font-medium text-slate-800">5 Juni 2026</td>
+                                <td class="px-4 py-3 text-slate-600">Initial release</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Quick Table of Contents -->
+            <div class="no-print bg-slate-50 border border-slate-200 rounded-xl p-5 mb-10">
+                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">Daftar Isi Panduan:</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                    <a href="#point-1" class="flex items-center p-2.5 rounded-lg bg-white border border-slate-200 text-slate-700 hover:border-brand-500 hover:text-brand-600 font-medium text-sm transition-all shadow-sm">
+                        <span class="w-6 h-6 rounded bg-brand-100 text-brand-700 text-xs font-bold flex items-center justify-center mr-2.5">1</span>
+                        Master Rak
+                    </a>
+                    <a href="#point-2" class="flex items-center p-2.5 rounded-lg bg-white border border-slate-200 text-slate-700 hover:border-brand-500 hover:text-brand-600 font-medium text-sm transition-all shadow-sm">
+                        <span class="w-6 h-6 rounded bg-brand-100 text-brand-700 text-xs font-bold flex items-center justify-center mr-2.5">2</span>
+                        Internal Transfer Rak
+                    </a>
+                    <a href="#point-3" class="flex items-center p-2.5 rounded-lg bg-white border border-slate-200 text-slate-700 hover:border-brand-500 hover:text-brand-600 font-medium text-sm transition-all shadow-sm">
+                        <span class="w-6 h-6 rounded bg-brand-100 text-brand-700 text-xs font-bold flex items-center justify-center mr-2.5">3</span>
+                        Transfer Antar Rak
+                    </a>
+                </div>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- POINT 1: MASTER RAK -->
+            <!-- ========================================== -->
+            <section id="point-1" class="pt-4 mb-14 scroll-mt-20 border-t border-slate-100">
+                <div class="flex items-center space-x-3 mb-6">
+                    <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-brand-600 text-white font-bold flex items-center justify-center text-base shadow-sm">1</span>
+                    <h2 class="text-2xl font-bold text-slate-900">Master Rak</h2>
+                </div>
+
+                <p class="text-slate-600 mb-6 leading-relaxed">
+                    Modul <strong>Master Rak</strong> digunakan untuk mengelola data fisik rak, zona lokasi gudang, serta kapasitas penyimpanan stok. Pastikan data struktur rak disetting dengan benar sebelum melakukan aktivitas pengeluaran/pemasukan barang.
+                </p>
+
+                <!-- Steps List -->
+                <div class="space-y-6">
+                    <!-- Step 1.1 -->
+                    <div class="bg-slate-50/60 rounded-xl p-5 border border-slate-200/80 hover:border-slate-300 transition-all">
+                        <div class="flex flex-col md:flex-row gap-5">
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <span class="text-xs font-bold uppercase tracking-wider text-brand-700 bg-brand-100 px-2.5 py-0.5 rounded">Langkah 1.1</span>
+                                    <h3 class="font-semibold text-slate-800">Membuka Menu Master Rak</h3>
+                                </div>
+                                <p class="text-slate-600 text-sm leading-relaxed mb-3">
+                                    Navigasi ke sidebar kiri, pilih menu <strong>Inventori / Warehouse</strong> lalu klik pada submenu <strong>Master Rak</strong>.
+                                </p>
+                                <ul class="list-disc list-inside text-xs text-slate-500 space-y-1 pl-1">
+                                    <li>Pastikan akun Anda memiliki hak akses <i>Warehouse Supervisor</i> atau <i>Admin</i>.</li>
+                                    <li>Tampilan daftar rak yang ada akan dimuat otomatis.</li>
+                                </ul>
+                            </div>
+                            <!-- Small Mockup Image Container -->
+                            <div class="w-full md:w-56 flex-shrink-0">
+                                <div class="relative group rounded-lg overflow-hidden border border-slate-300 shadow-sm bg-white">
+                                    <svg class="w-full h-32 object-cover bg-slate-100 text-slate-400" viewBox="0 0 240 140" fill="none">
+                                        <rect width="240" height="140" fill="#F1F5F9"/>
+                                        <rect x="10" y="10" w="50" h="120" rx="4" fill="#E2E8F0"/>
+                                        <rect x="70" y="10" w="160" h="25" rx="4" fill="#3B82F6"/>
+                                        <rect x="70" y="45" w="160" h="85" rx="4" fill="#FFFFFF" stroke="#CBD5E1"/>
+                                        <circle cx="35" cy="25" r="6" fill="#94A3B8"/>
+                                        <rect x="20" y="40" w="30" h="6" rx="2" fill="#CBD5E1"/>
+                                        <rect x="20" y="52" w="30" h="6" rx="2" fill="#CBD5E1"/>
+                                        <text x="100" y="27" fill="#FFFFFF" font-size="10" font-family="sans-serif" font-weight="bold">Master Rak System</text>
+                                    </svg>
+                                    <div class="p-2 bg-white text-[11px] text-slate-600 border-t border-slate-200 flex justify-between items-center">
+                                        <span class="truncate font-medium">UI Navigasi Menu</span>
+                                        <button onclick="openModal('Tampilan Navigasi Master Rak', 'Menu berada di bawah modul Warehouse > Master Rak.')" class="text-brand-600 hover:text-brand-800 font-bold ml-1">
+                                            <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 1.2 -->
+                    <div class="bg-slate-50/60 rounded-xl p-5 border border-slate-200/80 hover:border-slate-300 transition-all">
+                        <div class="flex flex-col md:flex-row gap-5">
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <span class="text-xs font-bold uppercase tracking-wider text-brand-700 bg-brand-100 px-2.5 py-0.5 rounded">Langkah 1.2</span>
+                                    <h3 class="font-semibold text-slate-800">Menambahkan Rak Baru</h3>
+                                </div>
+                                <p class="text-slate-600 text-sm leading-relaxed mb-3">
+                                    Klik tombol <span class="bg-brand-600 text-white text-xs px-2 py-0.5 rounded font-medium">+ Tambah Rak Baru</span> di sudut kanan atas halaman. Isi formulir parameter rak meliputi:
+                                </p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-600 mb-3">
+                                    <div class="p-2 bg-white rounded border border-slate-200">
+                                        <strong>Kode Rak:</strong> Contoh `RAK-A1-01`
+                                    </div>
+                                    <div class="p-2 bg-white rounded border border-slate-200">
+                                        <strong>Zona Gudang:</strong> Pilih Area A/B/C
+                                    </div>
+                                    <div class="p-2 bg-white rounded border border-slate-200">
+                                        <strong>Kapasitas Maksimal:</strong> Dalam KG / Unit
+                                    </div>
+                                    <div class="p-2 bg-white rounded border border-slate-200">
+                                        <strong>Status:</strong> Aktif / Maintenance
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Small Mockup Image Container -->
+                            <div class="w-full md:w-56 flex-shrink-0">
+                                <div class="relative group rounded-lg overflow-hidden border border-slate-300 shadow-sm bg-white">
+                                    <svg class="w-full h-32 object-cover bg-slate-100 text-slate-400" viewBox="0 0 240 140" fill="none">
+                                        <rect width="240" height="140" fill="#F8FAFC"/>
+                                        <rect x="40" y="15" w="160" h="110" rx="6" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.5"/>
+                                        <rect x="50" y="25" w="140" h="15" rx="3" fill="#EFF6FF"/>
+                                        <rect x="50" y="50" w="60" h="12" rx="2" fill="#E2E8F0"/>
+                                        <rect x="50" y="66" w="140" h="16" rx="2" fill="#F1F5F9" stroke="#CBD5E1"/>
+                                        <rect x="50" y="90" w="50" h="18" rx="3" fill="#2563EB"/>
+                                        <text x="62" y="102" fill="#FFFFFF" font-size="8" font-weight="bold">Simpan</text>
+                                    </svg>
+                                    <div class="p-2 bg-white text-[11px] text-slate-600 border-t border-slate-200 flex justify-between items-center">
+                                        <span class="truncate font-medium">Form Modal Input</span>
+                                        <button onclick="openModal('Formulir Master Rak', 'Pastikan penamaan kode rak unik dan sesuai standar penataan gudang.')" class="text-brand-600 hover:text-brand-800 font-bold ml-1">
+                                            <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Callout / Tip Box -->
+                <div class="mt-5 p-4 bg-amber-50 border-l-4 border-amber-500 rounded-r-xl text-amber-900 text-sm flex items-start space-x-3">
+                    <i class="fa-solid fa-lightbulb text-amber-600 mt-0.5 text-base"></i>
+                    <div>
+                        <strong class="font-semibold block mb-0.5">Catatan Penting:</strong>
+                        Kode Rak yang sudah memiliki histori transaksi barang tidak dapat dihapus, namun statusnya dapat diubah menjadi <em>Non-Aktif</em>.
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- POINT 2: INTERNAL TRANSFER RAK -->
+            <!-- ========================================== -->
+            <section id="point-2" class="pt-8 mb-14 scroll-mt-20 border-t border-slate-200">
+                <div class="flex items-center space-x-3 mb-6">
+                    <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-brand-600 text-white font-bold flex items-center justify-center text-base shadow-sm">2</span>
+                    <h2 class="text-2xl font-bold text-slate-900">Internal Transfer Rak</h2>
+                </div>
+
+                <p class="text-slate-600 mb-6 leading-relaxed">
+                    Prosedur <strong>Internal Transfer Rak</strong> dilakukan untuk memindahkan item/barang dari satu rak ke rak lain dalam <u>zona atau gedung gudang yang sama</u> guna pemenuhan efisiensi ruang simpan (replenishment).
+                </p>
+
+                <!-- Steps List -->
+                <div class="space-y-6">
+                    <!-- Step 2.1 -->
+                    <div class="bg-slate-50/60 rounded-xl p-5 border border-slate-200/80 hover:border-slate-300 transition-all">
+                        <div class="flex flex-col md:flex-row gap-5">
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <span class="text-xs font-bold uppercase tracking-wider text-brand-700 bg-brand-100 px-2.5 py-0.5 rounded">Langkah 2.1</span>
+                                    <h3 class="font-semibold text-slate-800">Membuat Dokumen Transfer Internal</h3>
+                                </div>
+                                <p class="text-slate-600 text-sm leading-relaxed mb-3">
+                                    Akses menu <strong>Movement > Internal Transfer</strong>, klik tombol <strong>+ Buat Dokumen Transfer</strong>. Sistem akan memberikan nomor dokumen otomatis (e.g. `ITR-2026-0089`).
+                                </p>
+                            </div>
+                            <!-- Small Mockup Image Container -->
+                            <div class="w-full md:w-56 flex-shrink-0">
+                                <div class="relative group rounded-lg overflow-hidden border border-slate-300 shadow-sm bg-white">
+                                    <svg class="w-full h-32 object-cover bg-slate-100 text-slate-400" viewBox="0 0 240 140" fill="none">
+                                        <rect width="240" height="140" fill="#F8FAFC"/>
+                                        <rect x="20" y="20" w="200" h="100" rx="4" fill="#FFFFFF" stroke="#CBD5E1"/>
+                                        <path d="M 30 50 L 210 50" stroke="#E2E8F0" stroke-width="2"/>
+                                        <rect x="30" y="32" w="70" h="10" rx="2" fill="#1E3A8A"/>
+                                        <rect x="30" y="65" w="80" h="8" rx="2" fill="#94A3B8"/>
+                                        <rect x="30" y="80" w="120" h="8" rx="2" fill="#CBD5E1"/>
+                                    </svg>
+                                    <div class="p-2 bg-white text-[11px] text-slate-600 border-t border-slate-200 flex justify-between items-center">
+                                        <span class="truncate font-medium">Tampilan Draft Transfer</span>
+                                        <button onclick="openModal('Pembuatan Dokumen Transfer', 'Dokumen berstatus Draft sebelum disetujui.')" class="text-brand-600 hover:text-brand-800 font-bold ml-1">
+                                            <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2.2 -->
+                    <div class="bg-slate-50/60 rounded-xl p-5 border border-slate-200/80 hover:border-slate-300 transition-all">
+                        <div class="flex flex-col md:flex-row gap-5">
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <span class="text-xs font-bold uppercase tracking-wider text-brand-700 bg-brand-100 px-2.5 py-0.5 rounded">Langkah 2.2</span>
+                                    <h3 class="font-semibold text-slate-800">Pemilihan Rak Sumber & Rak Tujuan</h3>
+                                </div>
+                                <p class="text-slate-600 text-sm leading-relaxed mb-3">
+                                    Pilih lokasi <strong>Rak Asal</strong> tempat barang saat ini tersimpan, lalu pilih <strong>Rak Tujuan</strong> penempatan barang baru.
+                                </p>
+                                <div class="p-3 bg-blue-50/60 border border-blue-200 rounded-lg text-xs text-blue-900">
+                                    <i class="fa-solid fa-circle-check text-blue-600 mr-1"></i> Sistem secara otomatis mengecek ketersediaan sisa kapasitas di Rak Tujuan.
+                                </div>
+                            </div>
+                            <!-- Small Mockup Image Container -->
+                            <div class="w-full md:w-56 flex-shrink-0">
+                                <div class="relative group rounded-lg overflow-hidden border border-slate-300 shadow-sm bg-white">
+                                    <svg class="w-full h-32 object-cover bg-slate-100 text-slate-400" viewBox="0 0 240 140" fill="none">
+                                        <rect width="240" height="140" fill="#F1F5F9"/>
+                                        <rect x="20" y="35" w="85" h="70" rx="4" fill="#FFFFFF" stroke="#3B82F6" stroke-width="1.5"/>
+                                        <rect x="135" y="35" w="85" h="70" rx="4" fill="#FFFFFF" stroke="#10B981" stroke-width="1.5"/>
+                                        <path d="M 110 70 L 130 70" stroke="#64748B" stroke-width="2" stroke-dasharray="3 3"/>
+                                        <polygon points="128,66 135,70 128,74" fill="#64748B"/>
+                                        <text x="32" y="55" fill="#1E293B" font-size="8" font-weight="bold">Rak A1 (Asal)</text>
+                                        <text x="142" y="55" fill="#1E293B" font-size="8" font-weight="bold">Rak B3 (Tujuan)</text>
+                                    </svg>
+                                    <div class="p-2 bg-white text-[11px] text-slate-600 border-t border-slate-200 flex justify-between items-center">
+                                        <span class="truncate font-medium">Pemilihan Rak Source-Target</span>
+                                        <button onclick="openModal('Pilihan Source & Target', 'Gunakan pencarian cepat dengan mengetikkan kode rak.')" class="text-brand-600 hover:text-brand-800 font-bold ml-1">
+                                            <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- POINT 3: TRANSFER ANTAR RAK -->
+            <!-- ========================================== -->
+            <section id="point-3" class="pt-8 mb-6 scroll-mt-20 border-t border-slate-200">
+                <div class="flex items-center space-x-3 mb-6">
+                    <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-brand-600 text-white font-bold flex items-center justify-center text-base shadow-sm">3</span>
+                    <h2 class="text-2xl font-bold text-slate-900">Transfer Antar Rak</h2>
+                </div>
+
+                <p class="text-slate-600 mb-6 leading-relaxed">
+                    Fitur <strong>Transfer Antar Rak</strong> merupakan mekanisme konfirmasi fisik secara langsung menggunakan peranti pemindai (<i>handheld scanner / barcode reader</i>) saat terjadi pemindahan barang fisik secara riil di lokasi gudang.
+                </p>
+
+                <!-- Steps List -->
+                <div class="space-y-6">
+                    <!-- Step 3.1 -->
+                    <div class="bg-slate-50/60 rounded-xl p-5 border border-slate-200/80 hover:border-slate-300 transition-all">
+                        <div class="flex flex-col md:flex-row gap-5">
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <span class="text-xs font-bold uppercase tracking-wider text-brand-700 bg-brand-100 px-2.5 py-0.5 rounded">Langkah 3.1</span>
+                                    <h3 class="font-semibold text-slate-800">Scan Barcode Rak Asal</h3>
+                                </div>
+                                <p class="text-slate-600 text-sm leading-relaxed mb-3">
+                                    Arahkan pemindai barcode (handheld) pada label QR/Barcode di lokasi fisik rak asal untuk mengunci lokasi pemindahan barang.
+                                </p>
+                                <ul class="list-disc list-inside text-xs text-slate-500 space-y-1 pl-1">
+                                    <li>Sistem memverifikasi keberadaan rak asal dalam sistem gudang secara otomatis.</li>
+                                    <li>Daftar barang yang tersimpan di rak asal tersebut akan dimuat di layar pemindai.</li>
+                                </ul>
+                            </div>
+                            <!-- Small Mockup Image Container -->
+                            <div class="w-full md:w-56 flex-shrink-0">
+                                <div class="relative group rounded-lg overflow-hidden border border-slate-300 shadow-sm bg-white">
+                                    <svg class="w-full h-32 object-cover bg-slate-100 text-slate-400" viewBox="0 0 240 140" fill="none">
+                                        <rect width="240" height="140" fill="#F8FAFC"/>
+                                        <rect x="20" y="20" w="200" h="100" rx="6" fill="#FFFFFF" stroke="#CBD5E1"/>
+                                        <rect x="35" y="35" w="70" h="12" rx="2" fill="#2563EB"/>
+                                        <rect x="35" y="55" w="170" h="20" rx="3" fill="#EFF6FF" stroke="#3B82F6"/>
+                                        <path d="M 45 65 L 195 65" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="2 2"/>
+                                        <rect x="35" y="85" w="100" h="10" rx="2" fill="#CBD5E1"/>
+                                    </svg>
+                                    <div class="p-2 bg-white text-[11px] text-slate-600 border-t border-slate-200 flex justify-between items-center">
+                                        <span class="truncate font-medium">Scan QR Rak Asal</span>
+                                        <button onclick="openModal('Scan Barcode Rak Asal', 'Arahkan laser pemindai pada barcode rak asal hingga terdengar bunyi bip konfirmasi.')" class="text-brand-600 hover:text-brand-800 font-bold ml-1">
+                                            <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3.2 -->
+                    <div class="bg-slate-50/60 rounded-xl p-5 border border-slate-200/80 hover:border-slate-300 transition-all">
+                        <div class="flex flex-col md:flex-row gap-5">
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <span class="text-xs font-bold uppercase tracking-wider text-brand-700 bg-brand-100 px-2.5 py-0.5 rounded">Langkah 3.2</span>
+                                    <h3 class="font-semibold text-slate-800">Scan SKU & Input Kuantitas Barang</h3>
+                                </div>
+                                <p class="text-slate-600 text-sm leading-relaxed mb-3">
+                                    Pindai barcode item/SKU barang yang akan dipindahkan, kemudian masukkan jumlah kuantitas unit yang dipindah.
+                                </p>
+                                <div class="p-3 bg-blue-50/60 border border-blue-200 rounded-lg text-xs text-blue-900">
+                                    <i class="fa-solid fa-shield-halved text-blue-600 mr-1"></i> Validasi otomatis mencegah input jumlah barang yang melebihi ketersediaan stok fisik di rak asal.
+                                </div>
+                            </div>
+                            <!-- Small Mockup Image Container -->
+                            <div class="w-full md:w-56 flex-shrink-0">
+                                <div class="relative group rounded-lg overflow-hidden border border-slate-300 shadow-sm bg-white">
+                                    <svg class="w-full h-32 object-cover bg-slate-100 text-slate-400" viewBox="0 0 240 140" fill="none">
+                                        <rect width="240" height="140" fill="#F1F5F9"/>
+                                        <rect x="20" y="15" w="200" h="110" rx="6" fill="#FFFFFF" stroke="#94A3B8"/>
+                                        <rect x="35" y="30" w="100" h="10" rx="2" fill="#1E293B"/>
+                                        <rect x="35" y="48" w="170" h="16" rx="2" fill="#F1F5F9" stroke="#CBD5E1"/>
+                                        <rect x="35" y="72" w="70" h="20" rx="3" fill="#2563EB"/>
+                                        <rect x="115" y="72" w="90" h="20" rx="3" fill="#F8FAFC" stroke="#CBD5E1"/>
+                                    </svg>
+                                    <div class="p-2 bg-white text-[11px] text-slate-600 border-t border-slate-200 flex justify-between items-center">
+                                        <span class="truncate font-medium">Input SKU & Qty</span>
+                                        <button onclick="openModal('Input Item & Kuantitas', 'Pastikan kuantitas yang dimasukkan sesuai dengan fisik barang yang dipindahkan.')" class="text-brand-600 hover:text-brand-800 font-bold ml-1">
+                                            <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3.3 -->
+                    <div class="bg-slate-50/60 rounded-xl p-5 border border-slate-200/80 hover:border-slate-300 transition-all">
+                        <div class="flex flex-col md:flex-row gap-5">
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <span class="text-xs font-bold uppercase tracking-wider text-brand-700 bg-brand-100 px-2.5 py-0.5 rounded">Langkah 3.3</span>
+                                    <h3 class="font-semibold text-slate-800">Scan Rak Tujuan & Eksekusi Transfer</h3>
+                                </div>
+                                <p class="text-slate-600 text-sm leading-relaxed mb-3">
+                                    Pindai barcode pada label fisik <strong>Rak Tujuan</strong>, lalu tekan tombol <strong>Konfirmasi Transfer</strong> untuk menyelesaikan proses pemindahan stok.
+                                </p>
+                                <ul class="list-disc list-inside text-xs text-slate-500 space-y-1 pl-1">
+                                    <li>Sistem memperbarui saldo stok di rak asal dan rak tujuan secara realtime.</li>
+                                    <li>Status transaksi otomatis tercatat sebagai <strong>Selesai (Completed)</strong>.</li>
+                                </ul>
+                            </div>
+                            <!-- Small Mockup Image Container -->
+                            <div class="w-full md:w-56 flex-shrink-0">
+                                <div class="relative group rounded-lg overflow-hidden border border-slate-300 shadow-sm bg-white">
+                                    <svg class="w-full h-32 object-cover bg-slate-100 text-slate-400" viewBox="0 0 240 140" fill="none">
+                                        <rect width="240" height="140" fill="#F8FAFC"/>
+                                        <rect x="20" y="20" w="200" h="100" rx="6" fill="#FFFFFF" stroke="#10B981" stroke-width="1.5"/>
+                                        <circle cx="120" cy="55" r="18" fill="#10B981"/>
+                                        <path d="M 112 55 L 118 61 L 128 49" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <rect x="60" y="85" w="120" h="12" rx="3" fill="#D1FAE5"/>
+                                    </svg>
+                                    <div class="p-2 bg-white text-[11px] text-slate-600 border-t border-slate-200 flex justify-between items-center">
+                                        <span class="truncate font-medium">Konfirmasi Sukses</span>
+                                        <button onclick="openModal('Transfer Berhasil', 'Stok pada sistem ter-update secara otomatis secara real-time.')" class="text-brand-600 hover:text-brand-800 font-bold ml-1">
+                                            <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Callout / Tip Box for Point 3 -->
+                <div class="mt-5 p-4 bg-amber-50 border-l-4 border-amber-500 rounded-r-xl text-amber-900 text-sm flex items-start space-x-3">
+                    <i class="fa-solid fa-lightbulb text-amber-600 mt-0.5 text-base"></i>
+                    <div>
+                        <strong class="font-semibold block mb-0.5">Tips Pemindaian:</strong>
+                        Pastikan jarak pemindai dengan barcode berada pada kisaran ideal 15–30 cm dengan pencahayaan yang cukup agar pembacaan kode berjalan cepat dan akurat.
+                    </div>
+                </div>
+            </section>
+
+            <!-- Document Footer Signature Info -->
+            <div class="mt-12 pt-8 border-t border-slate-200 text-xs text-slate-500 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <div>
+                    <p class="font-semibold text-slate-700">Diterbitkan oleh PT. Logistics Warehouse Indonesia</p>
+                    <p>© 2026 Internal Operating Guideline. Hak Cipta Dilindungi.</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span class="inline-flex items-center text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200 font-medium">
+                        <i class="fa-solid fa-check-double mr-1.5"></i> Status: Approved
+                    </span>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Image Preview Lightbox Modal -->
+    <div id="imageModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-lg w-full overflow-hidden shadow-2xl border border-slate-100 transition-all">
+            <div class="p-4 border-b border-slate-200 flex justify-between items-center bg-slate-50">
+                <h3 id="modalTitle" class="font-bold text-slate-800 text-sm">Preview Gambar</h3>
+                <button onclick="closeModal()" class="text-slate-400 hover:text-slate-600 p-1 rounded-lg">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            <div class="p-6 text-center">
+                <div class="w-full h-48 bg-slate-100 rounded-xl border border-slate-200 flex flex-col items-center justify-center mb-4 text-slate-400">
+                    <i class="fa-solid fa-image text-4xl mb-2 text-slate-300"></i>
+                    <span class="text-xs">Gambar Tampilan Sistem Real Size</span>
+                </div>
+                <p id="modalDesc" class="text-slate-600 text-xs leading-relaxed text-left bg-slate-50 p-3 rounded-lg border border-slate-200"></p>
+            </div>
+            <div class="p-3 border-t border-slate-200 bg-slate-50 text-right">
+                <button onclick="closeModal()" class="px-4 py-1.5 bg-slate-800 hover:bg-slate-900 text-white text-xs font-semibold rounded-lg transition-all">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(title, description) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDesc').innerText = description;
+            document.getElementById('imageModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').classList.add('hidden');
+        }
+
+        // Close modal when clicking outside content
+        window.onclick = function(event) {
+            const modal = document.getElementById('imageModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
