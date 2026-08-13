@@ -939,11 +939,8 @@
           </div>
 
           <p class="text-slate-600 mb-6 leading-relaxed">
-            Fitur <strong>Transfer Antar Rak</strong> merupakan mekanisme
-            konfirmasi fisik secara langsung menggunakan peranti pemindai (<i
-              >handheld scanner / barcode reader</i
-            >) saat terjadi pemindahan barang fisik secara riil di lokasi
-            gudang.
+            Fitur <strong>Transfer Antar Rak</strong> untuk memindahkan product
+            dari Rak Asal ke Rak Tujuan ataupun sebaliknya.
           </p>
 
           <!-- Steps List -->
@@ -960,15 +957,15 @@
                   >
                     <div
                       class="relative h-60 overflow-hidden step-carousel"
-                      data-title="Scan Barcode Rak Asal"
-                      data-desc="Arahkan laser pemindai pada barcode rak asal hingga terdengar bunyi bip konfirmasi."
+                      data-title="Menu Transfer Antar Rak"
+                      data-desc=""
                     >
                       <div
                         class="carousel-track flex transition-transform duration-300 h-full w-full"
                       >
                         <img
-                          src="assets/scan_barcode_rak_asal.png"
-                          alt="Scan QR Rak Asal"
+                          src="assets/tf_antar_rak/menu_transfer_rak.png"
+                          alt="Menu Transfer Antar Rak"
                           class="w-full h-full object-cover cursor-pointer flex-shrink-0"
                           onclick="openModalForStep(this)"
                         />
@@ -999,7 +996,7 @@
                       class="p-2 bg-white text-[11px] text-slate-600 border-t border-slate-200 flex justify-between items-center"
                     >
                       <span class="truncate font-medium carousel-title"
-                        >Scan QR Rak Asal</span
+                        >Menu Transfer Antar Rak</span
                       >
                       <span class="text-brand-600 font-bold ml-1">
                         <i class="fa-solid fa-magnifying-glass-plus"></i>
@@ -1015,25 +1012,15 @@
                       >Langkah 2.1</span
                     >
                     <h3 class="text-lg md:text-xl font-bold text-slate-900">
-                      Scan Barcode Rak Asal
+                      Buka menu Transfer Antar Rak
                     </h3>
                   </div>
-                  <p class="text-slate-600 text-sm leading-relaxed mb-3">
-                    Arahkan pemindai barcode (handheld) pada label QR/Barcode di
-                    lokasi fisik rak asal untuk mengunci lokasi pemindahan
-                    barang.
-                  </p>
                   <ul
-                    class="list-disc list-inside text-xs text-slate-500 space-y-1 pl-1"
+                    class="list-decimal list-inside text-xs text-slate-500 space-y-1 pl-1"
                   >
-                    <li>
-                      Sistem memverifikasi keberadaan rak asal dalam sistem
-                      gudang secara otomatis.
-                    </li>
-                    <li>
-                      Daftar barang yang tersimpan di rak asal tersebut akan
-                      dimuat di layar pemindai.
-                    </li>
+                    <li>Klik Modul Inventory</li>
+                    <li>Klik Menu Operation</li>
+                    <li>Klik submenu Transfer antar Rak</li>
                   </ul>
                 </div>
               </div>
@@ -1058,8 +1045,8 @@
                         class="carousel-track flex transition-transform duration-300 h-full w-full"
                       >
                         <img
-                          src="assets/input_item_kuantitas.png"
-                          alt="Input SKU & Qty"
+                          src="assets/tf_antar_rak/create_tf_rak.png"
+                          alt="Buat Transfer Antar Rak"
                           class="w-full h-full object-cover cursor-pointer flex-shrink-0"
                           onclick="openModalForStep(this)"
                         />
@@ -1090,7 +1077,7 @@
                       class="p-2 bg-white text-[11px] text-slate-600 border-t border-slate-200 flex justify-between items-center"
                     >
                       <span class="truncate font-medium carousel-title"
-                        >Input SKU & Qty</span
+                        >Buat Transfer Antar Rak</span
                       >
                       <span class="text-brand-600 font-bold ml-1">
                         <i class="fa-solid fa-magnifying-glass-plus"></i>
@@ -1106,20 +1093,26 @@
                       >Langkah 2.2</span
                     >
                     <h3 class="text-lg md:text-xl font-bold text-slate-900">
-                      Scan SKU & Input Kuantitas Barang
+                      Buat Transfer Antar Rak
                     </h3>
                   </div>
-                  <p class="text-slate-600 text-sm leading-relaxed mb-3">
-                    Pindai barcode item/SKU barang yang akan dipindahkan,
-                    kemudian masukkan jumlah kuantitas unit yang dipindah.
-                  </p>
-                  <div
-                    class="p-3 bg-blue-50/60 border border-blue-200 rounded-lg text-xs text-blue-900 max-w-xl"
+                  <ul
+                    class="list-disc list-inside text-xs text-slate-500 space-y-1 pl-1"
                   >
-                    <i class="fa-solid fa-shield-halved text-blue-600 mr-1"></i>
-                    Validasi otomatis mencegah input jumlah barang yang melebihi
-                    ketersediaan stok fisik di rak asal.
-                  </div>
+                    <li>
+                      Setelah terbuka maka akan menampilkan list transfer rak
+                      pernah dibuat
+                    </li>
+                    <li>
+                      Klik Button
+                      <button
+                        class="text-green-600 bg-green-100 px-2.5 py-1 rounded"
+                      >
+                        New
+                      </button>
+                      untuk membuat transfer rak baru.
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -1143,8 +1136,8 @@
                         class="carousel-track flex transition-transform duration-300 h-full w-full"
                       >
                         <img
-                          src="assets/transfer_berhasil.png"
-                          alt="Konfirmasi Sukses"
+                          src="assets/tf_antar_rak/form_tf_rak_isi.png"
+                          alt="Mengisi Form Transfer Antar Rak"
                           class="w-full h-full object-cover cursor-pointer flex-shrink-0"
                           onclick="openModalForStep(this)"
                         />
@@ -1175,7 +1168,7 @@
                       class="p-2 bg-white text-[11px] text-slate-600 border-t border-slate-200 flex justify-between items-center"
                     >
                       <span class="truncate font-medium carousel-title"
-                        >Konfirmasi Sukses</span
+                        >Mengisi Form Transfer Antar Rak</span
                       >
                       <span class="text-brand-600 font-bold ml-1">
                         <i class="fa-solid fa-magnifying-glass-plus"></i>
@@ -1191,24 +1184,315 @@
                       >Langkah 2.3</span
                     >
                     <h3 class="text-lg md:text-xl font-bold text-slate-900">
-                      Scan Rak Tujuan & Eksekusi Transfer
+                      Mengisi Form Transfer antar rak
                     </h3>
                   </div>
                   <p class="text-slate-600 text-sm leading-relaxed mb-3">
-                    Pindai barcode pada label fisik <strong>Rak Tujuan</strong>,
-                    lalu tekan tombol <strong>Konfirmasi Transfer</strong> untuk
-                    menyelesaikan proses pemindahan stok.
+                    Terdapat field yang perlu diperhatikan yaitu :
+                  </p>
+                  <ul
+                    class="list-decimal list-inside text-xs text-slate-500 space-y-1 pl-1"
+                  >
+                    <li>
+                      Operating Unit : Merupakan unit operasi yang akan
+                      melakukan transfer rak.
+                    </li>
+                    <li>Rak Sumber : Merupakan rak asal transfer.</li>
+                    <li>Rak Tujuan : Merupakan rak tujuan transfer.</li>
+                    <li>
+                      Button Load Produk dari Rak Asal : Ini untuk memuat produk
+                      yang ada dirak asal yang nantinya akan mengisi otomatis
+                      table list produk dibawahnya. <br />(catatan : jika dirak
+                      asal tidak ada product maka table list produk tidak akan
+                      terisi).
+                    </li>
+                    <li>
+                      Table List Produk : Ini untuk menampilkan produk yang akan
+                      ditransfer antar rak.
+                    </li>
+                    <li>
+                      Kolom Qty : Ini untuk menentukan jumlah produk yang akan
+                      ditransfer antar rak. <br />(catatan : qty tidak boleh
+                      lebih besar dari stok produk tersebut di rak asal).
+                    </li>
+                    <li>
+                      Button "Set to Draft" : Ini untuk menyimpan form transfer
+                      antar rak menjadi status draft.
+                    </li>
+                    <li>
+                      Button "Validasi/Done" : Ini untuk memproses transfer
+                      antar rak (selesai).
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 2.4 -->
+            <div
+              class="bg-slate-50/60 rounded-xl p-5 border border-slate-200/80 hover:border-slate-300 transition-all"
+            >
+              <div class="flex flex-col md:flex-row gap-6">
+                <!-- Image Container -->
+                <div class="w-full md:w-[450px] flex-shrink-0">
+                  <div
+                    class="relative group rounded-lg overflow-hidden border border-slate-300 shadow-sm bg-slate-100"
+                  >
+                    <div
+                      class="relative h-60 overflow-hidden step-carousel"
+                      data-title="Transfer Berhasil"
+                      data-desc="Stok pada sistem ter-update secara otomatis secara real-time."
+                    >
+                      <div
+                        class="carousel-track flex transition-transform duration-300 h-full w-full"
+                      >
+                        <img
+                          src="assets/tf_antar_rak/pindah_sku.png"
+                          alt="Mengisi Qty Product yang akan dikirim ke Rak Tujuan"
+                          class="w-full h-full object-cover cursor-pointer flex-shrink-0"
+                          onclick="openModalForStep(this)"
+                        />
+                      </div>
+                      <div
+                        class="absolute inset-0 bg-slate-900/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none"
+                      >
+                        <span
+                          class="bg-white/90 text-slate-800 p-2 rounded-full shadow text-xs"
+                        >
+                          <i class="fa-solid fa-magnifying-glass-plus"></i>
+                        </span>
+                      </div>
+                      <button
+                        class="carousel-btn-prev absolute left-2 top-1/2 -translate-y-1/2 bg-black/45 hover:bg-black/70 text-white w-7 h-7 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hidden"
+                        onclick="prevSlide(this, event)"
+                      >
+                        <i class="fa-solid fa-chevron-left text-xs"></i>
+                      </button>
+                      <button
+                        class="carousel-btn-next absolute right-2 top-1/2 -translate-y-1/2 bg-black/45 hover:bg-black/70 text-white w-7 h-7 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hidden"
+                        onclick="nextSlide(this, event)"
+                      >
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                      </button>
+                    </div>
+                    <div
+                      class="p-2 bg-white text-[11px] text-slate-600 border-t border-slate-200 flex justify-between items-center"
+                    >
+                      <span class="truncate font-medium carousel-title"
+                        >Mengisi Qty Product yang akan dikirim ke Rak
+                        Tujuan</span
+                      >
+                      <span class="text-brand-600 font-bold ml-1">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Content Container -->
+                <div class="flex-grow flex flex-col justify-center">
+                  <div class="flex items-center space-x-2.5 mb-3">
+                    <span
+                      class="text-xs font-bold uppercase tracking-wider text-brand-700 bg-brand-100 px-2.5 py-1 rounded"
+                      >Langkah 2.4</span
+                    >
+                    <h3 class="text-lg md:text-xl font-bold text-slate-900">
+                      Mengisi Qty Product yang akan dikirim ke Rak Tujuan
+                    </h3>
+                  </div>
+                  <p class="text-slate-600 text-sm leading-relaxed mb-3">
+                    Tentukan jumlah quantity yang akan ditransfer dari Rak Asal
+                    ke Rak Tujuan. pastikan quantity sesuai dengan stok tersedia
+                    dirak asal. <br />
+                    <strong
+                      >contoh disini : kita mengirimkan 2 SKU dari rak asal
+                      yaitu :</strong
+                    >
+                  </p>
+                  <ul
+                    class="list-decimal list-inside text-xs text-slate-500 space-y-1 pl-1"
+                  >
+                    <li>SKU 26M11TGSY - 2 Unit</li>
+                    <li>SKU 26A50GSY - 3 Unit</li>
+                    <li>
+                      Jika sudah bisa kita klik
+                      <button
+                        class="rounded-full border border-green-600 text-green-600 p-1 text-xs font-bold hover:bg-green-50 hover:text-green-600 transition-colors"
+                      >
+                        Validasi/Done
+                      </button>
+                      untuk memproses pemindahan barang tersebut.
+                    </li>
+                    <li>
+                      setelah kita klik done, status dokumen akan menjadi
+                      selesai
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- Step 2.4 -->
+            <div
+              class="bg-slate-50/60 rounded-xl p-5 border border-slate-200/80 hover:border-slate-300 transition-all"
+            >
+              <div class="flex flex-col md:flex-row gap-6">
+                <!-- Image Container -->
+                <!-- <div class="w-full md:w-[450px] flex-shrink-0">
+                  <div
+                    class="relative group rounded-lg overflow-hidden border border-slate-300 shadow-sm bg-slate-100"
+                  >
+                    <div
+                      class="relative h-60 overflow-hidden step-carousel"
+                      data-title="Rak Asal sebelum dokumen transfer done"
+                      data-desc="Pada gambar ini merupakan kondisi rak asal sebelum dokumen transfer done."
+                    >
+                      <div
+                        class="carousel-track flex transition-transform duration-300 h-full w-full"
+                      >
+                        <img
+                          src="assets/tf_antar_rak/rak_sumber_before.png"
+                          alt="Mengisi "
+                          class="w-full h-full object-cover cursor-pointer flex-shrink-0"
+                          onclick="openModalForStep(this)"
+                        />
+                      </div>
+                      <div
+                        class="absolute inset-0 bg-slate-900/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none"
+                      >
+                        <span
+                          class="bg-white/90 text-slate-800 p-2 rounded-full shadow text-xs"
+                        >
+                          <i class="fa-solid fa-magnifying-glass-plus"></i>
+                        </span>
+                      </div>
+                      <button
+                        class="carousel-btn-prev absolute left-2 top-1/2 -translate-y-1/2 bg-black/45 hover:bg-black/70 text-white w-7 h-7 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hidden"
+                        onclick="prevSlide(this, event)"
+                      >
+                        <i class="fa-solid fa-chevron-left text-xs"></i>
+                      </button>
+                      <button
+                        class="carousel-btn-next absolute right-2 top-1/2 -translate-y-1/2 bg-black/45 hover:bg-black/70 text-white w-7 h-7 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hidden"
+                        onclick="nextSlide(this, event)"
+                      >
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                      </button>
+                    </div>
+                    <div
+                      class="p-2 bg-white text-[11px] text-slate-600 border-t border-slate-200 flex justify-between items-center"
+                    >
+                      <span class="truncate font-medium carousel-title"
+                        >History Product pada Rak asal sebelum dan sesudah
+                        dokumen transfer done</span
+                      >
+                      <span class="text-brand-600 font-bold ml-1">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div> -->
+                <!-- Content Container -->
+                <div class="flex-grow flex flex-col justify-center">
+                  <div class="flex items-center space-x-2.5 mb-3">
+                    <h3 class="text-lg md:text-xl font-bold text-slate-900">
+                      History Product pada Rak asal dan tujuan sebelum melakukan
+                      transfer antar rak.
+                    </h3>
+                  </div>
+                  <p class="text-slate-600 text-sm leading-relaxed mb-3">
+                    Pada Gambar ke 1 - 2, merupakan kondisi Rak Asal dan Rak
+                    Tujuan sebelum dokumen transfer antar rak.
                   </p>
                   <ul
                     class="list-disc list-inside text-xs text-slate-500 space-y-1 pl-1"
                   >
                     <li>
-                      Sistem memperbarui saldo stok di rak asal dan rak tujuan
-                      secara realtime.
+                      <strong> Rak Asal</strong> :
+                      GPRL/STOCK/AREA-01/BIN/S1A/006/07/S1A067 <br />
+                      <ul
+                        class="list-decimal list-inside text-xs text-slate-500 space-y-1 pl-1 mx-3"
+                      >
+                        <li>
+                          Pada rak asal sebelum dokumen transfer antar rak,
+                          tidak ada transaksi bisa kita lihat Qty Out nya masih
+                          0, lalu Qty Total ada 17 untuk SKU [26M11TGSY] 17
+                          Unit, SKU [26A50GSY] 15 Unit
+                        </li>
+                      </ul>
+                      <img
+                        src="assets/tf_antar_rak/rak_sumber_before.png"
+                        alt=""
+                        class="w-[70%] cursor-pointer flex-shrink-0 py-2"
+                      />
                     </li>
                     <li>
-                      Status transaksi otomatis tercatat sebagai
-                      <strong>Selesai (Completed)</strong>.
+                      <strong> Rak Tujuan</strong> :
+                      GPRL/STOCK/DEFAULT/BIN/U1V/0/02/U1V062
+                      <ul
+                        class="list-decimal list-inside text-xs text-slate-500 space-y-1 pl-1 mx-3"
+                      >
+                        <li>
+                          Pada rak tujuan sebelum dokumen transfer antar rak,
+                          tidak ada transaksi bisa kita lihat belum ada product
+                          pada rak tersebut.
+                        </li>
+                      </ul>
+                      <img
+                        src="assets/tf_antar_rak/rak_tujuan_before.png"
+                        alt=""
+                        class="w-[70%] cursor-pointer flex-shrink-0 py-2"
+                      />
+                    </li>
+                  </ul>
+                </div>
+                <div class="flex-grow flex flex-col justify-center">
+                  <div class="flex items-center space-x-2.5 mb-3">
+                    <h3 class="text-lg md:text-xl font-bold text-slate-900">
+                      History Product pada Rak asal dan tujuan sesudah dokumen
+                      transfer antar rak.
+                    </h3>
+                  </div>
+                  <p class="text-slate-600 text-sm leading-relaxed mb-3">
+                    Pada Gambar ke 3 - 4, merupakan kondisi Rak Asal dan Rak
+                    Tujuan sesudah dokumen transfer antar rak.
+                  </p>
+                  <ul
+                    class="list-disc list-inside text-xs text-slate-500 space-y-1 pl-1"
+                  >
+                    <li>
+                      <strong> Rak Asal</strong> :
+                      GPRL/STOCK/AREA-01/BIN/S1A/006/07/S1A067 <br />
+                      <ul
+                        class="list-decimal list-inside text-xs text-slate-500 space-y-1 pl-1 mx-3"
+                      >
+                        <li>
+                          Bisa dilihat QTY Out nya bertambah, lalu Qty Total
+                          pada rak asal berkurang. Sesuai dengan jumlah yang
+                          sudah kita transfer tadi.
+                        </li>
+                      </ul>
+                      <img
+                        src="assets/tf_antar_rak/rak_sumber_after.png"
+                        alt=""
+                        class="w-[70%] cursor-pointer flex-shrink-0 py-2"
+                      />
+                    </li>
+                    <li>
+                      <strong> Rak Tujuan</strong> :
+                      GPRL/STOCK/DEFAULT/BIN/U1V/0/02/U1V062
+                      <ul
+                        class="list-decimal list-inside text-xs text-slate-500 space-y-1 pl-1 mx-3"
+                      >
+                        <li>
+                          Bisa dilihat QTY In nya bertambah, lalu Qty Total pada
+                          rak tujuan bertambah. Sesuai dengan Product dan jumlah
+                          yang kita transfer tadi.
+                        </li>
+                      </ul>
+                      <img
+                        src="assets/tf_antar_rak/rak_tujuan_after.png"
+                        alt=""
+                        class="w-[70%] cursor-pointer flex-shrink-0 py-2"
+                      />
                     </li>
                   </ul>
                 </div>
